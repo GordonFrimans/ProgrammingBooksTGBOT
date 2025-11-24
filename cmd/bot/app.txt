@@ -1,0 +1,85 @@
+INFO: 2025/11/01 23:53:27 main.go:45: Обычный режим работы.
+INFO: 2025/11/01 23:53:27 main.go:52: ✅ Запуск
+INFO: 2025/11/01 23:53:27 bot.go:50: Регистрация обработчиков...
+INFO: 2025/11/01 23:53:27 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/11/01 23:53:29 middleware.go:23: → Вызов метода: auth.importBotAuthorization
+INFO: 2025/11/01 23:53:29 middleware.go:31: ✗ Метод users.getUsers завершился с ошибкой за 1.925101522s: rpcDoRequest: rpc error code 401: AUTH_KEY_UNREGISTERED
+INFO: 2025/11/01 23:53:29 middleware.go:34: ✓ Метод auth.importBotAuthorization выполнен успешно за 59.660171ms
+INFO: 2025/11/01 23:53:38 bot.go:90: Получено сообщение: /start
+INFO: 2025/11/01 23:53:38 handlers.go:19: Не удалось получить FromID
+INFO: 2025/11/01 23:55:04 main.go:75: Бот остановлен.
+INFO: 2025/11/01 23:55:12 main.go:45: Обычный режим работы.
+INFO: 2025/11/01 23:55:12 main.go:52: ✅ Запуск
+INFO: 2025/11/01 23:55:12 bot.go:50: Регистрация обработчиков...
+INFO: 2025/11/01 23:55:12 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/11/01 23:55:14 middleware.go:23: → Вызов метода: auth.importBotAuthorization
+INFO: 2025/11/01 23:55:14 middleware.go:31: ✗ Метод users.getUsers завершился с ошибкой за 2.308942989s: rpcDoRequest: rpc error code 401: AUTH_KEY_UNREGISTERED
+INFO: 2025/11/01 23:55:14 middleware.go:34: ✓ Метод auth.importBotAuthorization выполнен успешно за 65.563123ms
+INFO: 2025/11/01 23:55:23 bot.go:90: Получено сообщение: /start
+INFO: 2025/11/01 23:55:23 handlers.go:56: 📨 /start от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/01 23:55:23 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/11/01 23:55:23 middleware.go:34: ✓ Метод messages.sendMessage выполнен успешно за 67.495145ms
+INFO: 2025/11/02 00:07:42 main.go:75: Бот остановлен.
+INFO: 2025/11/02 00:12:15 main.go:45: Обычный режим работы.
+INFO: 2025/11/02 00:12:15 main.go:52: ✅ Запуск
+INFO: 2025/11/02 00:12:15 bot.go:50: Регистрация обработчиков...
+INFO: 2025/11/02 00:12:15 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/11/02 00:12:17 middleware.go:23: → Вызов метода: auth.importBotAuthorization
+INFO: 2025/11/02 00:12:17 middleware.go:31: ✗ Метод users.getUsers завершился с ошибкой за 2.031528833s: rpcDoRequest: rpc error code 401: AUTH_KEY_UNREGISTERED
+INFO: 2025/11/02 00:12:17 middleware.go:34: ✓ Метод auth.importBotAuthorization выполнен успешно за 61.796141ms
+INFO: 2025/11/02 00:12:33 bot.go:90: Получено сообщение: /start
+INFO: 2025/11/02 00:12:33 handlers.go:58: 📨 /start от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/02 00:12:33 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/11/02 00:12:33 middleware.go:34: ✓ Метод messages.sendMessage выполнен успешно за 69.869002ms
+INFO: 2025/11/02 00:12:38 bot.go:90: Получено сообщение: /admin
+INFO: 2025/11/02 00:12:38 handlers.go:134: 📨 /admin от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/02 00:12:38 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/11/02 00:12:38 middleware.go:34: ✓ Метод upload.saveFilePart выполнен успешно за 163.93327ms
+INFO: 2025/11/02 00:12:38 middleware.go:23: → Вызов метода: messages.sendMedia
+INFO: 2025/11/02 00:12:38 middleware.go:34: ✓ Метод messages.sendMedia выполнен успешно за 210.993798ms
+INFO: 2025/11/02 00:14:27 main.go:75: Бот остановлен.
+INFO: 2025/11/02 00:29:26 main.go:45: Обычный режим работы.
+INFO: 2025/11/02 00:29:26 main.go:52: ✅ Запуск
+INFO: 2025/11/02 00:29:26 bot.go:50: Регистрация обработчиков...
+INFO: 2025/11/02 00:29:26 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/11/02 00:29:29 middleware.go:23: → Вызов метода: auth.importBotAuthorization
+INFO: 2025/11/02 00:29:29 middleware.go:31: ✗ Метод users.getUsers завершился с ошибкой за 2.801409986s: rpcDoRequest: rpc error code 401: AUTH_KEY_UNREGISTERED
+INFO: 2025/11/02 00:29:29 middleware.go:34: ✓ Метод auth.importBotAuthorization выполнен успешно за 240.414494ms
+INFO: 2025/11/02 00:29:46 bot.go:90: Получено сообщение: /start
+INFO: 2025/11/02 00:29:46 handlers.go:61: 📨 /start от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/02 00:29:46 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/11/02 00:29:46 middleware.go:34: ✓ Метод messages.sendMessage выполнен успешно за 298.554245ms
+INFO: 2025/11/02 00:29:48 bot.go:90: Получено сообщение: /admin
+INFO: 2025/11/02 00:29:48 handlers.go:137: 📨 /admin от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/02 00:29:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/11/02 00:29:48 middleware.go:34: ✓ Метод upload.saveFilePart выполнен успешно за 366.070162ms
+INFO: 2025/11/02 00:29:48 middleware.go:23: → Вызов метода: messages.sendMedia
+INFO: 2025/11/02 00:29:49 middleware.go:34: ✓ Метод messages.sendMedia выполнен успешно за 289.007444ms
+INFO: 2025/11/02 00:29:49 handlers.go:180: ✅ Логи отправвлены
+INFO: 2025/11/02 00:31:37 bot.go:90: Получено сообщение: /start
+INFO: 2025/11/02 00:31:37 handlers.go:61: 📨 /start от Dimaes  (@Dimaes_o, ID:900872695)
+INFO: 2025/11/02 00:31:37 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/11/02 00:31:37 middleware.go:34: ✓ Метод messages.sendMessage выполнен успешно за 244.140164ms
+INFO: 2025/11/02 00:31:48 bot.go:90: Получено сообщение: /admin
+INFO: 2025/11/02 00:31:48 handlers.go:137: 📨 /admin от Dimaes  (@Dimaes_o, ID:900872695)
+INFO: 2025/11/02 00:31:48 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/11/02 00:31:49 middleware.go:34: ✓ Метод messages.sendMessage выполнен успешно за 245.842936ms
+INFO: 2025/11/02 00:42:59 main.go:75: Бот остановлен.
+INFO: 2025/11/03 11:08:46 main.go:45: Обычный режим работы.
+INFO: 2025/11/03 11:08:46 main.go:52: ✅ Запуск
+INFO: 2025/11/03 11:08:46 bot.go:50: Регистрация обработчиков...
+INFO: 2025/11/03 11:08:46 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/11/03 11:08:48 middleware.go:23: → Вызов метода: auth.importBotAuthorization
+INFO: 2025/11/03 11:08:48 middleware.go:31: ✗ Метод users.getUsers завершился с ошибкой за 1.912392348s: rpcDoRequest: rpc error code 401: AUTH_KEY_UNREGISTERED
+INFO: 2025/11/03 11:08:48 middleware.go:34: ✓ Метод auth.importBotAuthorization выполнен успешно за 118.133826ms
+INFO: 2025/11/03 11:09:07 bot.go:90: Получено сообщение: /start
+INFO: 2025/11/03 11:09:07 handlers.go:61: 📨 /start от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/03 11:09:07 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/11/03 11:09:07 middleware.go:34: ✓ Метод messages.sendMessage выполнен успешно за 72.927677ms
+INFO: 2025/11/03 11:09:12 bot.go:90: Получено сообщение: /admin
+INFO: 2025/11/03 11:09:12 handlers.go:137: 📨 /admin от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/11/03 11:09:12 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/11/03 11:09:12 middleware.go:34: ✓ Метод upload.saveFilePart выполнен успешно за 143.486722ms
+INFO: 2025/11/03 11:09:12 middleware.go:23: → Вызов метода: messages.sendMedia
+INFO: 2025/11/03 11:09:12 middleware.go:34: ✓ Метод messages.sendMedia выполнен успешно за 138.903288ms
+INFO: 2025/11/03 11:09:12 handlers.go:180: ✅ Логи отправвлены
