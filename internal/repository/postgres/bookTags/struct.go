@@ -4,33 +4,33 @@ import "time"
 
 // Book представляет книгу из базы данных
 type Book struct {
-	ID            int
+	ID int
 
-	Title         string
+	Title string
 
-	Authors       []string
+	Authors []string
 
-	Description   string
+	Description string
 
-	TextSnippet   string
+	TextSnippet string
 
-	Img           string
+	Img string
 
-	FilePath      string
-	FileSize      int64 // Кол-во байт
-	FileType      string
+	FilePath string
+	FileSize int64 // Кол-во байт
+	FileType string
 
-	AddedBy       string
-	AddedAt       time.Time
+	AddedBy string
+	AddedAt time.Time
 
 	DownloadCount int // Кол-во скачиваний
 }
 
 // Tag представляет тег из базы данных
 type Tag struct {
-	ID              int
+	ID int
 
-	BookID          int
+	BookID int
 
 	OtherTag        []string
 	Lang            string

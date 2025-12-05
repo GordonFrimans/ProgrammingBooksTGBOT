@@ -2,93 +2,101 @@
 package bot
 
 import (
-	"HIGH_PR/internal/logger"
-	"HIGH_PR/internal/repository/postgres/bookTags"
+
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
 	"context"
 	"fmt"
 
-	"github.com/gotd/td/telegram/message"
-	//"github.com/gotd/td/telegram/message/markup"
-	"github.com/gotd/td/telegram/message/entity"
-)
-
-import (
-	"github.com/gotd/td/telegram/message/styling"
+	"github.com/gotd/td/telegram/message/markup"
 	"strings"
-	"github.com/gotd/td/telegram/uploader"
 	"time"
-	"github.com/gotd/td/telegram"
-	"github.com/gotd/td/tg"
+
 	"github.com/dustin/go-humanize"
-
-
+	"github.com/gotd/td/telegram"
+	"github.com/gotd/td/telegram/message/entity"
+	"github.com/gotd/td/telegram/message/styling"
+	"github.com/gotd/td/telegram/uploader"
+	"github.com/gotd/td/tg"
+	"github.com/gotd/td/telegram/message"
 )
+// buildBookPage собирает текст и кнопки для конкретной страницы
+func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.StyledTextOption, tg.ReplyMarkupClass) {
+	const booksPerPage = 5
+	totalBooks := len(books)
+
+	// 1. Считаем границы
+	totalPages := (totalBooks + booksPerPage - 1) / booksPerPage
+	if page < 0 { page = 0 }
+	if page >= totalPages { page = totalPages - 1 }
+
+	start := page * booksPerPage
+	end := start + booksPerPage
+	if end > totalBooks { end = totalBooks }
+
+	// 2. Строим текст (тут твой код оформления)
+	var text []styling.StyledTextOption
+	text = append(text, styling.Plain(fmt.Sprintf("📖 Книги (Стр. %d/%d)\n\n", page+1, totalPages)))
+
+	for i := start; i < end; i++ {
+		var authors string
+		if len(books[i].B.Authors) > 2 {
+			authors = books[i].B.Authors[0] + ", " + books[i].B.Authors[1] + " ..."
+		} else {
+			authors = strings.Join(books[i].B.Authors, ", ")
+		}
+
+		text = append(text,
+				     styling.Bold("📚 Название: "),
+				     styling.Plain(books[i].B.Title+"\n\n"),
+
+				     styling.Bold("👨‍💼 Авторы: "),
+				     styling.Plain(authors+"\n\n"),
+
+				     styling.Bold("📝 Описание:\n"),
+				     styling.Italic("    "+books[i].B.TextSnippet+"\n\n"),
+
+				     styling.Custom(func(eb *entity.Builder) error {
+					     eb.Format("🔗 Скачать:", entity.Bold())
+					     return nil
+				     }),
+		       styling.Plain(fmt.Sprintf(" /download_%d\n", books[i].B.ID)),
+
+				     styling.Custom(func(eb *entity.Builder) error {
+					     eb.Format("🔎 Подробнее:", entity.Bold())
+					     return nil
+				     }),
+		       styling.Plain(fmt.Sprintf(" /show_%d\n", books[i].B.ID)),
+
+				     styling.Plain("\n"),
+				     styling.Plain("━━━━━━━━━━"),
+				     styling.Plain("\n\n"),
+		)
+	}
+
+	// 3. Строим кнопки. ВНИМАНИЕ: мы сразу пишем номер НУЖНОЙ страницы
+	var rows []tg.KeyboardButtonClass
+
+	// Если не первая страница -> кнопка "Назад" ведет на (page - 1)
+	if page > 0 {
+		rows = append(rows, markup.Callback("⬅️ Назад", []byte(fmt.Sprintf("page:%d", page-1))))
+	}
+
+	// Если не последняя страница -> кнопка "Вперед" ведет на (page + 1)
+	if page < totalPages-1 {
+		rows = append(rows, markup.Callback("Вперед ➡️", []byte(fmt.Sprintf("page:%d", page+1))))
+	}
+
+	return text, markup.InlineRow(rows...)
+}
+
 
 // БЫЛО: func ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, pool *pgxpool.Pool)
 // СТАЛО:
-func ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, books []booktags.BookWithTags) error {
-	logger.Logger.Println("Создаем сообщение с книгами!")
+func (b *Bot) ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, books []booktags.BookWithTags) error {
+	// Показываем самую первую страницу (0)
+	text, keyboard := b.buildBookPage(books, 0)
 
-
-
-	var bookPages [][]styling.StyledTextOption
-	totalBooks := len(books) // <-- используем переданный аргумент
-	booksPerPage := 5
-	countPage := calculatePageCount(totalBooks, booksPerPage)
-
-	for page := 0; page < countPage; page++ {
-		var styledTexts []styling.StyledTextOption
-		start := page * booksPerPage
-		end := start + booksPerPage
-
-		if end > totalBooks {
-			end = totalBooks
-		}
-		styledTexts = append(styledTexts, styling.Plain("━━━━━━━━━━\n\n"))
-		for i := start; i < end; i++ {
-			var authors string
-			if len(books[i].B.Authors) > 2 {
-				authors = books[i].B.Authors[0] + ", " + books[i].B.Authors[1] + " ..."
-			} else {
-				authors = strings.Join(books[i].B.Authors, ", ")
-			}
-
-			styledTexts = append(styledTexts,
-					     styling.Bold("📚 Название: "),
-					     styling.Plain(books[i].B.Title + "\n\n"),
-
-					     styling.Bold("👨‍💼 Авторы: "),
-					     styling.Plain(authors + "\n\n"),
-
-					     styling.Bold("📝 Описание:\n"),
-					     styling.Italic("    " + books[i].B.TextSnippet + "\n\n"),
-
-					     styling.Custom(func(eb *entity.Builder) error {
-						     eb.Format("🔗 Скачать:", entity.Bold())
-						     return nil
-					     }),
-			styling.Plain(fmt.Sprintf(" /download_%d\n", books[i].B.ID)),
-
-					     styling.Custom(func(eb *entity.Builder) error {
-						     eb.Format("🔎 Подробнее:", entity.Bold())
-						     return nil
-					     }),
-			styling.Plain(fmt.Sprintf(" /show_%d\n", books[i].B.ID)),
-
-					     styling.Plain("\n"),
-					     styling.Plain("━━━━━━━━━━"),
-					     styling.Plain("\n\n"),
-
-			)
-		}
-
-
-
-
-		bookPages = append(bookPages, styledTexts)
-	}
-
-	_, err := msg.StyledText(ctx, bookPages[0]...)
+	_, err := msg.Markup(keyboard).StyledText(ctx, text...)
 	return err
 }
 
@@ -100,9 +108,6 @@ func calculatePageCount(totalBooks, booksPerPage int) int {
 func formatAuthors(authors []string) string {
 	return strings.Join(authors, ", ")
 }
-
-
-
 
 func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg.InputPeerClass, book booktags.BookWithTags) error {
 	// 1. Инициализируем Uploader
@@ -160,7 +165,7 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 	// 4. Генерируем готовый текст и entities
 	captionText, entities := b.Complete()
 
-
+	keyboard := markup.InlineRow(markup.Callback("Скачать", []byte(fmt.Sprintf("download:%d",book.B.ID))))
 
 	// 5. Отправляем
 	_, err = client.API().MessagesSendMedia(ctx, &tg.MessagesSendMediaRequest{
@@ -169,11 +174,10 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 		RandomID: randomID,
 		Media:    media,
 		Entities: entities, // Теперь тип совпадает ([]tg.MessageEntityClass)
+		ReplyMarkup: keyboard,
 	})
 
 	return err
 }
-
-
 
 

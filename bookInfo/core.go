@@ -17,7 +17,6 @@ import (
 type Result struct {
 	Title       string
 	Authors     []string
-	Publisher   string
 	Description string
 	TextSnippet string
 	Lang        string
@@ -29,7 +28,6 @@ type MinimalResponse struct {
 		VolumeInfo struct {
 			Title       string   `json:"title"`
 			Authors     []string `json:"authors"`
-			Publisher   string   `json:"publisher"`
 			Description string   `json:"description"`
 			Language    string   `json:"language"`
 			ImageLinks  struct {
@@ -39,12 +37,12 @@ type MinimalResponse struct {
 		} `json:"volumeInfo"`
 		SearchInfo struct {
 			TextSnippet string `json:"textSnippet"`
-		}`json:"searchInfo"`
+		} `json:"searchInfo"`
 	} `json:"items"`
 }
 
-
 func SearchBooks(name string) (Result, error) {
+	name = strings.ReplaceAll(name, "_", " ")
 	query := fmt.Sprintf("intitle:\"%s\" ru subject:\"computers\"", name)
 
 	params := url.Values{}
@@ -78,7 +76,7 @@ func SearchBooks(name string) (Result, error) {
 				resp.Body.Close()
 
 				logger.Logger.Printf("Попытка %d/%d: Google API вернул 503: %s",
-						     attempt, maxRetries, string(body))
+					attempt, maxRetries, string(body))
 
 				// Если это не последняя попытка - делаем задержку
 				if attempt < maxRetries {
@@ -131,7 +129,6 @@ func SearchBooks(name string) (Result, error) {
 	result := Result{
 		Title:       item.VolumeInfo.Title,
 		Authors:     item.VolumeInfo.Authors,
-		Publisher:   item.VolumeInfo.Publisher,
 		Description: item.VolumeInfo.Description,
 		TextSnippet: item.SearchInfo.TextSnippet,
 		Lang:        item.VolumeInfo.Language,
@@ -144,16 +141,12 @@ func SearchBooks(name string) (Result, error) {
 	}
 	result.Img = imgURL
 
-
 	return result, nil
 }
 
-
-
-
-//DefaultSaveBook - константа для сохранения изображений + /img
+// DefaultSaveBook - константа для сохранения изображений + /img
 func DownloadImage(imgURL string) (string, error) {
-	imgURL = strings.Replace(imgURL,"zoom=1", "zoom=0", 1)
+	imgURL = strings.Replace(imgURL, "zoom=1", "zoom=0", 1)
 	// Шаг 1: Скачиваем изображение
 	resp, err := http.Get(imgURL)
 	if err != nil {

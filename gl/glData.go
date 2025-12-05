@@ -10,8 +10,8 @@ import (
 // Экспортируемые переменные (доступны из других пакетов через gl.AppID)
 var (
 	// main.go
-	AppID    string
-	AppHash  string
+	AppID       string
+	AppHash     string
 	PostgreURL  string
 	SessionPath string
 

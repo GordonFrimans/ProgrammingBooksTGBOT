@@ -1,11 +1,10 @@
 package booktags
 
-
 import (
-	"context"
-	"github.com/jackc/pgx/v5/pgxpool"
 	"HIGH_PR/internal/logger"
+	"context"
 
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 // CreateTables создаёт таблицы, если они не существуют
@@ -43,12 +42,12 @@ func CreateTables(ctx context.Context, pool *pgxpool.Pool) error {
 			CREATE INDEX IF NOT EXISTS idx_tags_lang ON tags(lang);
 			`
 
-			_, err := pool.Exec(ctx, createTableQuery)
-			if err != nil {
-				logger.Logger.Println("Не удалось создать таблицы:", err)
-				return err
-			}
+	_, err := pool.Exec(ctx, createTableQuery)
+	if err != nil {
+		logger.Logger.Println("Не удалось создать таблицы:", err)
+		return err
+	}
 
-			logger.Logger.Println("Таблицы успешно созданы/проверены")
-			return nil
+	logger.Logger.Println("Таблицы успешно созданы/проверены")
+	return nil
 }

@@ -6,16 +6,16 @@ import (
 	booktags "HIGH_PR/internal/repository/postgres/bookTags"
 	"context"
 	"fmt"
+	"github.com/gotd/td/tg"
+	"github.com/gotd/td/telegram/message"
 
 	"strings"
 	"time"
-
-	"github.com/gotd/td/telegram/message"
+	"github.com/gotd/td/telegram/message/markup"
+	"github.com/gotd/td/telegram/uploader" // для uploader.NewUploader
 	"github.com/gotd/td/telegram/message/peer"
 
-	"github.com/gotd/td/telegram/message/markup"
-	"github.com/gotd/td/telegram/uploader"
-	"github.com/gotd/td/tg"
+
 
 	//"os"
 	"path/filepath"
@@ -23,12 +23,11 @@ import (
 	//"time"
 )
 
-
 // Обработчик который делает запрос к бд и отдает все книги в формате (Название, Авторы, Описание, тэги)
 func (b *Bot) handleShow(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, user, peer, err := getInfo(e, msg)
 	b.logger.Printf("📨 /show от %s %s (@%s, ID:%d)",
-			user.FirstName, user.LastName, user.Username, user.ID)
+		user.FirstName, user.LastName, user.Username, user.ID)
 
 	if err != nil {
 		b.logger.Println(err)
@@ -44,17 +43,18 @@ func (b *Bot) handleShow(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	sender := message.NewSender(b.client.API()).To(peer)
 	if len(books) != 0 {
 
-
 		// Передаём готовые книги в функцию форматирования
-		err = ShowBooksMessage(ctx, sender, books)
+		err = b.ShowBooksMessage(ctx,sender, books)
 		if err != nil {
 			b.logger.Println(err)
 		}
-	}else {
-		sender.Text(ctx,"Книги не найдены!")
+
+	} else {
+		sender.Text(ctx, "Книги не найдены!")
 	}
 }
-//ATTENTION
+
+// ATTENTION
 func (b *Bot) handleShowWithID(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, user, peer, err := getInfo(e, msg)
 	messageText := strings.TrimSpace(msg.Message)
@@ -68,70 +68,61 @@ func (b *Bot) handleShowWithID(ctx context.Context, e tg.Entities, msg *tg.Messa
 	}
 
 	b.logger.Printf("📨 /show_%d от %s %s (@%s, ID:%d)",
-			id, user.FirstName, user.LastName, user.Username, user.ID)
+		id, user.FirstName, user.LastName, user.Username, user.ID)
 
-	book, err := b.bookService.BookWithID(ctx,id)
+	book, err := b.bookService.BookWithID(ctx, id)
 	sender := message.NewSender(b.client.API()).To(peer)
 	if err != nil {
-		b.logger.Println("Ошибка при выполнения запроса к бд. ERR = ",err)
-		sender.Text(ctx,fmt.Sprintf("Ошибка выполнения запроса\nERR=%s",err))
+		b.logger.Println("Ошибка при выполнения запроса к бд. ERR = ", err)
+		sender.Text(ctx, fmt.Sprintf("Ошибка выполнения запроса\nERR=%s", err))
 		return
 	}
-	err = ShowBookWithIDMessage(ctx,b.client,peer,book)
+	err = ShowBookWithIDMessage(ctx, b.client, peer, book)
 	if err != nil {
-		b.logger.Println("Ошибка в ShowBookWithIDMessage. ERR = ",err)
-		sender.Text(ctx,fmt.Sprintf("ERR = %s",err))
+		b.logger.Println("Ошибка в ShowBookWithIDMessage. ERR = ", err)
+		sender.Text(ctx, fmt.Sprintf("ERR = %s", err))
 	}
 
-	b.logger.Println("Успешно отправлена инфа о книге ID =",id)
-
+	b.logger.Println("Успешно отправлена инфа о книге ID =", id)
 
 }
-
-
 
 func (b *Bot) handleShowWithName(ctx context.Context, e tg.Entities, msg *tg.Message) {
 
 	_, user, peer, err := getInfo(e, msg)
 
 	b.logger.Printf("📨 /showWithName от %s %s (@%s, ID:%d)",
-			user.FirstName, user.LastName, user.Username, user.ID)
+		user.FirstName, user.LastName, user.Username, user.ID)
 	if err != nil {
 		b.logger.Println(err)
 		return
 	}
 	text := msg.Message
-	nameBook := strings.TrimPrefix(text,"/WithName")
+	nameBook := strings.TrimPrefix(text, "/WithName")
 	nameBook = strings.TrimSpace(nameBook)
 	sender := message.NewSender(b.client.API()).To(peer)
 	if len(nameBook) != 0 {
-		res,err := bookinfo.SearchBooks(nameBook)
+		res, err := bookinfo.SearchBooks(nameBook)
 		if err != nil {
-			b.logger.Println("Ошибка запроса к Google API Books: ",err)
-
+			b.logger.Println("Ошибка запроса к Google API Books: ", err)
 
 		}
 		if res.Title == "" {
 			b.logger.Println("Не найдено")
-			sender.Text(ctx,"Книга не найдена 🫠🫠🫠\nПроверте название 🍄🍄🍄")
+			sender.Text(ctx, "Книга не найдена 🫠🫠🫠\nПроверте название 🍄🍄🍄")
 			return
 
 		}
 
 		b.logger.Println("!!! Запрос на получение книги: ", nameBook)
 
-
-
-		sender.Text(ctx,fmt.Sprintf("Название: %s\n\nАвторы: %v\n\nОписание: %s\n",res.Title,res.Authors,res.Description))
+		sender.Text(ctx, fmt.Sprintf("Название: %s\n\nАвторы: %v\n\nОписание: %s\n", res.Title, res.Authors, res.Description))
 	} else {
 		b.logger.Println("Не указано имя!")
 		sender.Text(ctx, "Укажите имя!")
 	}
 
-
 }
-
-
 
 // ATTENTION
 // Функция обрабатывающая команду которая отдает книгу для скичивания (в нее передаеться ID, (также сделаю кликабельный названия книг в команде show() который будут делать запрос со скачиванием и передавать ID))
@@ -158,11 +149,10 @@ func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Mes
 	}
 
 	b.logger.Printf("📨 Запрос книги ID:%d от %s (ID:%d)", id, user.FirstName, user.ID)
-	err = b.bookService.AddDownloadCountWithID(ctx,id)
+	err = b.bookService.AddDownloadCountWithID(ctx, id)
 	if err != nil {
-		b.logger.Println("Ошибка инкремента скачиваний: ",err)
+		b.logger.Println("Ошибка инкремента скачиваний: ", err)
 	}
-
 
 	// Инициализируем сендер
 	sender := message.NewSender(b.client.API()).To(peer)
@@ -177,7 +167,7 @@ func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Mes
 
 	// 4. Загружаем файл в Telegram
 	// uploader.NewUploader разбивает файл на части и отправляет их
-	u := uploader.NewUploader(b.client.API())
+	u :=  uploader.NewUploader(b.client.API())
 
 	b.logger.Println("Начинаю загрузку файла:", filePath)
 	inputFile, err := u.FromPath(ctx, filePath)
@@ -201,7 +191,6 @@ func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Mes
 		ForceFile: true, // Форсируем отправку именно как файл (документ)
 	}
 
-
 	// 6. Отправляем через метод Media(), а не Document()
 	// Document() ждет tg.InputDocument (существующий файл), а мы шлем tg.InputMedia (новый контент)
 	if _, err := sender.Media(ctx, message.Media(media)); err != nil {
@@ -210,10 +199,8 @@ func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Mes
 		return
 	}
 
-
 	b.logger.Println("Файл успешно отправлен!")
 }
-
 
 // handleStart обрабатывает команду /start
 func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
@@ -228,7 +215,6 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 		user.LastName,
 		user.Username,
 		user.ID)
-
 
 	// 6. Отправляем ответ
 
@@ -250,11 +236,10 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	// })
 
 	_, err = b.client.API().MessagesSendMessage(ctx, &tg.MessagesSendMessageRequest{
-		Peer:     peer,                  // получатель
+		Peer:     peer, // получатель
 		Message:  fmt.Sprintf("Привет, %s! 👋", user.FirstName),
 		RandomID: time.Now().UnixNano(), // всегда уникальный
 	})
-
 
 	if err != nil {
 		b.logger.Println("Ошибка отправки сообщения с эффектом:", err)
@@ -263,15 +248,15 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 }
 
 // handleHelp обрабатывает команду /help
-func (b *Bot) handleHelp(ctx context.Context,e tg.Entities, msg *tg.Message) {
+func (b *Bot) handleHelp(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	// ... логика для /help ...
 }
 
 // handleAddBook обрабатывает команду /add
-func (b *Bot) handleAddBook(ctx context.Context,e tg.Entities, msg *tg.Message, update *tg.UpdateNewMessage) {
+func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message, update *tg.UpdateNewMessage) {
 	_, user, peer, err := getInfo(e, msg)
 	b.logger.Printf("📨 /add от %s %s (@%s, ID:%d)",
-			user.FirstName, user.LastName, user.Username, user.ID)
+		user.FirstName, user.LastName, user.Username, user.ID)
 	if err != nil {
 		b.logger.Println(err)
 		return
@@ -280,7 +265,7 @@ func (b *Bot) handleAddBook(ctx context.Context,e tg.Entities, msg *tg.Message, 
 	media, ok := msg.Media.(*tg.MessageMediaDocument)
 	if !ok {
 		b.logger.Println("Команда /add без файла!")
-		_,err = sender.Text(ctx,"Введите комманду /add и прикрепите файл!")
+		_, err = sender.Text(ctx, "Введите комманду /add и прикрепите файл!")
 		if err != nil {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
@@ -288,55 +273,57 @@ func (b *Bot) handleAddBook(ctx context.Context,e tg.Entities, msg *tg.Message, 
 	}
 	doc, ok := media.Document.(*tg.Document)
 	if !ok {
-		 b.logger.Println("не удалось получить документ")
+		b.logger.Println("не удалось получить документ")
 	}
 	fullName := GetDocumentName(doc)
 	name := DeleteType(fullName)
-	info, err :=  bookinfo.SearchBooks(name)
+	info, err := bookinfo.SearchBooks(name)
 	fileType := ExtractFileFormat(fullName)
 	if err != nil {
 		b.logger.Println("Ошибка загрузки информации о книге!")
 		sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
 		return
 	}
+	langTag, otherTag, err := bookinfo.ParseMetadataFromTitle(info.Title)
+	if err != nil {
+		b.logger.Println("Ошибка парса тэга")
+	}
 
-	err = b.bookService.AddBook(ctx,booktags.BookWithTags{
+	err = b.bookService.AddBook(ctx, booktags.BookWithTags{
 		B: booktags.Book{
-			Title: info.Title,
-			Authors: info.Authors,
+			Title:       info.Title,
+			Authors:     info.Authors,
 			Description: info.Description,
 			TextSnippet: info.TextSnippet,
-			FileSize: doc.Size,
-			Img: info.Img,
-			FileType: fileType,
-			FilePath: gl.DefaultSaveBook + "/" + fullName,
-			AddedBy: user.Username,
-			AddedAt: time.Now().Truncate(time.Second),
+			FileSize:    doc.Size,
+			Img:         info.Img,
+			FileType:    fileType,
+			FilePath:    gl.DefaultSaveBook + "/" + fullName,
+			AddedBy:     user.Username,
+			AddedAt:     time.Now().Truncate(time.Second),
 		},
 		T: booktags.Tag{
-			Lang: info.Lang,
+			Lang:            info.Lang,
+			ProgrammingLang: []string{langTag},
+			OtherTag: []string{otherTag},
 		},
 	})
 	if err != nil {
-		b.logger.Println("Ошибка добавления книги в бд:",err)
-		sender.Text(ctx,fmt.Sprintf("ERR=%s",err))
+		b.logger.Println("Ошибка добавления книги в бд:", err)
+		sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
 		return
 	}
 
-
-
-
-
-	err = b.DownloadFile(ctx,media)
+	err = b.DownloadFile(ctx, media)
 	if err != nil {
-		b.logger.Println("Ошибка загрузки файла: ",err)
-		_,err = sender.Text(ctx,fmt.Sprintf("Ошибка при загрузке файла!\nError: %s",err))
+		b.logger.Println("Ошибка загрузки файла: ", err)
+		_, err = sender.Text(ctx, fmt.Sprintf("Ошибка при загрузке файла!\nError: %s", err))
 		if err != nil {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
 		return
 	}
-	_,err = sender.Text(ctx,fmt.Sprint("Файл успешно сохранен!"))
+	_, err = sender.Text(ctx, fmt.Sprint("Файл успешно сохранен!"))
 	if err != nil {
 		b.logger.Printf("Ошибка отправки: %v", err)
 	}
@@ -362,7 +349,7 @@ func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
 		user.ID)
 
 	sender := message.NewSender(b.client.API()).To(peer)
-	adminID,_ := strconv.ParseInt(gl.AdminID,10,64)
+	adminID, _ := strconv.ParseInt(gl.AdminID, 10, 64)
 
 	if user.ID != adminID {
 		_, err = sender.Text(ctx, fmt.Sprintf("Привет, %s! 👋\nДоступ Запрещен!", user.Username))
@@ -381,10 +368,7 @@ func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
 		//Вызываем обработчик универсал
-		b.dispatcher.OnBotCallbackQuery(func(ctx context.Context, e tg.Entities, update *tg.UpdateBotCallbackQuery) error {
-			// Обработка нажатия на кнопку
-			return b.handleCallback(ctx, e, update)
-		})
+
 
 	}
 }

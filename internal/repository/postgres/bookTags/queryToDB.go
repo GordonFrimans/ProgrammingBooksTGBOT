@@ -58,7 +58,7 @@ func (r *BookRepository) GetAllBooks(ctx context.Context) ([]BookWithTags, error
 	for rows.Next() {
 		bt := BookWithTags{}
 		err = rows.Scan(
-			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description,&bt.B.TextSnippet,&bt.B.Img,
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
 			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
 			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
 			&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
@@ -86,7 +86,7 @@ func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
 	//Проверка на наличие по (title)
 	var existingTitel string
 	checkQuery := `SELECT id FROM books WHERE title = $1 LIMIT 1`
-	err = tx.QueryRow(ctx,checkQuery,bt.B.Title).Scan(&existingTitel)
+	err = tx.QueryRow(ctx, checkQuery, bt.B.Title).Scan(&existingTitel)
 	if err == nil {
 		return fmt.Errorf("Книга с таким именем уже есть!")
 	}
@@ -99,8 +99,6 @@ func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
 		bt.B.Img = imgData
 	}
 	//===================================
-
-
 
 	// 1. Вставляем книгу
 	query := `
@@ -169,7 +167,7 @@ func (r *BookRepository) BookWithID(ctx context.Context, id int) (BookWithTags, 
 
 	var bt BookWithTags
 	err := r.pool.QueryRow(ctx, sqlQuery, id).Scan(
-		&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description,&bt.B.TextSnippet, &bt.B.Img,
+		&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
 		&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
 		&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
 		&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
@@ -206,7 +204,7 @@ func (r *BookRepository) GetFileBookWithID(ctx context.Context, id int) (string,
 	return filePath, nil
 }
 
-func (r *BookRepository) AddDownloadCountWithID(ctx context.Context,id int) error {
+func (r *BookRepository) AddDownloadCountWithID(ctx context.Context, id int) error {
 	sqlQuery := `
 	UPDATE books
 	SET download_count = download_count + 1
@@ -227,9 +225,6 @@ func (r *BookRepository) AddDownloadCountWithID(ctx context.Context,id int) erro
 	return nil
 
 }
-
-
-
 
 // В будущем здесь будут другие методы:
 // func (r *BookRepository) GetByID(ctx context.Context, id int) (*Book, error) { ... }

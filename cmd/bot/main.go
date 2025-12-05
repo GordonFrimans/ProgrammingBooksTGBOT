@@ -6,7 +6,7 @@ import (
 	"HIGH_PR/internal/logger"
 	"HIGH_PR/internal/middleware"
 	"HIGH_PR/internal/repository/postgres"
-	"HIGH_PR/internal/repository/postgres/bookTags"
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
 	"HIGH_PR/internal/services"
 	"context"
 	"flag"
@@ -14,14 +14,10 @@ import (
 	"os/signal"
 	"strconv"
 
-
-
 	"github.com/gotd/td/session"
 	"github.com/gotd/td/telegram"
 	"github.com/gotd/td/tg"
 )
-
-
 
 func init() {
 	readEnv()
@@ -64,7 +60,6 @@ func main() {
 		SessionStorage: &session.FileStorage{
 			Path: gl.SessionPath,
 		},
-
 	})
 	pool, err := postgres.Setup(gl.PostgreURL)
 	if err != nil {
@@ -75,7 +70,7 @@ func main() {
 	bookRep := booktags.NewBookRepository(pool)
 	bookService := services.NewBookService(bookRep)
 
-	botApp := bot.New(client, logger.Logger, dispatcher,bookService)
+	botApp := bot.New(client, logger.Logger, dispatcher, bookService)
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer cancel()
 
@@ -86,5 +81,3 @@ func main() {
 	logger.Logger.Println("Бот остановлен.")
 
 }
-
-

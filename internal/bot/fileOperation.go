@@ -17,7 +17,6 @@ import (
 	"github.com/gotd/td/tg"
 )
 
-
 // Универскальная костыльная функция для отправки файла (без возможности добавить caption) (Но с возможностью указать аттрибуты файла такие как MIME и тп...)
 // WARNING
 func (b *Bot) SendFile(ctx context.Context, path string, sender *message.RequestBuilder) {
@@ -105,7 +104,6 @@ func (b *Bot) DownloadFile(ctx context.Context, media *tg.MessageMediaDocument) 
 		return fmt.Errorf("ошибка загрузки: %w", err)
 	}
 
-
 	b.logger.Printf("✅ Файл сохранён: %s", savePath)
 	return nil
 
@@ -121,10 +119,9 @@ func GetDocumentName(doc *tg.Document) string {
 	return "document.pdf"
 }
 func DeleteType(name string) string {
-	res := strings.Replace(name, ".pdf","",1)
+	res := strings.Replace(name, ".pdf", "", 1)
 	return res
 }
-
 
 // Простая и надёжная функция извлечения формата из имени файла
 func ExtractFileFormat(filename string) string {
@@ -134,14 +131,10 @@ func ExtractFileFormat(filename string) string {
 	// Убираем точку и приводим к нижнему регистру
 	format := strings.ToLower(strings.TrimPrefix(ext, "."))
 
-		// Если расширения нет, возвращаем дефолтное значение
-		if format == "" {
-			return "unknown"
-		}
+	// Если расширения нет, возвращаем дефолтное значение
+	if format == "" {
+		return "unknown"
+	}
 
-		return format
+	return format
 }
-
-
-
-

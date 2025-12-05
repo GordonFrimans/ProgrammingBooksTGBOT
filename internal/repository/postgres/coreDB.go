@@ -44,8 +44,6 @@ func InitDB(databaseURL string) (*pgxpool.Pool, error) {
 	return pool, nil
 }
 
-
-
 // Setup инициализирует БД: создаёт pool и таблицы
 func Setup(databaseURL string) (*pgxpool.Pool, error) {
 	// 1. Создаём pool

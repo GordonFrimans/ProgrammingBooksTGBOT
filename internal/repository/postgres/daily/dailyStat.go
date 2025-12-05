@@ -1,13 +1,13 @@
 package daily
 
-
 import (
-	"context"
-	"github.com/jackc/pgx/v5/pgxpool"
 	"HIGH_PR/internal/logger"
+	"context"
 
+	"github.com/jackc/pgx/v5/pgxpool"
 )
-//Создание таблицы хранящий статистику за день!
+
+// Создание таблицы хранящий статистику за день!
 func CreateTableStat(ctx context.Context, pool *pgxpool.Pool) error {
 	logger.Logger.Println("Создане таблицы статистики")
 	createTableQuery := `
