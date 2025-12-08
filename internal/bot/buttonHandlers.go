@@ -141,6 +141,10 @@ func (b *Bot) handleCallback(
 				sender.Text(ctx, fmt.Sprintf("Не удалось отправить файл: %s", err))
 				return err
 			}
+			err = b.bookService.AddDownloadCountWithID(ctx,id)
+			if err != nil {
+				b.logger.Println("Ошибка прибавления кол-во скачиваний ERR= ",err)
+			}
 
 			b.logger.Println("Файл успешно отправлен!")
 

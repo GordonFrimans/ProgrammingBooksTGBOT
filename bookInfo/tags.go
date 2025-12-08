@@ -31,6 +31,7 @@ var CommonLanguages = map[string]string{
 	"ruby":   "Ruby",
 	"php":    "PHP",
 	"js":     "JavaScript",
+	"javascript": "JavaScript",
 	"ts":     "TypeScript",
 	"perl":   "Perl",
 	"lua":    "Lua",

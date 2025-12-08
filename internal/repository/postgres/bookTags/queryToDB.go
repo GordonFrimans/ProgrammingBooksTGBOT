@@ -226,6 +226,10 @@ func (r *BookRepository) AddDownloadCountWithID(ctx context.Context, id int) err
 
 }
 
+// func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]BookWithTags, error) {
+//
+// }
+
 // В будущем здесь будут другие методы:
 // func (r *BookRepository) GetByID(ctx context.Context, id int) (*Book, error) { ... }
 // func (r *BookRepository) Create(ctx context.Context, book *Book) (int, error) { ... }

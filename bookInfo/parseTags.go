@@ -8,9 +8,9 @@ import (
 
 // ParseMetadataFromTitle парсит заголовок и пытается извлечь Язык и Категорию.
 // Возвращает: (language, tag, error)
-func ParseMetadataFromTitle(title string) (string, string, error) {
+func ParseMetadataFromInfo(title,description string) (string, string, error) {
 	titleLower := strings.ToLower(title)
-
+	descriptionLower := strings.ToLower(description)
 	var foundLang string
 	var foundTag string
 
@@ -20,11 +20,21 @@ func ParseMetadataFromTitle(title string) (string, string, error) {
 			foundLang = langName
 			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
 		}
+
+		if containsWholeWord(descriptionLower, alias) {
+			foundLang = langName
+			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
+		}
 	}
 
 	// 2. Ищем Тэг/Тематику (проходим по карте TopicTags из tags.go)
 	for alias, tagName := range TopicTags {
 		if containsWholeWord(titleLower, alias) {
+			foundTag = tagName
+			break
+		}
+
+		if containsWholeWord(descriptionLower, alias) {
 			foundTag = tagName
 			break
 		}
@@ -46,6 +56,7 @@ func ParseMetadataFromTitle(title string) (string, string, error) {
 
 	return foundLang, foundTag, nil
 }
+
 
 // containsWholeWord ищет word в text, учитывая границы слов.
 // (Эта функция осталась без изменений, она отличная)

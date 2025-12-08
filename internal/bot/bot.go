@@ -124,7 +124,7 @@ func (b *Bot) handleMessage(ctx context.Context, e tg.Entities, update *tg.Updat
 		b.handleShowWithName(ctx, e, msg)
 
 	case text == "/help":
-		// b.handleHelp(ctx, msg)
+		b.handleHelp(ctx, e, msg)
 
 	case text == "/admin":
 		b.handleAdmin(ctx, e, msg)

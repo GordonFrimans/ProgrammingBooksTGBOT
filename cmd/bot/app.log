@@ -458,3 +458,63 @@ INFO: 2025/12/05 15:33:44 middleware.go:34: ✅ Метод upload.saveFilePart �
 INFO: 2025/12/05 15:33:44 middleware.go:23: → Вызов метода: messages.sendMedia
 INFO: 2025/12/05 15:33:44 middleware.go:34: ✅ Метод messages.sendMedia выполнен успешно за 449.437973ms
 INFO: 2025/12/05 15:33:44 handlers.go:86: Успешно отправлена инфа о книге ID = 5
+INFO: 2025/12/08 12:12:45 main.go:40: Обычный режим работы.
+INFO: 2025/12/08 12:12:45 main.go:45: 🚦 Запуск
+INFO: 2025/12/08 12:12:45 coreDB.go:43: ✓ Подключение к БД успешно установлено
+INFO: 2025/12/08 12:12:45 booksTags.go:51: Таблицы успешно созданы/проверены
+INFO: 2025/12/08 12:12:45 bot.go:52: Регистрация обработчиков...
+INFO: 2025/12/08 12:12:45 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/12/08 12:12:45 middleware.go:23: → Вызов метода: users.getUsers
+INFO: 2025/12/08 12:12:45 middleware.go:34: ✅ Метод users.getUsers выполнен успешно за 159.217036ms
+INFO: 2025/12/08 12:12:45 middleware.go:34: ✅ Метод users.getUsers выполнен успешно за 66.115761ms
+INFO: 2025/12/08 12:12:45 bot.go:70: ✓ Используем существующую сессию
+INFO: 2025/12/08 12:13:35 bot.go:106: Получено сообщение: /show
+INFO: 2025/12/08 12:13:35 handlers.go:27: 📨 /show от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/12/08 12:13:35 queryToDB.go:28: Запрос для получения всех книг
+INFO: 2025/12/08 12:13:36 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/12/08 12:13:36 middleware.go:34: ✅ Метод messages.sendMessage выполнен успешно за 104.227214ms
+INFO: 2025/12/08 12:13:39 bot.go:106: Получено сообщение: /start
+INFO: 2025/12/08 12:13:39 handlers.go:211: 📨 /start от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/12/08 12:13:39 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/12/08 12:13:39 middleware.go:34: ✅ Метод messages.sendMessage выполнен успешно за 77.486717ms
+INFO: 2025/12/08 12:13:41 bot.go:106: Получено сообщение: /help
+INFO: 2025/12/08 12:13:41 handlers.go:256: 📨 /help от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/12/08 12:13:41 middleware.go:23: → Вызов метода: messages.sendMessage
+INFO: 2025/12/08 12:13:41 middleware.go:34: ✅ Метод messages.sendMessage выполнен успешно за 98.829101ms
+INFO: 2025/12/08 12:13:47 bot.go:106: Получено сообщение: /show_1
+INFO: 2025/12/08 12:13:47 handlers.go:68: 📨 /show_1 от m o j e s 1 s (@mojes1s, ID:772294364)
+INFO: 2025/12/08 12:13:47 queryToDB.go:153: Запрос на получение книги |ID=1|
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 211.121682ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 66.760542ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 70.028646ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 81.32261ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 92.722718ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 78.944452ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:47 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 64.177078ms
+INFO: 2025/12/08 12:13:47 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 68.809995ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 66.351756ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 62.35351ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 62.542225ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 61.4076ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 67.229649ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 61.779459ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: upload.saveFilePart
+INFO: 2025/12/08 12:13:48 middleware.go:34: ✅ Метод upload.saveFilePart выполнен успешно за 67.74303ms
+INFO: 2025/12/08 12:13:48 middleware.go:23: → Вызов метода: messages.sendMedia
+INFO: 2025/12/08 12:13:49 middleware.go:34: ✅ Метод messages.sendMedia выполнен успешно за 520.831773ms
+INFO: 2025/12/08 12:13:49 handlers.go:84: Успешно отправлена инфа о книге ID = 1
+INFO: 2025/12/08 12:14:23 main.go:81: Бот остановлен.

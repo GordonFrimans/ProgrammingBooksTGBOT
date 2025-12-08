@@ -6,16 +6,14 @@ import (
 	booktags "HIGH_PR/internal/repository/postgres/bookTags"
 	"context"
 	"fmt"
-	"github.com/gotd/td/tg"
 	"github.com/gotd/td/telegram/message"
+	"github.com/gotd/td/tg"
 
+	"github.com/gotd/td/telegram/message/markup"
+	"github.com/gotd/td/telegram/message/peer"
+	"github.com/gotd/td/telegram/uploader" // для uploader.NewUploader
 	"strings"
 	"time"
-	"github.com/gotd/td/telegram/message/markup"
-	"github.com/gotd/td/telegram/uploader" // для uploader.NewUploader
-	"github.com/gotd/td/telegram/message/peer"
-
-
 
 	//"os"
 	"path/filepath"
@@ -44,7 +42,7 @@ func (b *Bot) handleShow(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	if len(books) != 0 {
 
 		// Передаём готовые книги в функцию форматирования
-		err = b.ShowBooksMessage(ctx,sender, books)
+		err = b.ShowBooksMessage(ctx, sender, books)
 		if err != nil {
 			b.logger.Println(err)
 		}
@@ -167,7 +165,7 @@ func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Mes
 
 	// 4. Загружаем файл в Telegram
 	// uploader.NewUploader разбивает файл на части и отправляет их
-	u :=  uploader.NewUploader(b.client.API())
+	u := uploader.NewUploader(b.client.API())
 
 	b.logger.Println("Начинаю загрузку файла:", filePath)
 	inputFile, err := u.FromPath(ctx, filePath)
@@ -240,6 +238,29 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 		Message:  fmt.Sprintf("Привет, %s! 👋", user.FirstName),
 		RandomID: time.Now().UnixNano(), // всегда уникальный
 	})
+	u := uploader.NewUploader(b.client.API()).
+	WithPartSize(512 * 1024). // 512 KB (стандартный чанк)
+	WithThreads(4)
+
+	// 2. Указываем путь к файлу
+	// Важно: файл должен быть в формате .webp (для обычных стикеров)
+	filePath := "/home/magamed/Рабочий стол/MyPet/TG/HIGH_PR/sticker/hello.webp"
+
+	// 3. Загружаем файл на сервера Telegram
+	// FromPath сам откроет файл и загрузит его
+	upload, err := u.FromPath(ctx, filePath)
+	if err != nil {
+		b.logger.Println("Ошибка загрузки файла:", err)
+
+	}
+	sender := message.NewSender(b.client.API()).To(peer)
+	// 4. Отправляем загруженный файл именно как СТИКЕР
+	// Метод UploadedSticker берет уже загруженный файл и делает из него сообщение
+	_, err = sender.UploadedSticker(ctx, upload)
+	if err != nil {
+		b.logger.Println("Ошибка отправки стикера:", err)
+
+	}
 
 	if err != nil {
 		b.logger.Println("Ошибка отправки сообщения с эффектом:", err)
@@ -249,11 +270,29 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 
 // handleHelp обрабатывает команду /help
 func (b *Bot) handleHelp(ctx context.Context, e tg.Entities, msg *tg.Message) {
-	// ... логика для /help ...
+	_, user, peer, err := getInfo(e, msg)
+
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /help от %s %s (@%s, ID:%d)",
+			user.FirstName,
+		 user.LastName,
+		 user.Username,
+		 user.ID)
+	sender := message.NewSender(b.client.API()).To(peer)
+	text := b.SendHelpMessage(ctx)
+	_, err = sender.StyledText(ctx,text...)
+	if err != nil {
+		b.logger.Println("Ошибка при отправке сообщения! ",err)
+	}
+
 }
 
 // handleAddBook обрабатывает команду /add
 func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message, update *tg.UpdateNewMessage) {
+	txt := strings.TrimSpace(msg.Message)
 	_, user, peer, err := getInfo(e, msg)
 	b.logger.Printf("📨 /add от %s %s (@%s, ID:%d)",
 		user.FirstName, user.LastName, user.Username, user.ID)
@@ -275,57 +314,119 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 	if !ok {
 		b.logger.Println("не удалось получить документ")
 	}
-	fullName := GetDocumentName(doc)
-	name := DeleteType(fullName)
-	info, err := bookinfo.SearchBooks(name)
-	fileType := ExtractFileFormat(fullName)
-	if err != nil {
-		b.logger.Println("Ошибка загрузки информации о книге!")
-		sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
-		return
-	}
-	langTag, otherTag, err := bookinfo.ParseMetadataFromTitle(info.Title)
-	if err != nil {
-		b.logger.Println("Ошибка парса тэга")
-	}
 
-	err = b.bookService.AddBook(ctx, booktags.BookWithTags{
-		B: booktags.Book{
-			Title:       info.Title,
-			Authors:     info.Authors,
-			Description: info.Description,
-			TextSnippet: info.TextSnippet,
-			FileSize:    doc.Size,
-			Img:         info.Img,
-			FileType:    fileType,
-			FilePath:    gl.DefaultSaveBook + "/" + fullName,
-			AddedBy:     user.Username,
-			AddedAt:     time.Now().Truncate(time.Second),
-		},
-		T: booktags.Tag{
-			Lang:            info.Lang,
-			ProgrammingLang: []string{langTag},
-			OtherTag: []string{otherTag},
-		},
-	})
-	if err != nil {
-		b.logger.Println("Ошибка добавления книги в бд:", err)
-		sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
-		return
-	}
+	if txt == "/add" {
+		fullName := GetDocumentName(doc)
+		name := DeleteType(fullName)
+		info, err := bookinfo.SearchBooks(name)
+		fileType := ExtractFileFormat(fullName)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки информации о книге!")
+			sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
+			sender.Text(ctx, "Попробуйте ввести название книги в ручную! (/add Название книги...+файл)")
+			return
+		}
+		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title,info.Description)
+		if err != nil {
+			b.logger.Println("Ошибка парса тэга")
+		}
 
-	err = b.DownloadFile(ctx, media)
-	if err != nil {
-		b.logger.Println("Ошибка загрузки файла: ", err)
-		_, err = sender.Text(ctx, fmt.Sprintf("Ошибка при загрузке файла!\nError: %s", err))
+		err = b.bookService.AddBook(ctx, booktags.BookWithTags{
+			B: booktags.Book{
+				Title:       info.Title,
+				Authors:     info.Authors,
+				Description: info.Description,
+				TextSnippet: info.TextSnippet,
+				FileSize:    doc.Size,
+				Img:         info.Img,
+				FileType:    fileType,
+				FilePath:    gl.DefaultSaveBook + "/" + fullName,
+				AddedBy:     user.Username,
+				AddedAt:     time.Now().Truncate(time.Second),
+			},
+			T: booktags.Tag{
+				Lang:            info.Lang,
+				ProgrammingLang: []string{langTag},
+				OtherTag:        []string{otherTag},
+			},
+		})
+		if err != nil {
+			b.logger.Println("Ошибка добавления книги в бд:", err)
+			sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
+			return
+		}
+
+		err = b.DownloadFile(ctx, media)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки файла: ", err)
+			_, err = sender.Text(ctx, fmt.Sprintf("Ошибка при загрузке файла!\nError: %s", err))
+			if err != nil {
+				b.logger.Printf("Ошибка отправки: %v", err)
+			}
+			return
+		}
+		_, err = sender.Text(ctx,"Файл успешно сохранен!")
 		if err != nil {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
-		return
-	}
-	_, err = sender.Text(ctx, fmt.Sprint("Файл успешно сохранен!"))
-	if err != nil {
-		b.logger.Printf("Ошибка отправки: %v", err)
+
+	} else {
+		nameBook := strings.TrimPrefix(txt, "/add")
+
+		fullName := GetDocumentName(doc)
+		info, err := bookinfo.SearchBooks(nameBook)
+		fileType := ExtractFileFormat(fullName)
+
+		if err != nil {
+			b.logger.Println("Ошибка загрузки информации о книге!")
+			sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
+		}
+
+		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title,info.Description)
+		if err != nil {
+			b.logger.Println("Ошибка парса тэга")
+		}
+
+		err = b.bookService.AddBook(ctx, booktags.BookWithTags{
+			B: booktags.Book{
+				Title:       info.Title,
+				Authors:     info.Authors,
+				Description: info.Description,
+				TextSnippet: info.TextSnippet,
+				FileSize:    doc.Size,
+				Img:         info.Img,
+				FileType:    fileType,
+				FilePath:    gl.DefaultSaveBook + "/" + fullName,
+				AddedBy:     user.Username,
+				AddedAt:     time.Now().Truncate(time.Second),
+			},
+			T: booktags.Tag{
+				Lang:            info.Lang,
+				ProgrammingLang: []string{langTag},
+				OtherTag:        []string{otherTag},
+			},
+		})
+
+		if err != nil {
+			b.logger.Println("Ошибка добавления книги в бд:", err)
+			sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
+			return
+		}
+
+		err = b.DownloadFile(ctx, media)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки файла: ", err)
+			_, err = sender.Text(ctx, fmt.Sprintf("Ошибка при загрузке файла!\nError: %s", err))
+			if err != nil {
+				b.logger.Printf("Ошибка отправки: %v", err)
+			}
+			return
+		}
+		_, err = sender.Text(ctx, fmt.Sprint("Файл успешно сохранен!"))
+		if err != nil {
+			b.logger.Printf("Ошибка отправки: %v", err)
+		}
+
 	}
 
 }
@@ -368,7 +469,6 @@ func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
 		//Вызываем обработчик универсал
-
 
 	}
 }

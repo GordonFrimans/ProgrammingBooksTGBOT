@@ -21,7 +21,7 @@ import (
 )
 // buildBookPage собирает текст и кнопки для конкретной страницы
 func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.StyledTextOption, tg.ReplyMarkupClass) {
-	const booksPerPage = 5
+	const booksPerPage = 3
 	totalBooks := len(books)
 
 	// 1. Считаем границы
@@ -85,6 +85,9 @@ func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.
 	if page < totalPages-1 {
 		rows = append(rows, markup.Callback("Вперед ➡️", []byte(fmt.Sprintf("page:%d", page+1))))
 	}
+	if len(rows) == 0 {
+		return text, nil
+	}
 
 	return text, markup.InlineRow(rows...)
 }
@@ -136,6 +139,23 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 
 	// 3. ИСПОЛЬЗУЕМ entity.Builder ВМЕСТО styling
 	// Builder сам посчитает все смещения (offsets/lengths)
+	// ЯП
+	var langProg string
+	if book.T.ProgrammingLang[0] == "" {
+		langProg = "-"
+	} else {
+		langProg = book.T.ProgrammingLang[0]
+
+	}
+
+	// Язык книги
+	var langMap = map[string]string{
+		"ru": "🇷🇺 Русский",
+		"en": "🇬🇧 Английский",
+		// добавь другие по необходимости
+	}
+
+
 	var b entity.Builder
 
 	b.Bold("📚 Название: ")
@@ -159,8 +179,15 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 	b.Bold("⬇️ Скачиваний: ")
 	b.Plain(fmt.Sprintf("%d\n", book.B.DownloadCount))
 
-	b.Bold("🏷️ Язык: ")
-	b.Plain(book.T.Lang + "\n")
+	b.Bold("🌐 Язык: ")
+	b.Plain(langMap[book.T.Lang] + "\n")
+
+	b.Bold("💻 ЯП: ")
+	b.Plain(langProg + "\n")
+
+	b.Bold("🏷️ Категория: ")
+	b.Plain(book.T.OtherTag[0] + "\n")
+
 
 	// 4. Генерируем готовый текст и entities
 	captionText, entities := b.Complete()
@@ -179,5 +206,54 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 
 	return err
 }
+
+// SendHelpMessage отправляет красиво оформленное сообщение с помощью
+func (b *Bot) SendHelpMessage(ctx context.Context) []styling.StyledTextOption {
+	// Мы используем styling.Plain, styling.Bold, styling.Code и styling.Italic
+	// чтобы собрать сообщение как конструктор.
+	var text []styling.StyledTextOption
+	text = append(text,
+					// Заголовок
+					styling.Bold("🤖 Добро пожаловать! Вот что я умею:\n\n"),
+
+					// --- Основные команды ---
+					styling.Plain("🚀 "),
+					styling.Plain("/start"),
+					styling.Plain(" — Начать работу с ботом.\n\n"),
+
+					styling.Plain("📚 "),
+					styling.Plain("/show"),
+					styling.Plain(" — Показать список всех доступных книг.\n\n"),
+
+					// --- Работа с конкретной книгой ---
+					styling.Plain("🔍 "),
+					styling.Code("/show_num"),
+					styling.Plain(" — Показать подробную информацию о книге по её ID.\n"),
+					styling.Italic("Пример: /show_1\n\n"),
+
+					styling.Plain("⬇️ "),
+					styling.Code("/download_num"),
+					styling.Plain(" — Скачать файл книги по её ID.\n"),
+					styling.Italic("Пример: /download_2\n\n"),
+
+					// --- Добавление книг ---
+					styling.Bold("📥 Добавление книг:\n"),
+					styling.Plain("Просто отправь мне файл с командой в подписи:\n\n"),
+
+					styling.Plain("1️⃣ "),
+					styling.Code("/add"),
+					styling.Plain(" — Автоматическое добавление.\n"),
+					styling.Italic("(прикрепите файл книги к этому сообщению)\n\n"),
+
+					styling.Plain("2️⃣ "),
+					styling.Code("/add <Название>"),
+					styling.Plain(" — Добавление с указанием названия вручную.\n"),
+					styling.Italic("Используй, если автоматика ошиблась.\n"),
+					styling.Italic("(прикрепите файл книги к этому сообщению)"),
+	)
+	return text
+}
+
+
 
 
