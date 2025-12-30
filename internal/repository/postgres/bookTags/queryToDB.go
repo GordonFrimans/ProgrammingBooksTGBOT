@@ -226,9 +226,116 @@ func (r *BookRepository) AddDownloadCountWithID(ctx context.Context, id int) err
 
 }
 
-// func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]BookWithTags, error) {
-//
-// }
+
+// ShowBooksWithTag ищет книги, где переданный тег встречается
+// либо в programming_lang, либо в other_tag.
+func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]BookWithTags, error) {
+	// Мы ищем книги, где массив programming_lang СОДЕРЖИТ tag
+	// ИЛИ массив other_tag СОДЕРЖИТ tag.
+	// Используем оператор && (пересечение) и приводим наш одиночный тег к массиву ARRAY[$1].
+	sqlQuery := `
+	SELECT
+	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+	b.file_path, b.file_size, b.file_type,
+	b.added_by, b.added_at, b.download_count,
+	t.id, t.book_id, t.other_tag,
+	t.lang, t.programming_lang
+	FROM books b
+	JOIN tags t ON b.id = t.book_id
+	WHERE
+	t.programming_lang && ARRAY[$1]::varchar[]
+	OR
+	t.other_tag && ARRAY[$1]::varchar[]
+	`
+
+	// Передаем tag один раз, он подставится в $1
+	rows, err := r.pool.Query(ctx, sqlQuery, tag)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var books []BookWithTags
+
+	for rows.Next() {
+		var bt BookWithTags
+		// ВАЖНО: порядок переменных должен строго соответствовать SELECT
+		err = rows.Scan(
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+		  &bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+		  &bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+		  &bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
+		  &bt.T.Lang, &bt.T.ProgrammingLang,
+		)
+		if err != nil {
+			return nil, err
+		}
+		books = append(books, bt)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return books, nil
+}
+func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query string) ([]BookWithTags, error) {
+	// 1. Настройка порога чувствительности для текущей транзакции/сессии
+	// 0.3-0.4 — хороший баланс. Чем выше число, тем строже поиск.
+	_, err := r.pool.Exec(ctx, "SET pg_trgm.word_similarity_threshold = 0.3")
+	if err != nil {
+		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
+	}
+
+	// 2. SQL запрос с ранжированием
+	sqlQuery := `
+	SELECT
+	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+	b.file_path, b.file_size, b.file_type,
+	b.added_by, b.added_at, b.download_count,
+	-- Возвращаем пустые теги, так как в этом поиске они не участвуют в join
+	NULL::int, NULL::int, NULL::varchar[], NULL::varchar, NULL::varchar[]
+	FROM books b
+	WHERE
+	($1 <% b.title) OR ($1 <% b.description)
+	ORDER BY
+	-- Приоритет совпадению в названии
+	GREATEST(word_similarity($1, b.title), word_similarity($1, b.description) * 0.6) DESC
+	LIMIT 50;
+	`
+
+	rows, err := r.pool.Query(ctx, sqlQuery, query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var books []BookWithTags
+
+	for rows.Next() {
+		var bt BookWithTags
+		// Временные переменные для сканирования NULL-полей тегов (чтобы Scan не упал)
+		var tID, tBookID *int
+		var tOtherTag, tProgLang []string
+		var tLang *string
+
+		err = rows.Scan(
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+		  &bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+		  &bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+		  &tID, &tBookID, &tOtherTag, &tLang, &tProgLang,
+		)
+		if err != nil {
+			return nil, err
+		}
+		// Можно заполнить bt.T если нужно, но здесь они пустые
+		books = append(books, bt)
+	}
+
+	return books, nil
+}
+
+
 
 // В будущем здесь будут другие методы:
 // func (r *BookRepository) GetByID(ctx context.Context, id int) (*Book, error) { ... }

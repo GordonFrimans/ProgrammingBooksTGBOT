@@ -129,8 +129,13 @@ func (b *Bot) handleMessage(ctx context.Context, e tg.Entities, update *tg.Updat
 	case text == "/admin":
 		b.handleAdmin(ctx, e, msg)
 
+	case strings.HasPrefix(text, "/FindWT"):
+		b.handleTag(ctx, e, msg)
 	case strings.HasPrefix(text, "/download_"):
 		b.handleDownloadBook(ctx, e, msg)
+
+	case strings.HasPrefix(text, "/search"):
+		b.handleSearch(ctx,e,msg)
 	default:
 		// b.handleSearch(ctx, msg)
 	}

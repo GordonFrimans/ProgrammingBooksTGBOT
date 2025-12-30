@@ -6,6 +6,9 @@ import (
 	"unicode"
 )
 
+
+
+
 // ParseMetadataFromTitle парсит заголовок и пытается извлечь Язык и Категорию.
 // Возвращает: (language, tag, error)
 func ParseMetadataFromInfo(title,description string) (string, string, error) {
@@ -16,29 +19,39 @@ func ParseMetadataFromInfo(title,description string) (string, string, error) {
 
 	// 1. Ищем Язык Программирования (проходим по карте CommonLanguages из tags.go)
 	for alias, langName := range CommonLanguages {
-		if containsWholeWord(titleLower, alias) {
+		if containsWholeWord(titleLower, alias) && foundLang == "" {
 			foundLang = langName
 			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
 		}
 
-		if containsWholeWord(descriptionLower, alias) {
-			foundLang = langName
-			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
-		}
 	}
 
 	// 2. Ищем Тэг/Тематику (проходим по карте TopicTags из tags.go)
 	for alias, tagName := range TopicTags {
-		if containsWholeWord(titleLower, alias) {
-			foundTag = tagName
-			break
-		}
-
-		if containsWholeWord(descriptionLower, alias) {
+		if containsWholeWord(titleLower, alias) && foundTag == "" {
 			foundTag = tagName
 			break
 		}
 	}
+	//=============================
+	//===Далее поиск по описанию===
+	//=============================
+	for alias, tagName := range TopicTags {
+		if containsWholeWord(descriptionLower, alias) && foundTag == "" {
+			foundTag = tagName
+			break
+		}
+	}
+
+	for alias, langName := range CommonLanguages {
+		if containsWholeWord(descriptionLower, alias) && foundLang == "" {
+			foundLang = langName
+			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
+		}
+
+	}
+	//===========================
+
 
 	// 3. Логика "Умного заполнения"
 	// Если нашли язык, но не нашли тэг — пытаемся подставить дефолтный для этого языка.

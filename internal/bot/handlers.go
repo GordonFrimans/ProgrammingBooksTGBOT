@@ -431,10 +431,7 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 
 }
 
-// handleSearch обрабатывает поиск
-func (b *Bot) handleSearch(ctx context.Context, e tg.Entities, msg *tg.Message) {
-	// ... логика для поиска ...
-}
+
 func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
 
 	_, user, peer, err := getInfo(e, msg)
@@ -513,4 +510,79 @@ func getInfo(e tg.Entities, msg *tg.Message) (int64, *tg.User, tg.InputPeerClass
 		return 0, nil, nil, fmt.Errorf("ошибка ExtractPeer: %v", err)
 	}
 	return userID, user, peer, nil
+}
+
+func (b *Bot) handleTag(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /FindWT от %s %s (@%s, ID:%d)",
+			user.FirstName,
+		 user.LastName,
+		 user.Username,
+		 user.ID)
+
+	txt := strings.TrimPrefix(msg.Message,"/FindWT")
+	txt = strings.TrimSpace(txt)
+
+	books, err := b.bookService.ShowBooksWithTag(ctx,txt)
+	if err != nil {
+		b.logger.Println(err)
+	}
+	sender := message.NewSender(b.client.API()).To(peer)
+	if len(books) != 0 {
+
+		// Передаём готовые книги в функцию форматирования
+		err = b.ShowBooksMessage(ctx, sender, books)
+		if err != nil {
+			b.logger.Println(err)
+		}
+
+	} else {
+		sender.Text(ctx, "Книги не найдены!")
+	}
+
+
+}
+
+
+func (b *Bot) handleSearch(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /search от %s %s (@%s, ID:%d)",
+			user.FirstName,
+		 user.LastName,
+		 user.Username,
+		 user.ID)
+
+	txt := strings.TrimPrefix(msg.Message,"/search")
+	txt = strings.TrimSpace(txt)
+	sender := message.NewSender(b.client.API()).To(peer)
+	if txt == "" {
+		sender.Text(ctx,"Введите текст!")
+	}
+	books, err := b.bookService.SearchBooksWithTitleDesc(ctx, txt)
+	if err != nil {
+		b.logger.Println("Search Error:", err)
+		// ... сообщение об ошибке ...
+		return
+	}
+	if len(books) != 0 {
+
+		// Передаём готовые книги в функцию форматирования
+		err = b.ShowBooksMessage(ctx, sender, books)
+		if err != nil {
+			b.logger.Println(err)
+		}
+	} else {
+		sender.Text(ctx, "Книги не найдены!")
+	}
+
 }

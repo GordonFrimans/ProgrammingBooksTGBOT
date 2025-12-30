@@ -41,6 +41,12 @@ func (s *BookService) AddDownloadCountWithID(ctx context.Context, id int) error 
 	return s.repo.AddDownloadCountWithID(ctx, id)
 }
 
-// func (s *BookService) ShowBooksWithTag(ctx context.Context, tag string) ([]booktags.BookWithTags, error) {
-// 	return s.repo.ShowBooksWithTag(ctx,tag)
-// }
+func (s *BookService) ShowBooksWithTag(ctx context.Context, tag string) ([]booktags.BookWithTags, error) {
+	return s.repo.ShowBooksWithTag(ctx,tag)
+}
+
+func (s *BookService) SearchBooksWithTitleDesc(ctx context.Context,query string) ([]booktags.BookWithTags, error) {
+	return s.repo.SearchBooksWithTitleDesc(ctx,query)
+}
+
+
