@@ -1,23 +1,24 @@
 package bot
 
 import (
+	"context"
+	"fmt"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+
 	bookinfo "HIGH_PR/bookInfo"
 	"HIGH_PR/gl"
 	booktags "HIGH_PR/internal/repository/postgres/bookTags"
-	"context"
-	"fmt"
+
 	"github.com/gotd/td/telegram/message"
 	"github.com/gotd/td/tg"
 
 	"github.com/gotd/td/telegram/message/markup"
 	"github.com/gotd/td/telegram/message/peer"
 	"github.com/gotd/td/telegram/uploader" // для uploader.NewUploader
-	"strings"
-	"time"
-
 	//"os"
-	"path/filepath"
-	"strconv"
 	//"time"
 )
 
@@ -82,11 +83,9 @@ func (b *Bot) handleShowWithID(ctx context.Context, e tg.Entities, msg *tg.Messa
 	}
 
 	b.logger.Println("Успешно отправлена инфа о книге ID =", id)
-
 }
 
 func (b *Bot) handleShowWithName(ctx context.Context, e tg.Entities, msg *tg.Message) {
-
 	_, user, peer, err := getInfo(e, msg)
 
 	b.logger.Printf("📨 /showWithName от %s %s (@%s, ID:%d)",
@@ -103,7 +102,6 @@ func (b *Bot) handleShowWithName(ctx context.Context, e tg.Entities, msg *tg.Mes
 		res, err := bookinfo.SearchBooks(nameBook)
 		if err != nil {
 			b.logger.Println("Ошибка запроса к Google API Books: ", err)
-
 		}
 		if res.Title == "" {
 			b.logger.Println("Не найдено")
@@ -119,7 +117,6 @@ func (b *Bot) handleShowWithName(ctx context.Context, e tg.Entities, msg *tg.Mes
 		b.logger.Println("Не указано имя!")
 		sender.Text(ctx, "Укажите имя!")
 	}
-
 }
 
 // ATTENTION
@@ -203,7 +200,6 @@ func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Mes
 // handleStart обрабатывает команду /start
 func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, user, peer, err := getInfo(e, msg)
-
 	if err != nil {
 		b.logger.Println(err)
 	}
@@ -216,9 +212,9 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 
 	// 6. Отправляем ответ
 
-	//WARNING
+	// WARNING
 
-	//Задокументированный код снизу представляет работу с сырыми сообщениями (в данном примере предсавленна отправка текста и и отправка специального объекта для скрытия клавиатуры (не inline!))
+	// Задокументированный код снизу представляет работу с сырыми сообщениями (в данном примере предсавленна отправка текста и и отправка специального объекта для скрытия клавиатуры (не inline!))
 
 	// // Генерируем random ID (можно использовать time.Now().UnixNano())
 	// randomID := time.Now().UnixNano()
@@ -239,8 +235,8 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 		RandomID: time.Now().UnixNano(), // всегда уникальный
 	})
 	u := uploader.NewUploader(b.client.API()).
-	WithPartSize(512 * 1024). // 512 KB (стандартный чанк)
-	WithThreads(4)
+		WithPartSize(512 * 1024). // 512 KB (стандартный чанк)
+		WithThreads(4)
 
 	// 2. Указываем путь к файлу
 	// Важно: файл должен быть в формате .webp (для обычных стикеров)
@@ -251,7 +247,6 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	upload, err := u.FromPath(ctx, filePath)
 	if err != nil {
 		b.logger.Println("Ошибка загрузки файла:", err)
-
 	}
 	sender := message.NewSender(b.client.API()).To(peer)
 	// 4. Отправляем загруженный файл именно как СТИКЕР
@@ -259,35 +254,31 @@ func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, err = sender.UploadedSticker(ctx, upload)
 	if err != nil {
 		b.logger.Println("Ошибка отправки стикера:", err)
-
 	}
 
 	if err != nil {
 		b.logger.Println("Ошибка отправки сообщения с эффектом:", err)
 	}
-
 }
 
 // handleHelp обрабатывает команду /help
 func (b *Bot) handleHelp(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, user, peer, err := getInfo(e, msg)
-
 	if err != nil {
 		b.logger.Println(err)
 	}
 
 	b.logger.Printf("📨 /help от %s %s (@%s, ID:%d)",
-			user.FirstName,
-		 user.LastName,
-		 user.Username,
-		 user.ID)
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
 	sender := message.NewSender(b.client.API()).To(peer)
 	text := b.SendHelpMessage(ctx)
-	_, err = sender.StyledText(ctx,text...)
+	_, err = sender.StyledText(ctx, text...)
 	if err != nil {
-		b.logger.Println("Ошибка при отправке сообщения! ",err)
+		b.logger.Println("Ошибка при отправке сообщения! ", err)
 	}
-
 }
 
 // handleAddBook обрабатывает команду /add
@@ -326,7 +317,7 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 			sender.Text(ctx, "Попробуйте ввести название книги в ручную! (/add Название книги...+файл)")
 			return
 		}
-		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title,info.Description)
+		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title, info.Description)
 		if err != nil {
 			b.logger.Println("Ошибка парса тэга")
 		}
@@ -365,7 +356,7 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 			}
 			return
 		}
-		_, err = sender.Text(ctx,"Файл успешно сохранен!")
+		_, err = sender.Text(ctx, "Файл успешно сохранен!")
 		if err != nil {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
@@ -382,7 +373,7 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 			sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
 		}
 
-		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title,info.Description)
+		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title, info.Description)
 		if err != nil {
 			b.logger.Println("Ошибка парса тэга")
 		}
@@ -406,7 +397,6 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 				OtherTag:        []string{otherTag},
 			},
 		})
-
 		if err != nil {
 			b.logger.Println("Ошибка добавления книги в бд:", err)
 			sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
@@ -428,14 +418,10 @@ func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message,
 		}
 
 	}
-
 }
 
-
 func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
-
 	_, user, peer, err := getInfo(e, msg)
-
 	if err != nil {
 		b.logger.Println(err)
 	}
@@ -461,11 +447,10 @@ func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
 				markup.Callback("Last_Log", []byte("LastLog")),
 			)).
 			Text(ctx, fmt.Sprintf("Привет мой повелитель %s", user.Username))
-
 		if err != nil {
 			b.logger.Printf("Ошибка отправки: %v", err)
 		}
-		//Вызываем обработчик универсал
+		// Вызываем обработчик универсал
 
 	}
 }
@@ -495,7 +480,6 @@ func getInfo(e tg.Entities, msg *tg.Message) (int64, *tg.User, tg.InputPeerClass
 
 	// 3. Если всё ещё не нашли, это групповой чат или ошибка
 	if userID == 0 {
-
 		return 0, nil, nil, fmt.Errorf("не удалось определить пользователя")
 	}
 
@@ -514,21 +498,20 @@ func getInfo(e tg.Entities, msg *tg.Message) (int64, *tg.User, tg.InputPeerClass
 
 func (b *Bot) handleTag(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, user, peer, err := getInfo(e, msg)
-
 	if err != nil {
 		b.logger.Println(err)
 	}
 
 	b.logger.Printf("📨 /FindWT от %s %s (@%s, ID:%d)",
-			user.FirstName,
-		 user.LastName,
-		 user.Username,
-		 user.ID)
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
 
-	txt := strings.TrimPrefix(msg.Message,"/FindWT")
+	txt := strings.TrimPrefix(msg.Message, "/FindWT")
 	txt = strings.TrimSpace(txt)
 
-	books, err := b.bookService.ShowBooksWithTag(ctx,txt)
+	books, err := b.bookService.ShowBooksWithTag(ctx, txt)
 	if err != nil {
 		b.logger.Println(err)
 	}
@@ -544,29 +527,26 @@ func (b *Bot) handleTag(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	} else {
 		sender.Text(ctx, "Книги не найдены!")
 	}
-
-
 }
-
 
 func (b *Bot) handleSearch(ctx context.Context, e tg.Entities, msg *tg.Message) {
 	_, user, peer, err := getInfo(e, msg)
-
 	if err != nil {
 		b.logger.Println(err)
 	}
 
 	b.logger.Printf("📨 /search от %s %s (@%s, ID:%d)",
-			user.FirstName,
-		 user.LastName,
-		 user.Username,
-		 user.ID)
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
 
-	txt := strings.TrimPrefix(msg.Message,"/search")
+	txt := strings.TrimPrefix(msg.Message, "/search")
 	txt = strings.TrimSpace(txt)
 	sender := message.NewSender(b.client.API()).To(peer)
 	if txt == "" {
-		sender.Text(ctx,"Введите текст!")
+		sender.Text(ctx, "Введите текст!")
+		return
 	}
 	books, err := b.bookService.SearchBooksWithTitleDesc(ctx, txt)
 	if err != nil {
@@ -584,5 +564,4 @@ func (b *Bot) handleSearch(ctx context.Context, e tg.Entities, msg *tg.Message) 
 	} else {
 		sender.Text(ctx, "Книги не найдены!")
 	}
-
 }

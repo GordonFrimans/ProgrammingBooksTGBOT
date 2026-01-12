@@ -1,8 +1,9 @@
 package booktags
 
 import (
-	"HIGH_PR/internal/logger"
 	"context"
+
+	"HIGH_PR/internal/logger"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )

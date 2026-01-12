@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devuser -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  bot:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # --- ИСПОЛЬЗУЕМ ИМЕНОВАННЫЕ ТОМА ---
+      # Docker сам создаст эти "виртуальные диски" и будет хранить их где-то у себя внутри.
+      # Данные не пропадут при рестарте контейнера.
+      - bot_books:/app/books
+      - bot_img:/app/img
+      - bot_logs:/app/log
+      - bot_config:/app/configs
+
+# --- ОБЯЗАТЕЛЬНО ОБЪЯВЛЯЕМ ИХ ВНИЗУ ---
+volumes:
+  pg_data:      # Твоя база
+  bot_books:    # Хранилище книг
+  bot_img:      # Хранилище картинок
+  bot_logs:     # Хранилище логов
+  bot_config:   # Хранение сессии тг

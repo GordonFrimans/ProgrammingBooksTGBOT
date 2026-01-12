@@ -1,13 +1,12 @@
 package booktags
 
 import (
-	bookinfo "HIGH_PR/bookInfo"
-	"HIGH_PR/internal/logger"
+	"context"
+	"errors"
 	"fmt"
 
-	"context"
-
-	"errors"
+	bookinfo "HIGH_PR/bookInfo"
+	"HIGH_PR/internal/logger"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -76,6 +75,7 @@ func (r *BookRepository) GetAllBooks(ctx context.Context) ([]BookWithTags, error
 
 	return books, nil
 }
+
 func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
 	// Начинаем транзакцию
 	tx, err := r.pool.Begin(ctx)
@@ -83,14 +83,14 @@ func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
 		return fmt.Errorf("failed to begin transaction: %w", err)
 	}
 	defer tx.Rollback(ctx) // Откатываем если не закоммитим
-	//Проверка на наличие по (title)
+	// Проверка на наличие по (title)
 	var existingTitel string
 	checkQuery := `SELECT id FROM books WHERE title = $1 LIMIT 1`
 	err = tx.QueryRow(ctx, checkQuery, bt.B.Title).Scan(&existingTitel)
 	if err == nil {
 		return fmt.Errorf("Книга с таким именем уже есть!")
 	}
-	//Загрузка изображения
+	// Загрузка изображения
 	imgData, err := bookinfo.DownloadImage(bt.B.Img)
 	if err != nil {
 		logger.Logger.Printf("Не удалось загрузить обложку: %v", err)
@@ -120,7 +120,6 @@ func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
 		bt.B.AddedAt,
 		bt.B.DownloadCount,
 	).Scan(&bookID)
-
 	if err != nil {
 		return fmt.Errorf("failed to insert book: %w", err)
 	}
@@ -136,7 +135,6 @@ func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
 		bt.T.Lang,
 		bt.T.ProgrammingLang,
 	)
-
 	if err != nil {
 		return fmt.Errorf("failed to insert tags: %w", err)
 	}
@@ -190,7 +188,6 @@ func (r *BookRepository) GetFileBookWithID(ctx context.Context, id int) (string,
 
 	var filePath string
 	err := r.pool.QueryRow(ctx, sqlQuery, id).Scan(&filePath)
-
 	if err != nil {
 		// Проверяем, что ошибка именно "ничего не найдено"
 		if errors.Is(err, pgx.ErrNoRows) {
@@ -223,9 +220,7 @@ func (r *BookRepository) AddDownloadCountWithID(ctx context.Context, id int) err
 	}
 
 	return nil
-
 }
-
 
 // ShowBooksWithTag ищет книги, где переданный тег встречается
 // либо в programming_lang, либо в other_tag.
@@ -262,10 +257,10 @@ func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]Bo
 		// ВАЖНО: порядок переменных должен строго соответствовать SELECT
 		err = rows.Scan(
 			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
-		  &bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
-		  &bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
-		  &bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
-		  &bt.T.Lang, &bt.T.ProgrammingLang,
+			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+			&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
+			&bt.T.Lang, &bt.T.ProgrammingLang,
 		)
 		if err != nil {
 			return nil, err
@@ -279,10 +274,18 @@ func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]Bo
 
 	return books, nil
 }
+
 func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query string) ([]BookWithTags, error) {
+	// В функции инициализации репозитория или main.go
+	_, err := r.pool.Exec(ctx, "CREATE EXTENSION IF NOT EXISTS pg_trgm")
+	if err != nil {
+		// Логируем ошибку, но обычно прав доступа может не хватить
+		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
+	}
+
 	// 1. Настройка порога чувствительности для текущей транзакции/сессии
 	// 0.3-0.4 — хороший баланс. Чем выше число, тем строже поиск.
-	_, err := r.pool.Exec(ctx, "SET pg_trgm.word_similarity_threshold = 0.3")
+	_, err = r.pool.Exec(ctx, "SET pg_trgm.word_similarity_threshold = 0.3")
 	if err != nil {
 		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
 	}
@@ -293,14 +296,13 @@ func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query str
 	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
 	b.file_path, b.file_size, b.file_type,
 	b.added_by, b.added_at, b.download_count,
-	-- Возвращаем пустые теги, так как в этом поиске они не участвуют в join
 	NULL::int, NULL::int, NULL::varchar[], NULL::varchar, NULL::varchar[]
 	FROM books b
 	WHERE
-	($1 <% b.title) OR ($1 <% b.description)
+	($1::text <% b.title) OR ($1::text <% b.description)
 	ORDER BY
-	-- Приоритет совпадению в названии
-	GREATEST(word_similarity($1, b.title), word_similarity($1, b.description) * 0.6) DESC
+	-- Здесь тоже лучше явно привести к text, хотя функции обычно умнее операторов
+	GREATEST(word_similarity($1::text, b.title), word_similarity($1::text, b.description) * 0.6) DESC
 	LIMIT 50;
 	`
 
@@ -321,9 +323,9 @@ func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query str
 
 		err = rows.Scan(
 			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
-		  &bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
-		  &bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
-		  &tID, &tBookID, &tOtherTag, &tLang, &tProgLang,
+			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+			&tID, &tBookID, &tOtherTag, &tLang, &tProgLang,
 		)
 		if err != nil {
 			return nil, err
@@ -334,8 +336,6 @@ func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query str
 
 	return books, nil
 }
-
-
 
 // В будущем здесь будут другие методы:
 // func (r *BookRepository) GetByID(ctx context.Context, id int) (*Book, error) { ... }

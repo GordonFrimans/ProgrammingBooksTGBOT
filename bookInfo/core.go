@@ -1,8 +1,6 @@
 package bookinfo
 
 import (
-	"HIGH_PR/gl"
-	"HIGH_PR/internal/logger"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -12,6 +10,9 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
+	"HIGH_PR/gl"
+	"HIGH_PR/internal/logger"
 )
 
 type Result struct {

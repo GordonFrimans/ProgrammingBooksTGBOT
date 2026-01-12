@@ -1,0 +1,5 @@
+INFO: 2026/01/07 18:24:43 main.go:40: Обычный режим работы.
+INFO: 2026/01/07 18:24:43 main.go:45: 🚦 Запуск
+INFO: 2026/01/07 18:24:51 main.go:66: Ошибка подкл к DB:  ошибка подключения к БД: failed to connect to `user=devuser database=postgres`:
+	hostname resolving error: lookup db: no such host
+	lookup db: no such host

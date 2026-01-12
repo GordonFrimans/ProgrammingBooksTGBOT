@@ -1,15 +1,14 @@
 package bot
 
 import (
-	"HIGH_PR/gl"
-	"context"
-	"path/filepath"
-
 	"bufio"
+	"context"
 	"fmt"
 	"os"
-
+	"path/filepath"
 	"strings"
+
+	"HIGH_PR/gl"
 
 	"github.com/gotd/td/telegram/downloader"
 	"github.com/gotd/td/telegram/message"
@@ -20,7 +19,6 @@ import (
 // Универскальная костыльная функция для отправки файла (без возможности добавить caption) (Но с возможностью указать аттрибуты файла такие как MIME и тп...)
 // WARNING
 func (b *Bot) SendFile(ctx context.Context, path string, sender *message.RequestBuilder) {
-
 	upload := sender.Upload(message.FromPath(path))
 	inputFile, err := upload.AsInputFile(ctx)
 	if err != nil {
@@ -99,14 +97,12 @@ func (b *Bot) DownloadFile(ctx context.Context, media *tg.MessageMediaDocument) 
 	_, err := downloader.NewDownloader().
 		Download(b.client.API(), location).
 		ToPath(ctx, savePath)
-
 	if err != nil {
 		return fmt.Errorf("ошибка загрузки: %w", err)
 	}
 
 	b.logger.Printf("✅ Файл сохранён: %s", savePath)
 	return nil
-
 }
 
 // Вспомогательная функция для получения имени документа
@@ -118,6 +114,7 @@ func GetDocumentName(doc *tg.Document) string {
 	}
 	return "document.pdf"
 }
+
 func DeleteType(name string) string {
 	res := strings.Replace(name, ".pdf", "", 1)
 	return res

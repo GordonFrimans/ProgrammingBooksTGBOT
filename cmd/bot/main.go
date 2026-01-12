@@ -1,6 +1,15 @@
 package main
 
 import (
+	"context"
+	"flag"
+	"fmt"
+	"os"
+	"os/signal"
+	"path/filepath"
+	"strconv"
+	"syscall"
+
 	"HIGH_PR/gl"
 	"HIGH_PR/internal/bot"
 	"HIGH_PR/internal/logger"
@@ -8,11 +17,6 @@ import (
 	"HIGH_PR/internal/repository/postgres"
 	booktags "HIGH_PR/internal/repository/postgres/bookTags"
 	"HIGH_PR/internal/services"
-	"context"
-	"flag"
-	"os"
-	"os/signal"
-	"strconv"
 
 	"github.com/gotd/td/session"
 	"github.com/gotd/td/telegram"
@@ -20,8 +24,46 @@ import (
 )
 
 func init() {
+	createFolders()
 	readEnv()
+}
 
+func createFolders() {
+	dirsToCreate := []string{
+		gl.DefaultSaveBook,
+		gl.DefaultSaveImage,
+	}
+
+	// Добавляем папку логов (если путь задан)
+	if gl.LogPath != "" {
+		// filepath.Dir корректно отрежет "app.log" и оставит "log"
+		// Не забудь import "path/filepath"
+		dirsToCreate = append(dirsToCreate, filepath.Dir(gl.LogPath))
+	}
+
+	// Добавляем папку сессии
+	if gl.SessionPath != "" {
+		dirsToCreate = append(dirsToCreate, filepath.Dir(gl.SessionPath))
+	}
+
+	for _, dir := range dirsToCreate {
+		// filepath.Clean убирает лишние слэши и точки
+		cleanDir := filepath.Clean(dir)
+
+		// Skip, если путь пустой или "." (текущая папка)
+		if cleanDir == "." || cleanDir == "" {
+			continue
+		}
+
+		// 0755 - стандартные права (rwxr-xr-x)
+		err := os.MkdirAll(cleanDir, 0o755)
+		if err != nil {
+			fmt.Printf("❌ Критическая ошибка: Не могу создать папку '%s': %v\n", cleanDir, err)
+			// Тут лучше упасть, так как без папок бот работать не сможет
+			os.Exit(1)
+		}
+		fmt.Printf("✅ Папка проверена/создана: %s\n", cleanDir)
+	}
 }
 
 func readEnv() {
@@ -46,7 +88,7 @@ func main() {
 	defer logger.Close()
 	// 2. Создаём диспетчер ЗАРАНЕЕ
 	dispatcher := tg.NewUpdateDispatcher()
-	//ATTENTION
+	// ATTENTION
 	appID, _ := strconv.Atoi(gl.AppID)
 
 	// 3. Создаём клиент, передавая ему диспетчер через Options
@@ -71,7 +113,7 @@ func main() {
 	bookService := services.NewBookService(bookRep)
 
 	botApp := bot.New(client, logger.Logger, dispatcher, bookService)
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt)
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
 	if err := botApp.Start(ctx); err != nil {
@@ -79,5 +121,4 @@ func main() {
 	}
 
 	logger.Logger.Println("Бот остановлен.")
-
 }

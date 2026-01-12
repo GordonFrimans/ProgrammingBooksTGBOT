@@ -2,23 +2,24 @@
 package bot
 
 import (
-
-	booktags "HIGH_PR/internal/repository/postgres/bookTags"
 	"context"
 	"fmt"
-
-	"github.com/gotd/td/telegram/message/markup"
 	"strings"
 	"time"
 
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
+
+	"github.com/gotd/td/telegram/message/markup"
+
 	"github.com/dustin/go-humanize"
 	"github.com/gotd/td/telegram"
+	"github.com/gotd/td/telegram/message"
 	"github.com/gotd/td/telegram/message/entity"
 	"github.com/gotd/td/telegram/message/styling"
 	"github.com/gotd/td/telegram/uploader"
 	"github.com/gotd/td/tg"
-	"github.com/gotd/td/telegram/message"
 )
+
 // buildBookPage собирает текст и кнопки для конкретной страницы
 func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.StyledTextOption, tg.ReplyMarkupClass) {
 	const booksPerPage = 3
@@ -26,12 +27,18 @@ func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.
 
 	// 1. Считаем границы
 	totalPages := (totalBooks + booksPerPage - 1) / booksPerPage
-	if page < 0 { page = 0 }
-	if page >= totalPages { page = totalPages - 1 }
+	if page < 0 {
+		page = 0
+	}
+	if page >= totalPages {
+		page = totalPages - 1
+	}
 
 	start := page * booksPerPage
 	end := start + booksPerPage
-	if end > totalBooks { end = totalBooks }
+	if end > totalBooks {
+		end = totalBooks
+	}
 
 	// 2. Строим текст (тут твой код оформления)
 	var text []styling.StyledTextOption
@@ -46,30 +53,30 @@ func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.
 		}
 
 		text = append(text,
-				     styling.Bold("📚 Название: "),
-				     styling.Plain(books[i].B.Title+"\n\n"),
+			styling.Bold("📚 Название: "),
+			styling.Plain(books[i].B.Title+"\n\n"),
 
-				     styling.Bold("👨‍💼 Авторы: "),
-				     styling.Plain(authors+"\n\n"),
+			styling.Bold("👨‍💼 Авторы: "),
+			styling.Plain(authors+"\n\n"),
 
-				     styling.Bold("📝 Описание:\n"),
-				     styling.Italic("    "+books[i].B.TextSnippet+"\n\n"),
+			styling.Bold("📝 Описание:\n"),
+			styling.Italic("    "+books[i].B.TextSnippet+"\n\n"),
 
-				     styling.Custom(func(eb *entity.Builder) error {
-					     eb.Format("🔗 Скачать:", entity.Bold())
-					     return nil
-				     }),
-		       styling.Plain(fmt.Sprintf(" /download_%d\n", books[i].B.ID)),
+			styling.Custom(func(eb *entity.Builder) error {
+				eb.Format("🔗 Скачать:", entity.Bold())
+				return nil
+			}),
+			styling.Plain(fmt.Sprintf(" /download_%d\n", books[i].B.ID)),
 
-				     styling.Custom(func(eb *entity.Builder) error {
-					     eb.Format("🔎 Подробнее:", entity.Bold())
-					     return nil
-				     }),
-		       styling.Plain(fmt.Sprintf(" /show_%d\n", books[i].B.ID)),
+			styling.Custom(func(eb *entity.Builder) error {
+				eb.Format("🔎 Подробнее:", entity.Bold())
+				return nil
+			}),
+			styling.Plain(fmt.Sprintf(" /show_%d\n", books[i].B.ID)),
 
-				     styling.Plain("\n"),
-				     styling.Plain("━━━━━━━━━━"),
-				     styling.Plain("\n\n"),
+			styling.Plain("\n"),
+			styling.Plain("━━━━━━━━━━"),
+			styling.Plain("\n\n"),
 		)
 	}
 
@@ -92,7 +99,6 @@ func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.
 	return text, markup.InlineRow(rows...)
 }
 
-
 // БЫЛО: func ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, pool *pgxpool.Pool)
 // СТАЛО:
 func (b *Bot) ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, books []booktags.BookWithTags) error {
@@ -102,7 +108,6 @@ func (b *Bot) ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder,
 	_, err := msg.Markup(keyboard).StyledText(ctx, text...)
 	return err
 }
-
 
 func calculatePageCount(totalBooks, booksPerPage int) int {
 	return (totalBooks + booksPerPage - 1) / booksPerPage
@@ -145,16 +150,14 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 		langProg = "-"
 	} else {
 		langProg = book.T.ProgrammingLang[0]
-
 	}
 
 	// Язык книги
-	var langMap = map[string]string{
+	langMap := map[string]string{
 		"ru": "🇷🇺 Русский",
 		"en": "🇬🇧 Английский",
 		// добавь другие по необходимости
 	}
-
 
 	var b entity.Builder
 
@@ -188,19 +191,18 @@ func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg
 	b.Bold("🏷️ Категория: ")
 	b.Plain(book.T.OtherTag[0] + "\n")
 
-
 	// 4. Генерируем готовый текст и entities
 	captionText, entities := b.Complete()
 
-	keyboard := markup.InlineRow(markup.Callback("Скачать", []byte(fmt.Sprintf("download:%d",book.B.ID))))
+	keyboard := markup.InlineRow(markup.Callback("Скачать", []byte(fmt.Sprintf("download:%d", book.B.ID))))
 
 	// 5. Отправляем
 	_, err = client.API().MessagesSendMedia(ctx, &tg.MessagesSendMediaRequest{
-		Peer:     peer,
-		Message:  captionText,
-		RandomID: randomID,
-		Media:    media,
-		Entities: entities, // Теперь тип совпадает ([]tg.MessageEntityClass)
+		Peer:        peer,
+		Message:     captionText,
+		RandomID:    randomID,
+		Media:       media,
+		Entities:    entities, // Теперь тип совпадает ([]tg.MessageEntityClass)
 		ReplyMarkup: keyboard,
 	})
 
@@ -213,47 +215,43 @@ func (b *Bot) SendHelpMessage(ctx context.Context) []styling.StyledTextOption {
 	// чтобы собрать сообщение как конструктор.
 	var text []styling.StyledTextOption
 	text = append(text,
-					// Заголовок
-					styling.Bold("🤖 Добро пожаловать! Вот что я умею:\n\n"),
+		// Заголовок
+		styling.Bold("🤖 Добро пожаловать! Вот что я умею:\n\n"),
 
-					// --- Основные команды ---
-					styling.Plain("🚀 "),
-					styling.Plain("/start"),
-					styling.Plain(" — Начать работу с ботом.\n\n"),
+		// --- Основные команды ---
+		styling.Plain("🚀 "),
+		styling.Plain("/start"),
+		styling.Plain(" — Начать работу с ботом.\n\n"),
 
-					styling.Plain("📚 "),
-					styling.Plain("/show"),
-					styling.Plain(" — Показать список всех доступных книг.\n\n"),
+		styling.Plain("📚 "),
+		styling.Plain("/show"),
+		styling.Plain(" — Показать список всех доступных книг.\n\n"),
 
-					// --- Работа с конкретной книгой ---
-					styling.Plain("🔍 "),
-					styling.Code("/show_num"),
-					styling.Plain(" — Показать подробную информацию о книге по её ID.\n"),
-					styling.Italic("Пример: /show_1\n\n"),
+		// --- Работа с конкретной книгой ---
+		styling.Plain("🔍 "),
+		styling.Code("/show_num"),
+		styling.Plain(" — Показать подробную информацию о книге по её ID.\n"),
+		styling.Italic("Пример: /show_1\n\n"),
 
-					styling.Plain("⬇️ "),
-					styling.Code("/download_num"),
-					styling.Plain(" — Скачать файл книги по её ID.\n"),
-					styling.Italic("Пример: /download_2\n\n"),
+		styling.Plain("⬇️ "),
+		styling.Code("/download_num"),
+		styling.Plain(" — Скачать файл книги по её ID.\n"),
+		styling.Italic("Пример: /download_2\n\n"),
 
-					// --- Добавление книг ---
-					styling.Bold("📥 Добавление книг:\n"),
-					styling.Plain("Просто отправь мне файл с командой в подписи:\n\n"),
+		// --- Добавление книг ---
+		styling.Bold("📥 Добавление книг:\n"),
+		styling.Plain("Просто отправь мне файл с командой в подписи:\n\n"),
 
-					styling.Plain("1️⃣ "),
-					styling.Code("/add"),
-					styling.Plain(" — Автоматическое добавление.\n"),
-					styling.Italic("(прикрепите файл книги к этому сообщению)\n\n"),
+		styling.Plain("1️⃣ "),
+		styling.Code("/add"),
+		styling.Plain(" — Автоматическое добавление.\n"),
+		styling.Italic("(прикрепите файл книги к этому сообщению)\n\n"),
 
-					styling.Plain("2️⃣ "),
-					styling.Code("/add <Название>"),
-					styling.Plain(" — Добавление с указанием названия вручную.\n"),
-					styling.Italic("Используй, если автоматика ошиблась.\n"),
-					styling.Italic("(прикрепите файл книги к этому сообщению)"),
+		styling.Plain("2️⃣ "),
+		styling.Code("/add <Название>"),
+		styling.Plain(" — Добавление с указанием названия вручную.\n"),
+		styling.Italic("Используй, если автоматика ошиблась.\n"),
+		styling.Italic("(прикрепите файл книги к этому сообщению)"),
 	)
 	return text
 }
-
-
-
-

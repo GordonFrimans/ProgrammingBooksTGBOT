@@ -1,6 +1,5 @@
 package bookinfo
 
-
 // CommonLanguages — карта распространенных языков программирования.
 // Ключ: алиас (в нижнем регистре), Значение: каноническое имя языка.
 var CommonLanguages = map[string]string{
@@ -19,25 +18,26 @@ var CommonLanguages = map[string]string{
 	"c++":    "C++",
 	"cs":     "C#",
 	"csharp": "C#",
+	"C#":     "C#",
 	"net":    ".NET",
 	"dotnet": ".NET",
 	"elixir": "Elixir",
 	"erlang": "Erlang",
 
 	// Scripting / Web
-	"py":     "Python",
-	"python": "Python",
-	"rb":     "Ruby",
-	"ruby":   "Ruby",
-	"php":    "PHP",
-	"js":     "JavaScript",
+	"py":         "Python",
+	"python":     "Python",
+	"rb":         "Ruby",
+	"ruby":       "Ruby",
+	"php":        "PHP",
+	"js":         "JavaScript",
 	"javascript": "JavaScript",
-	"ts":     "TypeScript",
-	"perl":   "Perl",
-	"lua":    "Lua",
-	"bash":   "Bash",
-	"sh":     "Bash",
-	"shell":  "Bash",
+	"ts":         "TypeScript",
+	"perl":       "Perl",
+	"lua":        "Lua",
+	"bash":       "Bash",
+	"sh":         "Bash",
+	"shell":      "Bash",
 
 	// Mobile
 	"swift": "Swift",
@@ -112,16 +112,16 @@ var TopicTags = map[string]string{
 	"ai":         "AI",
 
 	// Architecture / CS
-	"algo":           "Computer Science",
-	"algorithms":     "Computer Science",
-	"patterns":       "Architecture",
-	"architecture":   "Architecture",
-	"system-design":  "Architecture",
-	"distributed":    "Architecture",
-	"clean-code":     "Best Practices",
-	"refactoring":    "Best Practices",
-	"tdd":            "Testing",
-	"testing":        "Testing",
+	"algo":          "Computer Science",
+	"algorithms":    "Computer Science",
+	"patterns":      "Architecture",
+	"architecture":  "Architecture",
+	"system-design": "Architecture",
+	"distributed":   "Architecture",
+	"clean-code":    "Best Practices",
+	"refactoring":   "Best Practices",
+	"tdd":           "Testing",
+	"testing":       "Testing",
 
 	// Security
 	"security": "Security",

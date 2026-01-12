@@ -6,12 +6,9 @@ import (
 	"unicode"
 )
 
-
-
-
 // ParseMetadataFromTitle парсит заголовок и пытается извлечь Язык и Категорию.
 // Возвращает: (language, tag, error)
-func ParseMetadataFromInfo(title,description string) (string, string, error) {
+func ParseMetadataFromInfo(title, description string) (string, string, error) {
 	titleLower := strings.ToLower(title)
 	descriptionLower := strings.ToLower(description)
 	var foundLang string
@@ -23,7 +20,6 @@ func ParseMetadataFromInfo(title,description string) (string, string, error) {
 			foundLang = langName
 			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
 		}
-
 	}
 
 	// 2. Ищем Тэг/Тематику (проходим по карте TopicTags из tags.go)
@@ -48,10 +44,8 @@ func ParseMetadataFromInfo(title,description string) (string, string, error) {
 			foundLang = langName
 			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
 		}
-
 	}
 	//===========================
-
 
 	// 3. Логика "Умного заполнения"
 	// Если нашли язык, но не нашли тэг — пытаемся подставить дефолтный для этого языка.
@@ -69,7 +63,6 @@ func ParseMetadataFromInfo(title,description string) (string, string, error) {
 
 	return foundLang, foundTag, nil
 }
-
 
 // containsWholeWord ищет word в text, учитывая границы слов.
 // (Эта функция осталась без изменений, она отличная)

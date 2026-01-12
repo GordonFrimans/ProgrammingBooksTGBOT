@@ -4,6 +4,8 @@ import (
 	"io"
 	"log"
 	"os"
+
+	"HIGH_PR/gl"
 )
 
 var (
@@ -22,7 +24,8 @@ func SetupLogger(isDevMode bool) {
 		logOutput = os.Stdout
 	} else {
 		// В обычном режиме пишем в файл
-		logFile, err = os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+
+		logFile, err = os.OpenFile(gl.LogPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o666)
 		if err != nil {
 			log.Fatalf("Ошибка: не удалось открыть лог-файл: %v", err)
 		}

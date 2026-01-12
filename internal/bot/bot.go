@@ -1,14 +1,14 @@
 package bot
 
 import (
-	"HIGH_PR/gl"
-	"HIGH_PR/internal/services"
 	"context"
 	"fmt"
 	"log"
-
 	"strings"
 	"sync"
+
+	"HIGH_PR/gl"
+	"HIGH_PR/internal/services"
 
 	"github.com/gotd/td/telegram"
 	"github.com/gotd/td/tg"
@@ -19,13 +19,13 @@ import (
 type Bot struct {
 	// Внешние зависимости (передаются через New)
 	client *telegram.Client // MTProto клиент для взаимодействия с Telegram API
-	//bookService *services.BookService // Сервис для работы с книгами
+	// bookService *services.BookService // Сервис для работы с книгами
 	logger *log.Logger // Наш кастомный логгер
 
 	// Внутреннее состояние
 	dispatcher tg.UpdateDispatcher
 
-	//Пул для работы с бд
+	// Пул для работы с бд
 	bookService *services.BookService
 	mu          sync.Mutex
 }
@@ -36,7 +36,6 @@ func New(
 	logger *log.Logger,
 	dispatcher tg.UpdateDispatcher,
 	bookService *services.BookService,
-
 ) *Bot {
 	// Создаем новый диспетчер обновлений
 
@@ -79,11 +78,9 @@ func (b *Bot) Start(ctx context.Context) error {
 func (b *Bot) registerHandlers() {
 	// Регистрируем обработчик для всех новых сообщений
 	b.dispatcher.OnNewMessage(func(ctx context.Context, e tg.Entities, update *tg.UpdateNewMessage) error {
-
 		// Передаем управление в наш основной маршрутизатор сообщений
 		b.handleMessage(ctx, e, update)
 		return nil
-
 	})
 	b.dispatcher.OnBotCallbackQuery(func(ctx context.Context, e tg.Entities, update *tg.UpdateBotCallbackQuery) error {
 		// Обработка нажатия на кнопку
@@ -135,7 +132,7 @@ func (b *Bot) handleMessage(ctx context.Context, e tg.Entities, update *tg.Updat
 		b.handleDownloadBook(ctx, e, msg)
 
 	case strings.HasPrefix(text, "/search"):
-		b.handleSearch(ctx,e,msg)
+		b.handleSearch(ctx, e, msg)
 	default:
 		// b.handleSearch(ctx, msg)
 	}
