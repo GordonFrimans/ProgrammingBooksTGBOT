@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"strings"
 
 	bookinfo "HIGH_PR/bookInfo"
 	"HIGH_PR/internal/logger"
@@ -276,39 +277,85 @@ func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]Bo
 }
 
 func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query string) ([]BookWithTags, error) {
-	// В функции инициализации репозитория или main.go
-	_, err := r.pool.Exec(ctx, "CREATE EXTENSION IF NOT EXISTS pg_trgm")
-	if err != nil {
-		// Логируем ошибку, но обычно прав доступа может не хватить
-		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
+	query = strings.TrimSpace(strings.ToLower(query))
+
+	if query == "" {
+		return nil, fmt.Errorf("пустой запрос")
 	}
 
-	// 1. Настройка порога чувствительности для текущей транзакции/сессии
-	// 0.3-0.4 — хороший баланс. Чем выше число, тем строже поиск.
-	_, err = r.pool.Exec(ctx, "SET pg_trgm.word_similarity_threshold = 0.3")
-	if err != nil {
-		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
-	}
+	// Для коротких запросов используем строгий поиск
+	useStrictSearch := len(query) < 4
 
-	// 2. SQL запрос с ранжированием
-	sqlQuery := `
-	SELECT
-	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
-	b.file_path, b.file_size, b.file_type,
-	b.added_by, b.added_at, b.download_count,
-	NULL::int, NULL::int, NULL::varchar[], NULL::varchar, NULL::varchar[]
-	FROM books b
-	WHERE
-	($1::text <% b.title) OR ($1::text <% b.description)
-	ORDER BY
-	-- Здесь тоже лучше явно привести к text, хотя функции обычно умнее операторов
-	GREATEST(word_similarity($1::text, b.title), word_similarity($1::text, b.description) * 0.6) DESC
-	LIMIT 50;
-	`
+	var sqlQuery string
+
+	if useStrictSearch {
+		// Строгий поиск (только ILIKE, без триграмм)
+		sqlQuery = `
+		SELECT DISTINCT ON (b.id)
+		b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+		b.file_path, b.file_size, b.file_type,
+		b.added_by, b.added_at, b.download_count,
+		COALESCE(t.id, 0), COALESCE(t.book_id, 0),
+		COALESCE(t.other_tag, '{}'), COALESCE(t.lang, ''),
+		COALESCE(t.programming_lang, '{}')
+		FROM books b
+		LEFT JOIN tags t ON b.id = t.book_id
+		WHERE
+		LOWER(b.title) LIKE '%' || $1 || '%'
+		OR LOWER(b.description) LIKE '%' || $1 || '%'
+		ORDER BY b.id, b.download_count DESC
+		LIMIT 50;
+		`
+	} else {
+		// Нестрогий поиск (с триграммами)
+		sqlQuery = `
+		WITH ranked_books AS (
+			SELECT DISTINCT ON (b.id)
+			b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+			b.file_path, b.file_size, b.file_type,
+			b.added_by, b.added_at, b.download_count,
+			COALESCE(t.id, 0) as tag_id,
+			COALESCE(t.book_id, 0) as tag_book_id,
+			COALESCE(t.other_tag, '{}') as other_tag,
+			COALESCE(t.lang, '') as lang,
+			COALESCE(t.programming_lang, '{}') as programming_lang,
+			GREATEST(
+				CASE WHEN LOWER(b.title) LIKE '%' || $1 || '%' THEN 100 ELSE 0 END,
+				CASE WHEN LOWER(b.description) LIKE '%' || $1 || '%' THEN 50 ELSE 0 END,
+				CASE
+				WHEN word_similarity($1, LOWER(b.title)) > 0.35
+				THEN word_similarity($1, LOWER(b.title)) * 80
+				ELSE 0
+				END,
+				CASE
+				WHEN word_similarity($1, LOWER(b.description)) > 0.3
+				THEN word_similarity($1, LOWER(b.description)) * 40
+				ELSE 0
+				END
+				) as relevance
+				FROM books b
+				LEFT JOIN tags t ON b.id = t.book_id
+				WHERE
+				LOWER(b.title) LIKE '%' || $1 || '%'
+				OR LOWER(b.description) LIKE '%' || $1 || '%'
+				OR word_similarity($1, LOWER(b.title)) > 0.35
+				OR word_similarity($1, LOWER(b.description)) > 0.3
+				)
+				SELECT
+				id, title, authors, description, textSnippet, img,
+				file_path, file_size, file_type,
+				added_by, added_at, download_count,
+				tag_id, tag_book_id, other_tag, lang, programming_lang
+				FROM ranked_books
+				WHERE relevance >= 40
+				ORDER BY relevance DESC, download_count DESC
+				LIMIT 50;
+				`
+	}
 
 	rows, err := r.pool.Query(ctx, sqlQuery, query)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("search query failed: %w", err)
 	}
 	defer rows.Close()
 
@@ -316,25 +363,31 @@ func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query str
 
 	for rows.Next() {
 		var bt BookWithTags
-		// Временные переменные для сканирования NULL-полей тегов (чтобы Scan не упал)
-		var tID, tBookID *int
-		var tOtherTag, tProgLang []string
-		var tLang *string
 
 		err = rows.Scan(
-			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description,
+			&bt.B.TextSnippet, &bt.B.Img,
 			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
 			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
-			&tID, &tBookID, &tOtherTag, &tLang, &tProgLang,
+			&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
+			&bt.T.Lang, &bt.T.ProgrammingLang,
 		)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("scan error: %w", err)
 		}
-		// Можно заполнить bt.T если нужно, но здесь они пустые
+
 		books = append(books, bt)
 	}
 
-	return books, nil
+	return books, rows.Err()
+}
+
+func (r *BookRepository) InitSearchExtension(ctx context.Context) error {
+	_, err := r.pool.Exec(ctx, "CREATE EXTENSION IF NOT EXISTS pg_trgm")
+	if err != nil {
+		return fmt.Errorf("failed to create pg_trgm extension: %w", err)
+	}
+	return nil
 }
 
 // В будущем здесь будут другие методы:

@@ -1,0 +1,2919 @@
+//-go.sum-
+github.com/cenkalti/backoff/v4 v4.3.0 h1:MyRJ/UdXutAwSAT+s3wNd7MfTIcy71VQueUuFK343L8=
+github.com/cenkalti/backoff/v4 v4.3.0/go.mod h1:Y3VNntkOUPxTVeUxJ/G5vcM//AlwfmyYozVcomhLiZE=
+github.com/coder/websocket v1.8.14 h1:9L0p0iKiNOibykf283eHkKUHHrpG7f65OE3BhhO7v9g=
+github.com/coder/websocket v1.8.14/go.mod h1:NX3SzP+inril6yawo5CQXx8+fk145lPDC6pumgx0mVg=
+github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
+github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/dlclark/regexp2 v1.11.5 h1:Q/sSnsKerHeCkc/jSTNq1oCm7KiVgUMZRDUoRu0JQZQ=
+github.com/dlclark/regexp2 v1.11.5/go.mod h1:DHkYz0B9wPfa6wondMfaivmHpzrQ3v9q8cnmRbL6yW8=
+github.com/dustin/go-humanize v1.0.1 h1:GzkhY7T5VNhEkwH0PVJgjz+fX1rhBrR7pRT3mDkpeCY=
+github.com/dustin/go-humanize v1.0.1/go.mod h1:Mu1zIs6XwVuF/gI1OepvI0qD18qycQx+mFykh5fBlto=
+github.com/fatih/color v1.18.0 h1:S8gINlzdQ840/4pfAwic/ZE0djQEH3wM94VfqLTZcOM=
+github.com/fatih/color v1.18.0/go.mod h1:4FelSpRwEGDpQ12mAdzqdOukCy4u8WUtOY6lkT/6HfU=
+github.com/ghodss/yaml v1.0.0 h1:wQHKEahhL6wmXdzwWG11gIVCkOv05bNOh+Rxn0yngAk=
+github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
+github.com/go-faster/errors v0.7.1 h1:MkJTnDoEdi9pDabt1dpWf7AA8/BaSYZqibYyhZ20AYg=
+github.com/go-faster/errors v0.7.1/go.mod h1:5ySTjWFiphBs07IKuiL69nxdfd5+fzh1u7FPGZP2quo=
+github.com/go-faster/jx v1.1.0 h1:ZsW3wD+snOdmTDy9eIVgQdjUpXRRV4rqW8NS3t+20bg=
+github.com/go-faster/jx v1.1.0/go.mod h1:vKDNikrKoyUmpzaJ0OkIkRQClNHFX/nF3dnTJZb3skg=
+github.com/go-faster/xor v0.3.0/go.mod h1:x5CaDY9UKErKzqfRfFZdfu+OSTfoZny3w5Ak7UxcipQ=
+github.com/go-faster/xor v1.0.0 h1:2o8vTOgErSGHP3/7XwA5ib1FTtUsNtwCoLLBjl31X38=
+github.com/go-faster/xor v1.0.0/go.mod h1:x5CaDY9UKErKzqfRfFZdfu+OSTfoZny3w5Ak7UxcipQ=
+github.com/go-faster/yaml v0.4.6 h1:lOK/EhI04gCpPgPhgt0bChS6bvw7G3WwI8xxVe0sw9I=
+github.com/go-faster/yaml v0.4.6/go.mod h1:390dRIvV4zbnO7qC9FGo6YYutc+wyyUSHBgbXL52eXk=
+github.com/go-logr/logr v1.4.3 h1:CjnDlHq8ikf6E492q6eKboGOC0T8CDaOvkHCIg8idEI=
+github.com/go-logr/logr v1.4.3/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
+github.com/go-logr/stdr v1.2.2 h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=
+github.com/go-logr/stdr v1.2.2/go.mod h1:mMo/vtBO5dYbehREoey6XUKy/eSumjCCveDpRre4VKE=
+github.com/google/go-cmp v0.7.0 h1:wk8382ETsv4JYUZwIsn6YpYiWiBsYLSJiTsyBybVuN8=
+github.com/google/go-cmp v0.7.0/go.mod h1:pXiqmnSA92OHEEa9HXL2W4E7lf9JzCmGVUdgjX3N/iU=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/gotd/ige v0.2.2 h1:XQ9dJZwBfDnOGSTxKXBGP4gMud3Qku2ekScRjDWWfEk=
+github.com/gotd/ige v0.2.2/go.mod h1:tuCRb+Y5Y3eNTo3ypIfNpQ4MFjrnONiL2jN2AKZXmb0=
+github.com/gotd/neo v0.1.5 h1:oj0iQfMbGClP8xI59x7fE/uHoTJD7NZH9oV1WNuPukQ=
+github.com/gotd/neo v0.1.5/go.mod h1:9A2a4bn9zL6FADufBdt7tZt+WMhvZoc5gWXihOPoiBQ=
+github.com/gotd/td v0.132.0 h1:Iqm3S2b+8kDgA9237IDXRxj7sryUpvy+4Cr50/0tpx4=
+github.com/gotd/td v0.132.0/go.mod h1:4CDGYS+rDtOqotRheGaF9MS5g6jaUewvSXqBNJnx8SQ=
+github.com/jackc/pgpassfile v1.0.0 h1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=
+github.com/jackc/pgpassfile v1.0.0/go.mod h1:CEx0iS5ambNFdcRtxPj5JhEz+xB6uRky5eyVu/W2HEg=
+github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 h1:iCEnooe7UlwOQYpKFhBabPMi4aNAfoODPEFNiAnClxo=
+github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761/go.mod h1:5TJZWKEWniPve33vlWYSoGYefn3gLQRzjfDlhSJ9ZKM=
+github.com/jackc/pgx/v5 v5.7.6 h1:rWQc5FwZSPX58r1OQmkuaNicxdmExaEz5A2DO2hUuTk=
+github.com/jackc/pgx/v5 v5.7.6/go.mod h1:aruU7o91Tc2q2cFp5h4uP3f6ztExVpyVv88Xl/8Vl8M=
+github.com/jackc/puddle/v2 v2.2.2 h1:PR8nw+E/1w0GLuRFSmiioY6UooMp6KJv0/61nB7icHo=
+github.com/jackc/puddle/v2 v2.2.2/go.mod h1:vriiEXHvEE654aYKXXjOvZM39qJ0q+azkZFrfEOc3H4=
+github.com/klauspost/compress v1.18.0 h1:c/Cqfb0r+Yi+JtIEq73FWXVkRonBlf0CRNYc8Zttxdo=
+github.com/klauspost/compress v1.18.0/go.mod h1:2Pp+KzxcywXVXMr50+X0Q/Lsb43OQHYWRCY2AiWywWQ=
+github.com/kr/pretty v0.3.0 h1:WgNl7dwNpEZ6jJ9k1snq4pZsg7DOEN8hP9Xw0Tsjwk0=
+github.com/kr/pretty v0.3.0/go.mod h1:640gp4NfQd8pI5XOwp5fnNeVWj67G7CFk/SaSQn7NBk=
+github.com/kr/text v0.2.0 h1:5Nx0Ya0ZqY2ygV366QzturHI13Jq95ApcVaJBhpS+AY=
+github.com/kr/text v0.2.0/go.mod h1:eLer722TekiGuMkidMxC/pM04lWEeraHUUmBw8l2grE=
+github.com/mattn/go-colorable v0.1.14 h1:9A9LHSqF/7dyVVX6g0U9cwm9pG3kP9gSzcuIPHPsaIE=
+github.com/mattn/go-colorable v0.1.14/go.mod h1:6LmQG8QLFO4G5z1gPvYEzlUgJ2wF+stgPZH1UqBm1s8=
+github.com/mattn/go-isatty v0.0.20 h1:xfD0iDuEKnDkl03q4limB+vH+GxLEtL/jb4xVJSWWEY=
+github.com/mattn/go-isatty v0.0.20/go.mod h1:W+V8PltTTMOvKvAeJH7IuucS94S2C6jfK/D7dTCTo3Y=
+github.com/ogen-go/ogen v1.15.2 h1:Hy5XNcDgWur758Kf0+DTQFN8cyBOs58EjDD3NMqih54=
+github.com/ogen-go/ogen v1.15.2/go.mod h1:bS+BP2cV7+IGjOM24znBmh+PrpZvYFXA7o3BNF4Hj2E=
+github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
+github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/rogpeppe/go-internal v1.14.1 h1:UQB4HGPB6osV0SQTLymcB4TgvyWu6ZyliaW0tI/otEQ=
+github.com/rogpeppe/go-internal v1.14.1/go.mod h1:MaRKkUm5W0goXpeCfT7UZI6fk/L7L7so1lCWt35ZSgc=
+github.com/segmentio/asm v1.2.0 h1:9BQrFxC+YOHJlTlHGkTrFWf59nbL3XnCoFLTwDCI7ys=
+github.com/segmentio/asm v1.2.0/go.mod h1:BqMnlJP91P8d+4ibuonYZw9mfnzI9HfxselHZr5aAcs=
+github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
+github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=
+github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
+github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
+github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
+go.opentelemetry.io/auto/sdk v1.1.0 h1:cH53jehLUN6UFLY71z+NDOiNJqDdPRaXzTel0sJySYA=
+go.opentelemetry.io/auto/sdk v1.1.0/go.mod h1:3wSPjt5PWp2RhlCcmmOial7AvC4DQqZb7a7wCow3W8A=
+go.opentelemetry.io/otel v1.38.0 h1:RkfdswUDRimDg0m2Az18RKOsnI8UDzppJAtj01/Ymk8=
+go.opentelemetry.io/otel v1.38.0/go.mod h1:zcmtmQ1+YmQM9wrNsTGV/q/uyusom3P8RxwExxkZhjM=
+go.opentelemetry.io/otel/metric v1.38.0 h1:Kl6lzIYGAh5M159u9NgiRkmoMKjvbsKtYRwgfrA6WpA=
+go.opentelemetry.io/otel/metric v1.38.0/go.mod h1:kB5n/QoRM8YwmUahxvI3bO34eVtQf2i4utNVLr9gEmI=
+go.opentelemetry.io/otel/trace v1.38.0 h1:Fxk5bKrDZJUH+AMyyIXGcFAPah0oRcT+LuNtJrmcNLE=
+go.opentelemetry.io/otel/trace v1.38.0/go.mod h1:j1P9ivuFsTceSWe1oY+EeW3sc+Pp42sO++GHkg4wwhs=
+go.uber.org/atomic v1.11.0 h1:ZvwS0R+56ePWxUNi+Atn9dWONBPp/AUETXlHW0DxSjE=
+go.uber.org/atomic v1.11.0/go.mod h1:LUxbIzbOniOlMKjJjyPfpl4v+PKK2cNJn91OQbhoJI0=
+go.uber.org/goleak v1.3.0 h1:2K3zAYmnTNqV73imy9J1T3WC+gmCePx2hEGkimedGto=
+go.uber.org/goleak v1.3.0/go.mod h1:CoHD4mav9JJNrW/WLlf7HGZPjdw8EucARQHekz1X6bE=
+go.uber.org/multierr v1.11.0 h1:blXXJkSxSSfBVBlC76pxqeO+LN3aDfLQo+309xJstO0=
+go.uber.org/multierr v1.11.0/go.mod h1:20+QtiLqy0Nd6FdQB9TLXag12DsQkrbs3htMFfDN80Y=
+go.uber.org/zap v1.27.0 h1:aJMhYGrd5QSmlpLMr2MftRKl7t8J8PTZPA732ud/XR8=
+go.uber.org/zap v1.27.0/go.mod h1:GB2qFLM7cTU87MWRP2mPIjqfIDnGu+VIO4V/SdhGo2E=
+golang.org/x/crypto v0.43.0 h1:dduJYIi3A3KOfdGOHX8AVZ/jGiyPa3IbBozJ5kNuE04=
+golang.org/x/crypto v0.43.0/go.mod h1:BFbav4mRNlXJL4wNeejLpWxB7wMbc79PdRGhWKncxR0=
+golang.org/x/exp v0.0.0-20230725093048-515e97ebf090 h1:Di6/M8l0O2lCLc6VVRWhgCiApHV8MnQurBnFSHsQtNY=
+golang.org/x/exp v0.0.0-20230725093048-515e97ebf090/go.mod h1:FXUEEKJgO7OQYeo8N01OfiKP8RXMtf6e8aTskBGqWdc=
+golang.org/x/mod v0.29.0 h1:HV8lRxZC4l2cr3Zq1LvtOsi/ThTgWnUk/y64QSs8GwA=
+golang.org/x/mod v0.29.0/go.mod h1:NyhrlYXJ2H4eJiRy/WDBO6HMqZQ6q9nk4JzS3NuCK+w=
+golang.org/x/net v0.46.0 h1:giFlY12I07fugqwPuWJi68oOnpfqFnJIJzaIIm2JVV4=
+golang.org/x/net v0.46.0/go.mod h1:Q9BGdFy1y4nkUwiLvT5qtyhAnEHgnQ/zd8PfU6nc210=
+golang.org/x/sync v0.0.0-20201207232520-09787c993a3a/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+golang.org/x/sync v0.17.0 h1:l60nONMj9l5drqw6jlhIELNv9I0A4OFgRsG9k2oT9Ug=
+golang.org/x/sync v0.17.0/go.mod h1:9KTHXmSnoGruLpwFjVSX0lNNA75CykiMECbovNTZqGI=
+golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.37.0 h1:fdNQudmxPjkdUTPnLn5mdQv7Zwvbvpaxqs831goi9kQ=
+golang.org/x/sys v0.37.0/go.mod h1:OgkHotnGiDImocRcuBABYBEXf8A9a87e/uXjp9XT3ks=
+golang.org/x/text v0.30.0 h1:yznKA/E9zq54KzlzBEAWn1NXSQ8DIp/NYMy88xJjl4k=
+golang.org/x/text v0.30.0/go.mod h1:yDdHFIX9t+tORqspjENWgzaCVXgk0yYnYuSZ8UzzBVM=
+golang.org/x/tools v0.38.0 h1:Hx2Xv8hISq8Lm16jvBZ2VQf+RLmbd7wVUsALibYI/IQ=
+golang.org/x/tools v0.38.0/go.mod h1:yEsQ/d/YK8cjh0L6rZlY8tgtlKiBNTL14pGDJPJpYQs=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c h1:Hei/4ADfdWqJk1ZMxUNpqntNwaWcugrBjAiHlqqRiVk=
+gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c/go.mod h1:JHkPIbrfpd72SG/EVd6muEfDQjcINNoR0C8j2r3qZ4Q=
+gopkg.in/yaml.v2 v2.4.0 h1:D8xgwECY7CYvx+Y2n4sBz93Jn9JRvxdiyyo8CTfuKaY=
+gopkg.in/yaml.v2 v2.4.0/go.mod h1:RDklbk79AGWmwhnvt/jBztapEOGDOx6ZbXqjP6csGnQ=
+gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+nhooyr.io/websocket v1.8.17 h1:KEVeLJkUywCKVsnLIDlD/5gtayKp8VoCkksHCGGfT9Y=
+nhooyr.io/websocket v1.8.17/go.mod h1:rN9OFWIUwuxg4fR5tELlYC04bXYowCP9GX47ivo2l+c=
+rsc.io/qr v0.2.0 h1:6vBLea5/NRMVTz8V66gipeLycZMl/+UlFmk8DvqQ6WY=
+rsc.io/qr v0.2.0/go.mod h1:IF+uZjkb9fqyeF/4tlBoynqmQxUoPfWEKh921coOuXs=
+
+
+//-bookInfo/core.go-
+package bookinfo
+
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"net/url"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+
+	"HIGH_PR/gl"
+	"HIGH_PR/internal/logger"
+)
+
+type Result struct {
+	Title       string
+	Authors     []string
+	Description string
+	TextSnippet string
+	Lang        string
+	Img         string
+}
+
+type MinimalResponse struct {
+	Items []struct {
+		VolumeInfo struct {
+			Title       string   `json:"title"`
+			Authors     []string `json:"authors"`
+			Description string   `json:"description"`
+			Language    string   `json:"language"`
+			ImageLinks  struct {
+				Thumbnail      string `json:"thumbnail"`
+				SmallThumbnail string `json:"smallThumbnail"`
+			} `json:"imageLinks"`
+		} `json:"volumeInfo"`
+		SearchInfo struct {
+			TextSnippet string `json:"textSnippet"`
+		} `json:"searchInfo"`
+	} `json:"items"`
+}
+
+func SearchBooks(name string) (Result, error) {
+	name = strings.ReplaceAll(name, "_", " ")
+	query := fmt.Sprintf("intitle:\"%s\" ru subject:\"computers\"", name)
+
+	params := url.Values{}
+	params.Add("q", query)
+	params.Add("maxResults", "1")
+
+	apiURL := fmt.Sprintf("https://www.googleapis.com/books/v1/volumes?%s", params.Encode())
+	logger.Logger.Println("🤖🤖🤖 URL запроса к книге:", apiURL)
+
+	// Retry логика: 3 попытки с задержкой 5 секунд
+	const maxRetries = 3
+	const retryDelay = 5 * time.Second
+
+	var resp *http.Response
+	var err error
+
+	for attempt := 1; attempt <= maxRetries; attempt++ {
+		resp, err = http.Get(apiURL)
+
+		// Если запрос прошёл успешно
+		if err == nil {
+			// Проверяем статус код
+			if resp.StatusCode == http.StatusOK {
+				// Успешный ответ - выходим из цикла
+				break
+			}
+
+			// Если 503 - пробуем ретрай
+			if resp.StatusCode == http.StatusServiceUnavailable {
+				body, _ := io.ReadAll(resp.Body)
+				resp.Body.Close()
+
+				logger.Logger.Printf("Попытка %d/%d: Google API вернул 503: %s",
+					attempt, maxRetries, string(body))
+
+				// Если это не последняя попытка - делаем задержку
+				if attempt < maxRetries {
+					logger.Logger.Printf("Ожидание %v перед следующей попыткой...", retryDelay)
+					time.Sleep(retryDelay)
+					continue
+				}
+
+				// Последняя попытка провалилась
+				return Result{}, fmt.Errorf("Google API недоступен после %d попыток: статус 503", maxRetries)
+			}
+
+			// Другие ошибки HTTP (не 503) - возвращаем сразу
+			body, _ := io.ReadAll(resp.Body)
+			resp.Body.Close()
+			logger.Logger.Printf("Google API вернул статус %d: %s", resp.StatusCode, string(body))
+			return Result{}, fmt.Errorf("Google API вернул ошибку: статус %d", resp.StatusCode)
+		}
+
+		// Ошибка сетевого подключения
+		logger.Logger.Printf("Попытка %d/%d: ошибка HTTP запроса: %v", attempt, maxRetries, err)
+
+		if attempt < maxRetries {
+			logger.Logger.Printf("Ожидание %v перед следующей попыткой...", retryDelay)
+			time.Sleep(retryDelay)
+			continue
+		}
+
+		return Result{}, fmt.Errorf("ошибка HTTP запроса после %d попыток: %w", maxRetries, err)
+	}
+
+	// Проверяем, что у нас валидный ответ
+	if resp == nil || resp.StatusCode != http.StatusOK {
+		return Result{}, fmt.Errorf("не удалось получить данные после %d попыток", maxRetries)
+	}
+
+	defer resp.Body.Close()
+
+	var minResp MinimalResponse
+	if err := json.NewDecoder(resp.Body).Decode(&minResp); err != nil {
+		return Result{}, fmt.Errorf("ошибка декодирования JSON: %w", err)
+	}
+
+	if len(minResp.Items) == 0 {
+		return Result{}, fmt.Errorf("книга не найдена")
+	}
+
+	item := minResp.Items[0]
+
+	result := Result{
+		Title:       item.VolumeInfo.Title,
+		Authors:     item.VolumeInfo.Authors,
+		Description: item.VolumeInfo.Description,
+		TextSnippet: item.SearchInfo.TextSnippet,
+		Lang:        item.VolumeInfo.Language,
+	}
+
+	// Загружаем изображение
+	imgURL := item.VolumeInfo.ImageLinks.Thumbnail
+	if imgURL == "" {
+		imgURL = item.VolumeInfo.ImageLinks.SmallThumbnail
+	}
+	result.Img = imgURL
+
+	return result, nil
+}
+
+// DefaultSaveBook - константа для сохранения изображений + /img
+func DownloadImage(imgURL string) (string, error) {
+	imgURL = strings.Replace(imgURL, "zoom=1", "zoom=0", 1)
+	// Шаг 1: Скачиваем изображение
+	resp, err := http.Get(imgURL)
+	if err != nil {
+		return "", fmt.Errorf("ошибка при загрузке: %w", err)
+	}
+	defer resp.Body.Close()
+
+	// Шаг 2: Проверяем статус ответа
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("статус %d при загрузке изображения", resp.StatusCode)
+	}
+
+	// Шаг 4: Генерируем уникальное имя файла (используем timestamp)
+	filename := fmt.Sprintf("image_%d.jpg", time.Now().UnixNano())
+	filePath := filepath.Join(gl.DefaultSaveImage, filename)
+
+	// Шаг 5: Создаём файл для записи
+	file, err := os.Create(filePath)
+	if err != nil {
+		return "", fmt.Errorf("ошибка создания файла: %w", err)
+	}
+	defer file.Close()
+
+	// Шаг 6: Копируем данные из ответа в файл
+	_, err = io.Copy(file, resp.Body)
+	if err != nil {
+		return "", fmt.Errorf("ошибка записи файла: %w", err)
+	}
+
+	// Возвращаем полный путь к сохранённому файлу
+	return filePath, nil
+}
+
+
+//-bookInfo/tags.go-
+package bookinfo
+
+// CommonLanguages — карта распространенных языков программирования.
+// Ключ: алиас (в нижнем регистре), Значение: каноническое имя языка.
+var CommonLanguages = map[string]string{
+	// Backend / Systems
+	"go":     "Go",
+	"golang": "Go",
+	"rs":     "Rust",
+	"rust":   "Rust",
+	"java":   "Java",
+	"jvm":    "Java",
+	"kt":     "Kotlin",
+	"kotlin": "Kotlin",
+	"scala":  "Scala",
+	"c":      "C",
+	"cpp":    "C++",
+	"c++":    "C++",
+	"cs":     "C#",
+	"csharp": "C#",
+	"C#":     "C#",
+	"net":    ".NET",
+	"dotnet": ".NET",
+	"elixir": "Elixir",
+	"erlang": "Erlang",
+
+	// Scripting / Web
+	"py":         "Python",
+	"python":     "Python",
+	"rb":         "Ruby",
+	"ruby":       "Ruby",
+	"php":        "PHP",
+	"js":         "JavaScript",
+	"javascript": "JavaScript",
+	"ts":         "TypeScript",
+	"perl":       "Perl",
+	"lua":        "Lua",
+	"bash":       "Bash",
+	"sh":         "Bash",
+	"shell":      "Bash",
+
+	// Mobile
+	"swift": "Swift",
+	"dart":  "Dart",
+	"obj-c": "Objective-C",
+
+	// Data
+	"sql": "SQL",
+	"r":   "R",
+}
+
+// TopicTags — карта для определения категории (роли/сферы) по ключевому слову.
+// Сюда входят фреймворки, инструменты и понятия.
+// Ключ: алиас, Значение: канонический Тэг (Role/Category).
+var TopicTags = map[string]string{
+	// Frontend
+	"html":    "Frontend",
+	"css":     "Frontend",
+	"scss":    "Frontend",
+	"vue":     "Frontend",
+	"react":   "Frontend",
+	"angular": "Frontend",
+	"webpack": "Frontend",
+	"jquery":  "Frontend",
+	"wasm":    "Frontend",
+
+	// Backend
+	"spring":        "Backend",
+	"django":        "Backend",
+	"flask":         "Backend",
+	"fastapi":       "Backend",
+	"laravel":       "Backend",
+	"symfony":       "Backend",
+	"rails":         "Backend",
+	"node":          "Backend",
+	"nodejs":        "Backend",
+	"microservices": "Backend",
+	"api":           "Backend",
+	"grpc":          "Backend",
+
+	// Mobile
+	"ios":          "Mobile",
+	"android":      "Mobile",
+	"flutter":      "Mobile",
+	"react-native": "Mobile",
+	"swiftui":      "Mobile",
+
+	// DevOps / Cloud
+	"docker":     "DevOps",
+	"k8s":        "DevOps",
+	"kubernetes": "DevOps",
+	"terraform":  "DevOps",
+	"ansible":    "DevOps",
+	"jenkins":    "DevOps",
+	"gitlab":     "DevOps",
+	"aws":        "DevOps",
+	"linux":      "DevOps",
+	"nginx":      "DevOps",
+	"ci/cd":      "DevOps",
+
+	// Data / ML
+	"mongo":      "Data",
+	"redis":      "Data",
+	"postgres":   "Data",
+	"mysql":      "Data",
+	"kafka":      "Data",
+	"pandas":     "Data Science",
+	"numpy":      "Data Science",
+	"tensorflow": "Machine Learning",
+	"pytorch":    "Machine Learning",
+	"ml":         "Machine Learning",
+	"ai":         "AI",
+
+	// Architecture / CS
+	"algo":          "Computer Science",
+	"algorithms":    "Computer Science",
+	"patterns":      "Architecture",
+	"architecture":  "Architecture",
+	"system-design": "Architecture",
+	"distributed":   "Architecture",
+	"clean-code":    "Best Practices",
+	"refactoring":   "Best Practices",
+	"tdd":           "Testing",
+	"testing":       "Testing",
+
+	// Security
+	"security": "Security",
+	"hacking":  "Security",
+	"pentest":  "Security",
+	"crypto":   "Security",
+}
+
+// LanguageDefaultCategories — вспомогательная карта.
+// Если мы нашли Язык, но не нашли Тэг, мы можем присвоить дефолтный Тэг.
+var LanguageDefaultCategories = map[string]string{
+	"Go":         "Backend",
+	"Java":       "Backend",
+	"Kotlin":     "Mobile", // или Backend, зависит от контекста, но чаще сейчас Mobile
+	"C#":         "Backend",
+	"JavaScript": "Frontend",
+	"TypeScript": "Frontend",
+	"Python":     "Backend", // или Data Science, тут 50/50
+	"PHP":        "Backend",
+	"Swift":      "Mobile",
+	"Dart":       "Mobile",
+	"Rust":       "Backend",
+	"C++":        "System",
+	"C":          "System",
+	"SQL":        "Data",
+}
+
+
+//-bookInfo/parseTags.go-
+package bookinfo
+
+import (
+	"errors"
+	"strings"
+	"unicode"
+)
+
+// ParseMetadataFromTitle парсит заголовок и пытается извлечь Язык и Категорию.
+// Возвращает: (language, tag, error)
+func ParseMetadataFromInfo(title, description string) (string, string, error) {
+	titleLower := strings.ToLower(title)
+	descriptionLower := strings.ToLower(description)
+	var foundLang string
+	var foundTag string
+
+	// 1. Ищем Язык Программирования (проходим по карте CommonLanguages из tags.go)
+	for alias, langName := range CommonLanguages {
+		if containsWholeWord(titleLower, alias) && foundLang == "" {
+			foundLang = langName
+			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
+		}
+	}
+
+	// 2. Ищем Тэг/Тематику (проходим по карте TopicTags из tags.go)
+	for alias, tagName := range TopicTags {
+		if containsWholeWord(titleLower, alias) && foundTag == "" {
+			foundTag = tagName
+			break
+		}
+	}
+	//=============================
+	//===Далее поиск по описанию===
+	//=============================
+	for alias, tagName := range TopicTags {
+		if containsWholeWord(descriptionLower, alias) && foundTag == "" {
+			foundTag = tagName
+			break
+		}
+	}
+
+	for alias, langName := range CommonLanguages {
+		if containsWholeWord(descriptionLower, alias) && foundLang == "" {
+			foundLang = langName
+			break // Нашли язык - выходим. (Можно усложнить, если в названии 2 языка)
+		}
+	}
+	//===========================
+
+	// 3. Логика "Умного заполнения"
+	// Если нашли язык, но не нашли тэг — пытаемся подставить дефолтный для этого языка.
+	// Например: Нашли "Go", но нет тэгов типа "Microservices". Ставим "Backend".
+	if foundLang != "" && foundTag == "" {
+		if defaultTag, ok := LanguageDefaultCategories[foundLang]; ok {
+			foundTag = defaultTag
+		}
+	}
+
+	// Если вообще ничего не нашли
+	if foundLang == "" && foundTag == "" {
+		return "", "", errors.New("тэги не найдены")
+	}
+
+	return foundLang, foundTag, nil
+}
+
+// containsWholeWord ищет word в text, учитывая границы слов.
+// (Эта функция осталась без изменений, она отличная)
+func containsWholeWord(text, word string) bool {
+	startPos := 0
+	for {
+		// Ищем вхождение подстроки
+		idx := strings.Index(text[startPos:], word)
+		if idx == -1 {
+			return false
+		}
+
+		// Вычисляем реальный индекс и конец слова
+		realIdx := startPos + idx
+		endIdx := realIdx + len(word)
+
+		// Проверяем символ СЛЕВА
+		isLeftBoundary := realIdx == 0 || !isWordChar(rune(text[realIdx-1]))
+
+		// Проверяем символ СПРАВА
+		isRightBoundary := endIdx == len(text) || !isWordChar(rune(text[endIdx]))
+
+		// Если с обеих сторон границы — это целое слово!
+		if isLeftBoundary && isRightBoundary {
+			return true
+		}
+
+		// Если нашли часть слова (например "c" внутри "Apache"), ищем дальше
+		startPos = realIdx + 1
+	}
+}
+
+// isWordChar возвращает true, если символ — буква или цифра
+func isWordChar(r rune) bool {
+	return unicode.IsLetter(r) || unicode.IsDigit(r)
+}
+
+
+//-gl/glData.go-
+package gl
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+// Экспортируемые переменные (доступны из других пакетов через gl.AppID)
+var (
+	// main.go
+	AppID       string
+	AppHash     string
+	PostgreURL  string
+	SessionPath string
+
+	// bot.go
+	BotToken string
+
+	// core.go
+	DefaultSaveImage string
+
+	// handelrs.go
+	AdminID string
+	LogPath string
+
+	// fileOperation.go
+	DefaultSaveBook string
+)
+
+func init() {
+	// 1. Пытаемся найти .env
+	// Сначала ищем в текущей папке, если нет — пробуем на уровень выше
+	if err := loadEnv(".env"); err != nil {
+		// Если не нашли в текущей, пробуем в родительской (для удобства запуска из вложенных папок)
+		if err2 := loadEnv("../.env"); err2 != nil {
+			fmt.Printf("⚠️ Внимание: файл .env не найден (%v). Надеемся, что переменные заданы в системе.\n", err)
+			// Не делаем os.Exit(11), чтобы код мог работать в Docker, где файла .env может не быть физически
+		}
+	}
+
+	// 2. ВАЖНО! Присваиваем значения переменным пакета ПОСЛЕ загрузки файла
+	// Если этого не сделать, переменные gl.AppID останутся пустыми ""
+	AppID = os.Getenv("appID")
+	AppHash = os.Getenv("appHash")
+	PostgreURL = os.Getenv("postgreURL")
+	SessionPath = os.Getenv("sessionPath")
+
+	BotToken = os.Getenv("botToken")
+	DefaultSaveImage = os.Getenv("defaultSaveImage")
+	AdminID = os.Getenv("adminID")
+	LogPath = os.Getenv("logPath")
+	DefaultSaveBook = os.Getenv("defaultSaveBook")
+
+	// Можно добавить проверку критических переменных здесь
+	if AppID == "" {
+		fmt.Println("❌ Ошибка: AppID не задан!")
+		os.Exit(1)
+	}
+}
+
+func loadEnv(filename string) error {
+	file, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue
+		}
+		parts := strings.SplitN(line, "=", 2)
+		if len(parts) != 2 {
+			continue
+		}
+		key := strings.TrimSpace(parts[0])
+		value := strings.TrimSpace(parts[1])
+		value = strings.Trim(value, "\"'")
+
+		os.Setenv(key, value)
+	}
+	return scanner.Err()
+}
+
+
+//-internal/middleware/middleware.go-
+package middleware
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"time"
+
+	"github.com/gotd/td/bin"
+	"github.com/gotd/td/telegram"
+	"github.com/gotd/td/tg"
+)
+
+// LoggingMiddleware логирует все RPC-вызовы к Telegram API
+func LoggingMiddleware(logger *log.Logger) telegram.Middleware {
+	return telegram.MiddlewareFunc(func(next tg.Invoker) telegram.InvokeFunc {
+		return func(ctx context.Context, input bin.Encoder, output bin.Decoder) error {
+			start := time.Now()
+
+			// Получаем название метода
+			methodName := extractMethodName(input)
+
+			logger.Printf("→ Вызов метода: %s", methodName)
+
+			// Вызываем следующий обработчик в цепочке
+			err := next.Invoke(ctx, input, output)
+
+			duration := time.Since(start)
+
+			if err != nil {
+				logger.Printf("❌ Метод %s завершился с ошибкой за %v: %v",
+					methodName, duration, err)
+			} else {
+				logger.Printf("✅ Метод %s выполнен успешно за %v",
+					methodName, duration)
+			}
+
+			return err
+		}
+	})
+}
+
+// extractMethodName извлекает имя метода из запроса
+func extractMethodName(input bin.Encoder) string {
+	// Сначала пробуем TypeName (более читаемое имя)
+	if typed, ok := input.(interface{ TypeName() string }); ok {
+		return typed.TypeName()
+	}
+
+	// Если TypeName недоступен, используем TypeID
+	if typed, ok := input.(interface{ TypeID() uint32 }); ok {
+		return fmt.Sprintf("0x%x", typed.TypeID())
+	}
+
+	return "unknown"
+}
+
+
+//-internal/services/bookService.go-
+package services
+
+import (
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
+	"context"
+)
+
+// BookService содержит бизнес-логику для работы с книгами
+type BookService struct {
+	repo *booktags.BookRepository
+}
+
+// NewBookService создаёт новый сервис
+func NewBookService(repo *booktags.BookRepository) *BookService {
+	return &BookService{repo: repo}
+}
+
+// GetAllBooks возвращает все книги
+func (s *BookService) GetAllBooks(ctx context.Context) ([]booktags.BookWithTags, error) {
+	// Пока просто вызываем репозиторий
+	// В будущем здесь может быть кеширование, фильтрация и т.д.
+	return s.repo.GetAllBooks(ctx)
+}
+
+func (s *BookService) AddBook(ctx context.Context, bt booktags.BookWithTags) error {
+	// Валидация данных книги ( ПОЗЖЕ :) )
+
+	return s.repo.AddBook(ctx, bt)
+}
+
+func (s *BookService) BookWithID(ctx context.Context, id int) (booktags.BookWithTags, error) {
+	//WARNING
+	return s.repo.BookWithID(ctx, id)
+}
+
+func (s *BookService) GetFileBookWithID(ctx context.Context, id int) (string, error) {
+	return s.repo.GetFileBookWithID(ctx, id)
+}
+
+func (s *BookService) AddDownloadCountWithID(ctx context.Context, id int) error {
+	return s.repo.AddDownloadCountWithID(ctx, id)
+}
+
+func (s *BookService) ShowBooksWithTag(ctx context.Context, tag string) ([]booktags.BookWithTags, error) {
+	return s.repo.ShowBooksWithTag(ctx, tag)
+}
+
+func (s *BookService) SearchBooksWithTitleDesc(ctx context.Context, query string) ([]booktags.BookWithTags, error) {
+	return s.repo.SearchBooksWithTitleDesc(ctx, query)
+}
+
+
+//-internal/repository/postgres/daily/dailyStat.go-
+package daily
+
+import (
+	"HIGH_PR/internal/logger"
+	"context"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+// Создание таблицы хранящий статистику за день!
+func CreateTableStat(ctx context.Context, pool *pgxpool.Pool) error {
+	logger.Logger.Println("Создане таблицы статистики")
+	createTableQuery := `
+	CREATE TABLE IF NOT EXISTS daily_stats (
+
+		date DATE PRIMARY KEY -- Дата
+
+		unique_users_count INT DEFAULT 0 --Кол-во уникальных пользователей посетивших бота за указ дату
+
+		message_count INT DEFAULT 0 --Кол-во сообщений
+
+		)
+
+
+		-- Индекс для сортировки по дате (для графиков/отчетов)
+		CREATE INDEX IF NOT EXISTS idx_daily_stats_date ON daily_stats(date DESC);
+	`
+	_, err := pool.Exec(ctx, createTableQuery)
+	if err != nil {
+		logger.Logger.Println("Не удалось создать таблицы:", err)
+		return err
+	}
+
+	logger.Logger.Println("Таблицы успешно созданы/проверены")
+	return nil
+
+}
+
+
+//-internal/repository/postgres/coreDB.go-
+package postgres
+
+import (
+	"context"
+	"fmt"
+	"time"
+
+	"HIGH_PR/internal/logger"
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+// InitDB создаёт и настраивает connection pool
+func InitDB(databaseURL string) (*pgxpool.Pool, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	// Парсим конфиг
+	config, err := pgxpool.ParseConfig(databaseURL)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка парсинга конфига БД: %w", err)
+	}
+
+	// Настраиваем параметры pool
+	config.MaxConns = 25
+	config.MinConns = 5
+	config.MaxConnLifetime = time.Hour
+	config.MaxConnIdleTime = 15 * time.Minute
+
+	// Создаём pool
+	pool, err := pgxpool.NewWithConfig(ctx, config)
+	if err != nil {
+		return nil, fmt.Errorf("ошибка создания pool: %w", err)
+	}
+
+	// Проверяем соединение
+	if err := pool.Ping(ctx); err != nil {
+		pool.Close()
+		return nil, fmt.Errorf("ошибка подключения к БД: %w", err)
+	}
+
+	logger.Logger.Println("✓ Подключение к БД успешно установлено")
+	return pool, nil
+}
+
+// Setup инициализирует БД: создаёт pool и таблицы
+func Setup(databaseURL string) (*pgxpool.Pool, error) {
+	// 1. Создаём pool
+	pool, err := InitDB(databaseURL)
+	if err != nil {
+		return nil, err
+	}
+
+	// 2. Создаём таблицы
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	if err := booktags.CreateTables(ctx, pool); err != nil {
+		pool.Close()
+		return nil, err
+	}
+
+	return pool, nil
+}
+
+
+//-internal/repository/postgres/users/users.go-
+package users
+
+import (
+	"HIGH_PR/internal/logger"
+	"context"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+// Создание таблицы хранящий статистику за день!
+func CreateTableUsers(ctx context.Context, pool *pgxpool.Pool) error {
+	logger.Logger.Println("Создане таблицы статистики")
+	createTableQuery := `
+	CREATE TABLE IF NOT EXISTS daily_stats (
+
+		date DATE PRIMARY KEY -- Дата
+
+		unique_users_count INT DEFAULT 0 --Кол-во уникальных пользователей посетивших бота за указ дату
+
+		message_count INT DEFAULT 0 --Кол-во сообщений
+
+		)
+
+
+		-- Индекс для сортировки по дате (для графиков/отчетов)
+		CREATE INDEX IF NOT EXISTS idx_daily_stats_date ON daily_stats(date DESC);
+		`
+	_, err := pool.Exec(ctx, createTableQuery)
+	if err != nil {
+		logger.Logger.Println("Не удалось создать таблицы:", err)
+		return err
+	}
+
+	logger.Logger.Println("Таблицы успешно созданы/проверены")
+	return nil
+
+}
+
+
+//-internal/repository/postgres/bookTags/queryToDB.go-
+package booktags
+
+import (
+	"context"
+	"errors"
+	"fmt"
+
+	bookinfo "HIGH_PR/bookInfo"
+	"HIGH_PR/internal/logger"
+
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+// BookRepository инкапсулирует работу с книгами в БД
+type BookRepository struct {
+	pool *pgxpool.Pool
+}
+
+// NewBookRepository создаёт новый репозиторий
+func NewBookRepository(pool *pgxpool.Pool) *BookRepository {
+	return &BookRepository{pool: pool}
+}
+
+// GetAllBooks возвращает все книги с тегами
+func (r *BookRepository) GetAllBooks(ctx context.Context) ([]BookWithTags, error) {
+	logger.Logger.Println("Запрос для получения всех книг")
+
+	sqlQuery := `SELECT
+	b.id,
+	b.title,
+	b.authors,
+	b.description,
+	b.textSnippet,
+	b.img,
+	b.file_path,
+	b.file_size,
+	b.file_type,
+	b.added_by,
+	b.added_at,
+	b.download_count,
+	t.id,
+	t.book_id,
+	t.other_tag,
+	t.lang,
+	t.programming_lang
+	FROM books b
+	JOIN tags t ON b.id = t.book_id`
+
+	rows, err := r.pool.Query(ctx, sqlQuery)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var books []BookWithTags
+	for rows.Next() {
+		bt := BookWithTags{}
+		err = rows.Scan(
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+			&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
+			&bt.T.Lang, &bt.T.ProgrammingLang,
+		)
+		if err != nil {
+			return nil, err
+		}
+		books = append(books, bt)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return books, nil
+}
+
+func (r *BookRepository) AddBook(ctx context.Context, bt BookWithTags) error {
+	// Начинаем транзакцию
+	tx, err := r.pool.Begin(ctx)
+	if err != nil {
+		return fmt.Errorf("failed to begin transaction: %w", err)
+	}
+	defer tx.Rollback(ctx) // Откатываем если не закоммитим
+	// Проверка на наличие по (title)
+	var existingTitel string
+	checkQuery := `SELECT id FROM books WHERE title = $1 LIMIT 1`
+	err = tx.QueryRow(ctx, checkQuery, bt.B.Title).Scan(&existingTitel)
+	if err == nil {
+		return fmt.Errorf("Книга с таким именем уже есть!")
+	}
+	// Загрузка изображения
+	imgData, err := bookinfo.DownloadImage(bt.B.Img)
+	if err != nil {
+		logger.Logger.Printf("Не удалось загрузить обложку: %v", err)
+		return err
+	} else {
+		bt.B.Img = imgData
+	}
+	//===================================
+
+	// 1. Вставляем книгу
+	query := `
+	INSERT INTO books (title, authors, description, textSnippet, img, file_path, file_size, file_type, added_by, added_at, download_count)
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9,$10,$11)
+	RETURNING id`
+
+	var bookID int
+	err = tx.QueryRow(ctx, query,
+		bt.B.Title,
+		bt.B.Authors,
+		bt.B.Description,
+		bt.B.TextSnippet,
+		bt.B.Img,
+		bt.B.FilePath,
+		bt.B.FileSize,
+		bt.B.FileType,
+		bt.B.AddedBy,
+		bt.B.AddedAt,
+		bt.B.DownloadCount,
+	).Scan(&bookID)
+	if err != nil {
+		return fmt.Errorf("failed to insert book: %w", err)
+	}
+
+	// 2. Вставляем теги
+	tagQuery := `
+	INSERT INTO tags (book_id, other_tag, lang, programming_lang)
+	VALUES ($1, $2, $3, $4)`
+
+	_, err = tx.Exec(ctx, tagQuery,
+		bookID,
+		bt.T.OtherTag,
+		bt.T.Lang,
+		bt.T.ProgrammingLang,
+	)
+	if err != nil {
+		return fmt.Errorf("failed to insert tags: %w", err)
+	}
+
+	// Коммитим транзакцию
+	if err = tx.Commit(ctx); err != nil {
+		return fmt.Errorf("failed to commit transaction: %w", err)
+	}
+
+	return nil
+}
+
+func (r *BookRepository) BookWithID(ctx context.Context, id int) (BookWithTags, error) {
+	logger.Logger.Printf("Запрос на получение книги |ID=%d|\n", id)
+
+	sqlQuery := `
+	SELECT
+	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+	b.file_path, b.file_size, b.file_type,
+	b.added_by, b.added_at, b.download_count,
+	t.id, t.book_id, t.other_tag,
+	t.lang, t.programming_lang
+	FROM books b
+	JOIN tags t ON b.id = t.book_id
+	WHERE b.id = $1
+	LIMIT 1
+	`
+
+	var bt BookWithTags
+	err := r.pool.QueryRow(ctx, sqlQuery, id).Scan(
+		&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+		&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+		&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+		&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
+		&bt.T.Lang, &bt.T.ProgrammingLang,
+	)
+	if err != nil {
+		return BookWithTags{}, err
+	}
+
+	return bt, nil
+}
+
+func (r *BookRepository) GetFileBookWithID(ctx context.Context, id int) (string, error) {
+	// Логгер лучше использовать на уровне повыше (в usecase), но в учебных целях ок.
+	// logger.Logger.Println("Получаем путь к файлу книги по ID")
+
+	// Лучше писать запрос в одну строку или использовать константы,
+	// но такой формат тоже читаем.
+	const sqlQuery = `SELECT file_path FROM books WHERE id = $1`
+
+	var filePath string
+	err := r.pool.QueryRow(ctx, sqlQuery, id).Scan(&filePath)
+	if err != nil {
+		// Проверяем, что ошибка именно "ничего не найдено"
+		if errors.Is(err, pgx.ErrNoRows) {
+			// Можно вернуть спец. ошибку или пустую строку, зависит от логики
+			return "", fmt.Errorf("book with id %d not found: %w", id, pgx.ErrNoRows)
+		}
+		// Оборачиваем остальные ошибки для контекста
+		return "", fmt.Errorf("repository.GetFileBookWithID: %w", err)
+	}
+
+	return filePath, nil
+}
+
+func (r *BookRepository) AddDownloadCountWithID(ctx context.Context, id int) error {
+	sqlQuery := `
+	UPDATE books
+	SET download_count = download_count + 1
+	WHERE id = $1
+	`
+
+	// Выполняем запрос
+	commandTag, err := r.pool.Exec(ctx, sqlQuery, id)
+	if err != nil {
+		return fmt.Errorf("не удалось обновить счётчик: %w", err)
+	}
+
+	// Проверяем, что запись действительно обновилась
+	if commandTag.RowsAffected() == 0 {
+		return fmt.Errorf("книга с id=%d не найдена", id)
+	}
+
+	return nil
+}
+
+// ShowBooksWithTag ищет книги, где переданный тег встречается
+// либо в programming_lang, либо в other_tag.
+func (r *BookRepository) ShowBooksWithTag(ctx context.Context, tag string) ([]BookWithTags, error) {
+	// Мы ищем книги, где массив programming_lang СОДЕРЖИТ tag
+	// ИЛИ массив other_tag СОДЕРЖИТ tag.
+	// Используем оператор && (пересечение) и приводим наш одиночный тег к массиву ARRAY[$1].
+	sqlQuery := `
+	SELECT
+	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+	b.file_path, b.file_size, b.file_type,
+	b.added_by, b.added_at, b.download_count,
+	t.id, t.book_id, t.other_tag,
+	t.lang, t.programming_lang
+	FROM books b
+	JOIN tags t ON b.id = t.book_id
+	WHERE
+	t.programming_lang && ARRAY[$1]::varchar[]
+	OR
+	t.other_tag && ARRAY[$1]::varchar[]
+	`
+
+	// Передаем tag один раз, он подставится в $1
+	rows, err := r.pool.Query(ctx, sqlQuery, tag)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var books []BookWithTags
+
+	for rows.Next() {
+		var bt BookWithTags
+		// ВАЖНО: порядок переменных должен строго соответствовать SELECT
+		err = rows.Scan(
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+			&bt.T.ID, &bt.T.BookID, &bt.T.OtherTag,
+			&bt.T.Lang, &bt.T.ProgrammingLang,
+		)
+		if err != nil {
+			return nil, err
+		}
+		books = append(books, bt)
+	}
+
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return books, nil
+}
+
+func (r *BookRepository) SearchBooksWithTitleDesc(ctx context.Context, query string) ([]BookWithTags, error) {
+	// В функции инициализации репозитория или main.go
+	_, err := r.pool.Exec(ctx, "CREATE EXTENSION IF NOT EXISTS pg_trgm")
+	if err != nil {
+		// Логируем ошибку, но обычно прав доступа может не хватить
+		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
+	}
+
+	// 1. Настройка порога чувствительности для текущей транзакции/сессии
+	// 0.3-0.4 — хороший баланс. Чем выше число, тем строже поиск.
+	_, err = r.pool.Exec(ctx, "SET pg_trgm.word_similarity_threshold = 0.3")
+	if err != nil {
+		return nil, fmt.Errorf("failed to set similarity threshold: %w", err)
+	}
+
+	// 2. SQL запрос с ранжированием
+	sqlQuery := `
+	SELECT
+	b.id, b.title, b.authors, b.description, b.textSnippet, b.img,
+	b.file_path, b.file_size, b.file_type,
+	b.added_by, b.added_at, b.download_count,
+	NULL::int, NULL::int, NULL::varchar[], NULL::varchar, NULL::varchar[]
+	FROM books b
+	WHERE
+	($1::text <% b.title) OR ($1::text <% b.description)
+	ORDER BY
+	-- Здесь тоже лучше явно привести к text, хотя функции обычно умнее операторов
+	GREATEST(word_similarity($1::text, b.title), word_similarity($1::text, b.description) * 0.6) DESC
+	LIMIT 50;
+	`
+
+	rows, err := r.pool.Query(ctx, sqlQuery, query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var books []BookWithTags
+
+	for rows.Next() {
+		var bt BookWithTags
+		// Временные переменные для сканирования NULL-полей тегов (чтобы Scan не упал)
+		var tID, tBookID *int
+		var tOtherTag, tProgLang []string
+		var tLang *string
+
+		err = rows.Scan(
+			&bt.B.ID, &bt.B.Title, &bt.B.Authors, &bt.B.Description, &bt.B.TextSnippet, &bt.B.Img,
+			&bt.B.FilePath, &bt.B.FileSize, &bt.B.FileType,
+			&bt.B.AddedBy, &bt.B.AddedAt, &bt.B.DownloadCount,
+			&tID, &tBookID, &tOtherTag, &tLang, &tProgLang,
+		)
+		if err != nil {
+			return nil, err
+		}
+		// Можно заполнить bt.T если нужно, но здесь они пустые
+		books = append(books, bt)
+	}
+
+	return books, nil
+}
+
+// В будущем здесь будут другие методы:
+// func (r *BookRepository) GetByID(ctx context.Context, id int) (*Book, error) { ... }
+// func (r *BookRepository) Create(ctx context.Context, book *Book) (int, error) { ... }
+// func (r *BookRepository) Delete(ctx context.Context, id int) error { ... }
+
+
+//-internal/repository/postgres/bookTags/booksTags.go-
+package booktags
+
+import (
+	"context"
+
+	"HIGH_PR/internal/logger"
+
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+// CreateTables создаёт таблицы, если они не существуют
+func CreateTables(ctx context.Context, pool *pgxpool.Pool) error {
+	createTableQuery := `
+	CREATE TABLE IF NOT EXISTS books (
+		id SERIAL PRIMARY KEY,
+		title VARCHAR(255) NOT NULL,
+		authors VARCHAR(100)[],
+		description TEXT,
+		textsnippet TEXT,
+		img VARCHAR(500),
+		file_path VARCHAR(500),
+		file_size BIGINT,
+		file_type VARCHAR(10),
+		added_by VARCHAR(50),
+		added_at TIMESTAMP DEFAULT NOW(),
+		download_count INT DEFAULT 0
+		);
+
+		CREATE INDEX IF NOT EXISTS idx_books_title ON books(title);
+
+		CREATE TABLE IF NOT EXISTS tags (
+			id SERIAL PRIMARY KEY,
+			book_id INT NOT NULL REFERENCES books(id) ON DELETE CASCADE,
+			lang VARCHAR(20),
+			programming_lang VARCHAR(100)[],
+			other_tag VARCHAR(100)[],
+			UNIQUE(book_id)
+			);
+
+			CREATE INDEX IF NOT EXISTS idx_tags_book ON tags(book_id);
+			CREATE INDEX IF NOT EXISTS idx_tags_other ON tags USING GIN (other_tag);
+			CREATE INDEX IF NOT EXISTS idx_tags_programming_lang ON tags USING GIN (programming_lang);
+			CREATE INDEX IF NOT EXISTS idx_tags_lang ON tags(lang);
+			`
+
+	_, err := pool.Exec(ctx, createTableQuery)
+	if err != nil {
+		logger.Logger.Println("Не удалось создать таблицы:", err)
+		return err
+	}
+
+	logger.Logger.Println("Таблицы успешно созданы/проверены")
+	return nil
+}
+
+
+//-internal/repository/postgres/bookTags/struct.go-
+package booktags
+
+import "time"
+
+// Book представляет книгу из базы данных
+type Book struct {
+	ID int
+
+	Title string
+
+	Authors []string
+
+	Description string
+
+	TextSnippet string
+
+	Img string
+
+	FilePath string
+	FileSize int64 // Кол-во байт
+	FileType string
+
+	AddedBy string
+	AddedAt time.Time
+
+	DownloadCount int // Кол-во скачиваний
+}
+
+// Tag представляет тег из базы данных
+type Tag struct {
+	ID int
+
+	BookID int
+
+	OtherTag        []string
+	Lang            string
+	ProgrammingLang []string
+}
+
+// BookWithTags — удобная структура для получения книги со всеми тегами
+type BookWithTags struct {
+	B Book
+	T Tag
+}
+
+
+//-internal/logger/logger.go-
+package logger
+
+import (
+	"io"
+	"log"
+	"os"
+
+	"HIGH_PR/gl"
+)
+
+var (
+	// Logger - наш глобальный экземпляр логгера
+	Logger  *log.Logger
+	logFile *os.File // Переменная для хранения открытого файла
+)
+
+// SetupLogger инициализирует глобальный логгер
+func SetupLogger(isDevMode bool) {
+	var logOutput io.Writer
+	var err error
+
+	if isDevMode {
+		// В режиме разработки пишем в консоль
+		logOutput = os.Stdout
+	} else {
+		// В обычном режиме пишем в файл
+
+		logFile, err = os.OpenFile(gl.LogPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o666)
+		if err != nil {
+			log.Fatalf("Ошибка: не удалось открыть лог-файл: %v", err)
+		}
+		logOutput = logFile
+	}
+
+	// Создаем новый логгер
+	Logger = log.New(logOutput, "INFO: ", log.LstdFlags|log.Lshortfile)
+}
+
+// Close закрывает файл лога, если он был открыт.
+// Удобно вызывать через defer в main.
+func Close() {
+	if logFile != nil {
+		err := logFile.Close()
+		if err != nil {
+			// Можно использовать стандартный логгер для этой критической ошибки
+			log.Printf("Ошибка при закрытии лог-файла: %v\n", err)
+		}
+	}
+}
+
+
+//-internal/bot/bot.go-
+package bot
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"strings"
+	"sync"
+
+	"HIGH_PR/gl"
+	"HIGH_PR/internal/services"
+
+	"github.com/gotd/td/telegram"
+	"github.com/gotd/td/tg"
+)
+
+// Bot — основная структура нашего приложения.
+// Она содержит все необходимые зависимости для работы.
+type Bot struct {
+	// Внешние зависимости (передаются через New)
+	client *telegram.Client // MTProto клиент для взаимодействия с Telegram API
+	// bookService *services.BookService // Сервис для работы с книгами
+	logger *log.Logger // Наш кастомный логгер
+
+	// Внутреннее состояние
+	dispatcher tg.UpdateDispatcher
+
+	// Пул для работы с бд
+	bookService *services.BookService
+	mu          sync.Mutex
+}
+
+// WARNING
+func New(
+	client *telegram.Client,
+	logger *log.Logger,
+	dispatcher tg.UpdateDispatcher,
+	bookService *services.BookService,
+) *Bot {
+	// Создаем новый диспетчер обновлений
+
+	return &Bot{
+		client:      client,
+		logger:      logger,
+		dispatcher:  dispatcher,
+		bookService: bookService,
+	}
+}
+
+func (b *Bot) Start(ctx context.Context) error {
+	b.logger.Println("Регистрация обработчиков...")
+	b.registerHandlers()
+
+	return b.client.Run(ctx, func(ctx context.Context) error {
+		// ⭐ ПРАВИЛЬНЫЙ ВАРИАНТ: Проверяем статус авторизации
+		status, err := b.client.Auth().Status(ctx)
+		if err != nil {
+			return fmt.Errorf("проверка статуса: %w", err)
+		}
+
+		// Авторизуемся только если НЕ авторизованы
+		if !status.Authorized {
+			b.logger.Println("→ Выполняем авторизацию бота...")
+			if _, err := b.client.Auth().Bot(ctx, gl.BotToken); err != nil {
+				return fmt.Errorf("ошибка авторизации: %w", err)
+			}
+			b.logger.Println("✓ Авторизация успешна, сессия сохранена")
+		} else {
+			b.logger.Println("✓ Используем существующую сессию")
+		}
+
+		// Держим соединение открытым до отмены контекста
+		<-ctx.Done()
+		return ctx.Err()
+	})
+}
+
+func (b *Bot) registerHandlers() {
+	// Регистрируем обработчик для всех новых сообщений
+	b.dispatcher.OnNewMessage(func(ctx context.Context, e tg.Entities, update *tg.UpdateNewMessage) error {
+		// Передаем управление в наш основной маршрутизатор сообщений
+		b.handleMessage(ctx, e, update)
+		return nil
+	})
+	b.dispatcher.OnBotCallbackQuery(func(ctx context.Context, e tg.Entities, update *tg.UpdateBotCallbackQuery) error {
+		// Обработка нажатия на кнопку
+		return b.handleCallback(ctx, e, update)
+	})
+
+	// Здесь можно регистрировать и другие обработчики:
+	// b.dispatcher.OnBotCallbackQuery(...)
+	// b.dispatcher.OnInlineQuery(...)
+}
+
+// handleMessage — основной маршрутизатор для текстовых сообщений.
+func (b *Bot) handleMessage(ctx context.Context, e tg.Entities, update *tg.UpdateNewMessage) {
+	// Проверяем, что сообщение является текстовым
+	msg, ok := update.Message.(*tg.Message)
+	if !ok || msg.Out {
+		return // Игнорируем не-сообщения или исходящие
+	}
+
+	b.logger.Printf("Получено сообщение: %s", msg.Message)
+
+	text := msg.Message
+	// Простая маршрутизация по тексту сообщения (команде)
+	switch {
+	case text == "/start":
+		b.handleStart(ctx, e, msg)
+
+	case strings.HasPrefix(text, "/add"):
+		b.handleAddBook(ctx, e, msg, update)
+
+	case text == "/show":
+		b.handleShow(ctx, e, msg)
+
+	case strings.HasPrefix(text, "/show_"):
+		b.handleShowWithID(ctx, e, msg)
+
+	case strings.HasPrefix(text, "/WithName"):
+		b.handleShowWithName(ctx, e, msg)
+
+	case text == "/help":
+		b.handleHelp(ctx, e, msg)
+
+	case text == "/admin":
+		b.handleAdmin(ctx, e, msg)
+
+	case strings.HasPrefix(text, "/FindWT"):
+		b.handleTag(ctx, e, msg)
+	case strings.HasPrefix(text, "/download_"):
+		b.handleDownloadBook(ctx, e, msg)
+
+	case strings.HasPrefix(text, "/search"):
+		b.handleSearch(ctx, e, msg)
+	default:
+		// b.handleSearch(ctx, msg)
+	}
+}
+
+
+//-internal/bot/fileOperation.go-
+package bot
+
+import (
+	"bufio"
+	"context"
+	"fmt"
+	"os"
+	"path/filepath"
+	"strings"
+
+	"HIGH_PR/gl"
+
+	"github.com/gotd/td/telegram/downloader"
+	"github.com/gotd/td/telegram/message"
+	"github.com/gotd/td/telegram/message/styling"
+	"github.com/gotd/td/tg"
+)
+
+// Универскальная костыльная функция для отправки файла (без возможности добавить caption) (Но с возможностью указать аттрибуты файла такие как MIME и тп...)
+// WARNING
+func (b *Bot) SendFile(ctx context.Context, path string, sender *message.RequestBuilder) {
+	upload := sender.Upload(message.FromPath(path))
+	inputFile, err := upload.AsInputFile(ctx)
+	if err != nil {
+		b.logger.Printf("Ошибка создания (inputFile): %v", err)
+	}
+	_, err = sender.Media(ctx,
+		message.UploadedDocument(inputFile).
+			MIME("text/plain").
+			Filename("BOT_LOG.log"))
+	if err != nil {
+		b.logger.Printf("Ошибка отправки: %v", err)
+	}
+}
+
+func (b *Bot) SendLastLog(ctx context.Context, path string, sender *message.RequestBuilder) {
+	lastStrLog, err := ReadLastLinesAsString(path, 20)
+	if err != nil {
+		b.logger.Println("Ошибка чтения файла с логами!")
+	}
+	_, err = sender.StyledText(ctx, styling.Code(lastStrLog))
+	if err != nil {
+		b.logger.Println("Ошибка отпраки: ", err)
+	}
+}
+
+func ReadLastLinesAsString(path string, n int) (string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return "", err
+	}
+	defer file.Close()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+
+	// Читаем все строки
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		return "", err
+	}
+
+	// Берём последние N строк
+	if len(lines) > n {
+		lines = lines[len(lines)-n:]
+	}
+
+	// Объединяем в одну строку с переносами строк
+	return strings.Join(lines, "\n"), nil
+}
+
+func (b *Bot) DownloadFile(ctx context.Context, media *tg.MessageMediaDocument) error {
+	b.logger.Println("Запуск загрузки файла!")
+	doc, ok := media.Document.(*tg.Document)
+	if !ok {
+		return fmt.Errorf("не удалось получить документ")
+	}
+
+	// Шаг 2: Создать InputFileLocation для загрузки
+	location := &tg.InputDocumentFileLocation{
+		ID:            doc.ID,
+		AccessHash:    doc.AccessHash,
+		FileReference: doc.FileReference,
+		ThumbSize:     "", // пустая строка = основной файл (не превью)
+	}
+
+	// Шаг 3: Определить путь сохранения
+	filename := GetDocumentName(doc) // твоя функция
+	savePath := filepath.Join(gl.DefaultSaveBook, filename)
+
+	b.logger.Printf("📥 Загрузка: %s", filename)
+
+	// Шаг 4: Загрузить файл
+	_, err := downloader.NewDownloader().
+		Download(b.client.API(), location).
+		ToPath(ctx, savePath)
+	if err != nil {
+		return fmt.Errorf("ошибка загрузки: %w", err)
+	}
+
+	b.logger.Printf("✅ Файл сохранён: %s", savePath)
+	return nil
+}
+
+// Вспомогательная функция для получения имени документа
+func GetDocumentName(doc *tg.Document) string {
+	for _, attr := range doc.Attributes {
+		if fn, ok := attr.(*tg.DocumentAttributeFilename); ok {
+			return fn.FileName
+		}
+	}
+	return "document.pdf"
+}
+
+func DeleteType(name string) string {
+	res := strings.Replace(name, ".pdf", "", 1)
+	return res
+}
+
+// Простая и надёжная функция извлечения формата из имени файла
+func ExtractFileFormat(filename string) string {
+	// filepath.Ext возвращает расширение с точкой, например ".pdf"
+	ext := filepath.Ext(filename)
+
+	// Убираем точку и приводим к нижнему регистру
+	format := strings.ToLower(strings.TrimPrefix(ext, "."))
+
+	// Если расширения нет, возвращаем дефолтное значение
+	if format == "" {
+		return "unknown"
+	}
+
+	return format
+}
+
+
+//-internal/bot/handlers.go-
+package bot
+
+import (
+	"context"
+	"fmt"
+	"path/filepath"
+	"strconv"
+	"strings"
+	"time"
+
+	bookinfo "HIGH_PR/bookInfo"
+	"HIGH_PR/gl"
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
+
+	"github.com/gotd/td/telegram/message"
+	"github.com/gotd/td/tg"
+
+	"github.com/gotd/td/telegram/message/markup"
+	"github.com/gotd/td/telegram/message/peer"
+	"github.com/gotd/td/telegram/uploader" // для uploader.NewUploader
+	//"os"
+	//"time"
+)
+
+// Обработчик который делает запрос к бд и отдает все книги в формате (Название, Авторы, Описание, тэги)
+func (b *Bot) handleShow(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	b.logger.Printf("📨 /show от %s %s (@%s, ID:%d)",
+		user.FirstName, user.LastName, user.Username, user.ID)
+
+	if err != nil {
+		b.logger.Println(err)
+		return
+	}
+
+	// ВЫЗЫВАЕМ СЕРВИС (вместо прямого обращения к БД)
+	books, err := b.bookService.GetAllBooks(ctx)
+	if err != nil {
+		b.logger.Println("Ошибка получения книг:", err)
+		return
+	}
+	sender := message.NewSender(b.client.API()).To(peer)
+	if len(books) != 0 {
+
+		// Передаём готовые книги в функцию форматирования
+		err = b.ShowBooksMessage(ctx, sender, books)
+		if err != nil {
+			b.logger.Println(err)
+		}
+
+	} else {
+		sender.Text(ctx, "Книги не найдены!")
+	}
+}
+
+// ATTENTION
+func (b *Bot) handleShowWithID(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	messageText := strings.TrimSpace(msg.Message)
+	// Получение запроса в формате /show_1
+	idStr := messageText[6:] // начинаем с 6, чтобы пропустить "/show_"
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		b.logger.Printf("❌ Ошибка парсинга ID: %v", err)
+		// Отправить пользователю сообщение об ошибке
+		return
+	}
+
+	b.logger.Printf("📨 /show_%d от %s %s (@%s, ID:%d)",
+		id, user.FirstName, user.LastName, user.Username, user.ID)
+
+	book, err := b.bookService.BookWithID(ctx, id)
+	sender := message.NewSender(b.client.API()).To(peer)
+	if err != nil {
+		b.logger.Println("Ошибка при выполнения запроса к бд. ERR = ", err)
+		sender.Text(ctx, fmt.Sprintf("Ошибка выполнения запроса\nERR=%s", err))
+		return
+	}
+	err = ShowBookWithIDMessage(ctx, b.client, peer, book)
+	if err != nil {
+		b.logger.Println("Ошибка в ShowBookWithIDMessage. ERR = ", err)
+		sender.Text(ctx, fmt.Sprintf("ERR = %s", err))
+	}
+
+	b.logger.Println("Успешно отправлена инфа о книге ID =", id)
+}
+
+func (b *Bot) handleShowWithName(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+
+	b.logger.Printf("📨 /showWithName от %s %s (@%s, ID:%d)",
+		user.FirstName, user.LastName, user.Username, user.ID)
+	if err != nil {
+		b.logger.Println(err)
+		return
+	}
+	text := msg.Message
+	nameBook := strings.TrimPrefix(text, "/WithName")
+	nameBook = strings.TrimSpace(nameBook)
+	sender := message.NewSender(b.client.API()).To(peer)
+	if len(nameBook) != 0 {
+		res, err := bookinfo.SearchBooks(nameBook)
+		if err != nil {
+			b.logger.Println("Ошибка запроса к Google API Books: ", err)
+		}
+		if res.Title == "" {
+			b.logger.Println("Не найдено")
+			sender.Text(ctx, "Книга не найдена 🫠🫠🫠\nПроверте название 🍄🍄🍄")
+			return
+
+		}
+
+		b.logger.Println("!!! Запрос на получение книги: ", nameBook)
+
+		sender.Text(ctx, fmt.Sprintf("Название: %s\n\nАвторы: %v\n\nОписание: %s\n", res.Title, res.Authors, res.Description))
+	} else {
+		b.logger.Println("Не указано имя!")
+		sender.Text(ctx, "Укажите имя!")
+	}
+}
+
+// ATTENTION
+// Функция обрабатывающая команду которая отдает книгу для скичивания (в нее передаеться ID, (также сделаю кликабельный названия книг в команде show() который будут делать запрос со скачиванием и передавать ID))
+func (b *Bot) handleDownloadBook(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	// 1. Получаем информацию об отправителе
+	_, user, peer, err := getInfo(e, msg)
+	if err != nil {
+		b.logger.Println("Ошибка получения инфо:", err)
+		return
+	}
+
+	// 2. Парсим ID из сообщения
+	messageText := strings.TrimSpace(msg.Message)
+	// Ожидаем формат "/download_123"
+	if len(messageText) < 10 {
+		return
+	}
+	idStr := messageText[10:] // Отрезаем "/download_"
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		b.logger.Printf("❌ Ошибка парсинга ID: %v", err)
+		// Тут можно отправить sender.Text(ctx, "Неверный ID книги")
+		return
+	}
+
+	b.logger.Printf("📨 Запрос книги ID:%d от %s (ID:%d)", id, user.FirstName, user.ID)
+	err = b.bookService.AddDownloadCountWithID(ctx, id)
+	if err != nil {
+		b.logger.Println("Ошибка инкремента скачиваний: ", err)
+	}
+
+	// Инициализируем сендер
+	sender := message.NewSender(b.client.API()).To(peer)
+
+	// 3. Получаем путь к файлу (твоя логика)
+	filePath, err := b.bookService.GetFileBookWithID(ctx, id)
+	if err != nil {
+		b.logger.Println("Ошибка получения файла:", err)
+		sender.Text(ctx, "Извините, файл не найден.")
+		return
+	}
+
+	// 4. Загружаем файл в Telegram
+	// uploader.NewUploader разбивает файл на части и отправляет их
+	u := uploader.NewUploader(b.client.API())
+
+	b.logger.Println("Начинаю загрузку файла:", filePath)
+	inputFile, err := u.FromPath(ctx, filePath)
+	if err != nil {
+		b.logger.Println("Ошибка загрузки (upload):", err)
+		sender.Text(ctx, "Ошибка при загрузке файла.")
+		return
+	}
+
+	// 5. Подготавливаем InputMediaUploadedDocument [web:7][web:10]
+	// Это ключевой момент: конвертируем загруженный файл в медиа-объект
+	// Обязательно нужно указать имя файла через Attributes, иначе он придет как "file" без расширения
+	fileName := filepath.Base(filePath)
+
+	media := &tg.InputMediaUploadedDocument{
+		File:     inputFile,
+		MimeType: "application/pdf", // Желательно определять реально (например, "application/pdf")
+		Attributes: []tg.DocumentAttributeClass{
+			&tg.DocumentAttributeFilename{FileName: fileName}, // Чтобы у файла было имя
+		},
+		ForceFile: true, // Форсируем отправку именно как файл (документ)
+	}
+
+	// 6. Отправляем через метод Media(), а не Document()
+	// Document() ждет tg.InputDocument (существующий файл), а мы шлем tg.InputMedia (новый контент)
+	if _, err := sender.Media(ctx, message.Media(media)); err != nil {
+		b.logger.Println("Ошибка отправки медиа:", err)
+		sender.Text(ctx, fmt.Sprintf("Не удалось отправить файл: %s", err))
+		return
+	}
+
+	b.logger.Println("Файл успешно отправлен!")
+}
+
+// handleStart обрабатывает команду /start
+func (b *Bot) handleStart(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /start от %s %s (@%s, ID:%d)",
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
+
+	// 6. Отправляем ответ
+
+	// WARNING
+
+	// Задокументированный код снизу представляет работу с сырыми сообщениями (в данном примере предсавленна отправка текста и и отправка специального объекта для скрытия клавиатуры (не inline!))
+
+	// // Генерируем random ID (можно использовать time.Now().UnixNano())
+	// randomID := time.Now().UnixNano()
+	//
+	// // Отправляем сообщение с удалением клавиатуры
+	// _, err = b.client.API().MessagesSendMessage(ctx, &tg.MessagesSendMessageRequest{
+	// 	Peer:     peer,
+	// 	Message:  fmt.Sprintf("Привет, %s! 👋", user.FirstName),
+	// 					    RandomID: randomID,  // ВОТ ЭТО ОБЯЗАТЕЛЬНО!
+	// 					    ReplyMarkup: &tg.ReplyKeyboardHide{
+	// 						    Selective: false,
+	// 					    },
+	// })
+
+	_, err = b.client.API().MessagesSendMessage(ctx, &tg.MessagesSendMessageRequest{
+		Peer:     peer, // получатель
+		Message:  fmt.Sprintf("Привет, %s! 👋", user.FirstName),
+		RandomID: time.Now().UnixNano(), // всегда уникальный
+	})
+	u := uploader.NewUploader(b.client.API()).
+		WithPartSize(512 * 1024). // 512 KB (стандартный чанк)
+		WithThreads(4)
+
+	// 2. Указываем путь к файлу
+	// Важно: файл должен быть в формате .webp (для обычных стикеров)
+	filePath := "/home/magamed/Рабочий стол/MyPet/TG/HIGH_PR/sticker/hello.webp"
+
+	// 3. Загружаем файл на сервера Telegram
+	// FromPath сам откроет файл и загрузит его
+	upload, err := u.FromPath(ctx, filePath)
+	if err != nil {
+		b.logger.Println("Ошибка загрузки файла:", err)
+	}
+	sender := message.NewSender(b.client.API()).To(peer)
+	// 4. Отправляем загруженный файл именно как СТИКЕР
+	// Метод UploadedSticker берет уже загруженный файл и делает из него сообщение
+	_, err = sender.UploadedSticker(ctx, upload)
+	if err != nil {
+		b.logger.Println("Ошибка отправки стикера:", err)
+	}
+
+	if err != nil {
+		b.logger.Println("Ошибка отправки сообщения с эффектом:", err)
+	}
+}
+
+// handleHelp обрабатывает команду /help
+func (b *Bot) handleHelp(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /help от %s %s (@%s, ID:%d)",
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
+	sender := message.NewSender(b.client.API()).To(peer)
+	text := b.SendHelpMessage(ctx)
+	_, err = sender.StyledText(ctx, text...)
+	if err != nil {
+		b.logger.Println("Ошибка при отправке сообщения! ", err)
+	}
+}
+
+// handleAddBook обрабатывает команду /add
+func (b *Bot) handleAddBook(ctx context.Context, e tg.Entities, msg *tg.Message, update *tg.UpdateNewMessage) {
+	txt := strings.TrimSpace(msg.Message)
+	_, user, peer, err := getInfo(e, msg)
+	b.logger.Printf("📨 /add от %s %s (@%s, ID:%d)",
+		user.FirstName, user.LastName, user.Username, user.ID)
+	if err != nil {
+		b.logger.Println(err)
+		return
+	}
+	sender := message.NewSender(b.client.API()).To(peer)
+	media, ok := msg.Media.(*tg.MessageMediaDocument)
+	if !ok {
+		b.logger.Println("Команда /add без файла!")
+		_, err = sender.Text(ctx, "Введите комманду /add и прикрепите файл!")
+		if err != nil {
+			b.logger.Printf("Ошибка отправки: %v", err)
+		}
+		return
+	}
+	doc, ok := media.Document.(*tg.Document)
+	if !ok {
+		b.logger.Println("не удалось получить документ")
+	}
+
+	if txt == "/add" {
+		fullName := GetDocumentName(doc)
+		name := DeleteType(fullName)
+		info, err := bookinfo.SearchBooks(name)
+		fileType := ExtractFileFormat(fullName)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки информации о книге!")
+			sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
+			sender.Text(ctx, "Попробуйте ввести название книги в ручную! (/add Название книги...+файл)")
+			return
+		}
+		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title, info.Description)
+		if err != nil {
+			b.logger.Println("Ошибка парса тэга")
+		}
+
+		err = b.bookService.AddBook(ctx, booktags.BookWithTags{
+			B: booktags.Book{
+				Title:       info.Title,
+				Authors:     info.Authors,
+				Description: info.Description,
+				TextSnippet: info.TextSnippet,
+				FileSize:    doc.Size,
+				Img:         info.Img,
+				FileType:    fileType,
+				FilePath:    gl.DefaultSaveBook + "/" + fullName,
+				AddedBy:     user.Username,
+				AddedAt:     time.Now().Truncate(time.Second),
+			},
+			T: booktags.Tag{
+				Lang:            info.Lang,
+				ProgrammingLang: []string{langTag},
+				OtherTag:        []string{otherTag},
+			},
+		})
+		if err != nil {
+			b.logger.Println("Ошибка добавления книги в бд:", err)
+			sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
+			return
+		}
+
+		err = b.DownloadFile(ctx, media)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки файла: ", err)
+			_, err = sender.Text(ctx, fmt.Sprintf("Ошибка при загрузке файла!\nError: %s", err))
+			if err != nil {
+				b.logger.Printf("Ошибка отправки: %v", err)
+			}
+			return
+		}
+		_, err = sender.Text(ctx, "Файл успешно сохранен!")
+		if err != nil {
+			b.logger.Printf("Ошибка отправки: %v", err)
+		}
+
+	} else {
+		nameBook := strings.TrimPrefix(txt, "/add")
+
+		fullName := GetDocumentName(doc)
+		info, err := bookinfo.SearchBooks(nameBook)
+		fileType := ExtractFileFormat(fullName)
+
+		if err != nil {
+			b.logger.Println("Ошибка загрузки информации о книге!")
+			sender.Text(ctx, "Ошибка загрузки информации о книги из Google Book API")
+		}
+
+		langTag, otherTag, err := bookinfo.ParseMetadataFromInfo(info.Title, info.Description)
+		if err != nil {
+			b.logger.Println("Ошибка парса тэга")
+		}
+
+		err = b.bookService.AddBook(ctx, booktags.BookWithTags{
+			B: booktags.Book{
+				Title:       info.Title,
+				Authors:     info.Authors,
+				Description: info.Description,
+				TextSnippet: info.TextSnippet,
+				FileSize:    doc.Size,
+				Img:         info.Img,
+				FileType:    fileType,
+				FilePath:    gl.DefaultSaveBook + "/" + fullName,
+				AddedBy:     user.Username,
+				AddedAt:     time.Now().Truncate(time.Second),
+			},
+			T: booktags.Tag{
+				Lang:            info.Lang,
+				ProgrammingLang: []string{langTag},
+				OtherTag:        []string{otherTag},
+			},
+		})
+		if err != nil {
+			b.logger.Println("Ошибка добавления книги в бд:", err)
+			sender.Text(ctx, fmt.Sprintf("ERR=%s", err))
+			return
+		}
+
+		err = b.DownloadFile(ctx, media)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки файла: ", err)
+			_, err = sender.Text(ctx, fmt.Sprintf("Ошибка при загрузке файла!\nError: %s", err))
+			if err != nil {
+				b.logger.Printf("Ошибка отправки: %v", err)
+			}
+			return
+		}
+		_, err = sender.Text(ctx, fmt.Sprint("Файл успешно сохранен!"))
+		if err != nil {
+			b.logger.Printf("Ошибка отправки: %v", err)
+		}
+
+	}
+}
+
+func (b *Bot) handleAdmin(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /admin от %s %s (@%s, ID:%d)",
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
+
+	sender := message.NewSender(b.client.API()).To(peer)
+	adminID, _ := strconv.ParseInt(gl.AdminID, 10, 64)
+
+	if user.ID != adminID {
+		_, err = sender.Text(ctx, fmt.Sprintf("Привет, %s! 👋\nДоступ Запрещен!", user.Username))
+		if err != nil {
+			b.logger.Printf("Ошибка отправки: %v", err)
+		}
+	} else {
+		_, err := sender.
+			Markup(markup.InlineRow(
+				markup.Callback("All_Log", []byte("FileLog")),
+				markup.Callback("Last_Log", []byte("LastLog")),
+			)).
+			Text(ctx, fmt.Sprintf("Привет мой повелитель %s", user.Username))
+		if err != nil {
+			b.logger.Printf("Ошибка отправки: %v", err)
+		}
+		// Вызываем обработчик универсал
+
+	}
+}
+
+// WARNING
+// Функция для получение id, юзера и peer
+func getInfo(e tg.Entities, msg *tg.Message) (int64, *tg.User, tg.InputPeerClass, error) {
+	var userID int64
+	var user *tg.User
+	var ok bool
+
+	entities := peer.NewEntities(e.Users, e.Chats, e.Channels)
+
+	// 1. Сначала пробуем FromID (входящие сообщения)
+	if fromID, hasFromID := msg.GetFromID(); hasFromID {
+		if peerUser, isPeerUser := fromID.(*tg.PeerUser); isPeerUser {
+			userID = peerUser.UserID
+		}
+	}
+
+	// 2. Если FromID пустой, используем PeerID (для личных чатов)
+	if userID == 0 {
+		if peerID, ok := msg.PeerID.(*tg.PeerUser); ok {
+			userID = peerID.UserID
+		}
+	}
+
+	// 3. Если всё ещё не нашли, это групповой чат или ошибка
+	if userID == 0 {
+		return 0, nil, nil, fmt.Errorf("не удалось определить пользователя")
+	}
+
+	// 4. Получаем данные пользователя
+	user, ok = entities.User(userID)
+	if !ok {
+		return 0, nil, nil, fmt.Errorf("пользователь %d не найден в Entities", userID)
+	}
+
+	peer, err := entities.ExtractPeer(msg.PeerID)
+	if err != nil {
+		return 0, nil, nil, fmt.Errorf("ошибка ExtractPeer: %v", err)
+	}
+	return userID, user, peer, nil
+}
+
+func (b *Bot) handleTag(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /FindWT от %s %s (@%s, ID:%d)",
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
+
+	txt := strings.TrimPrefix(msg.Message, "/FindWT")
+	txt = strings.TrimSpace(txt)
+
+	books, err := b.bookService.ShowBooksWithTag(ctx, txt)
+	if err != nil {
+		b.logger.Println(err)
+	}
+	sender := message.NewSender(b.client.API()).To(peer)
+	if len(books) != 0 {
+
+		// Передаём готовые книги в функцию форматирования
+		err = b.ShowBooksMessage(ctx, sender, books)
+		if err != nil {
+			b.logger.Println(err)
+		}
+
+	} else {
+		sender.Text(ctx, "Книги не найдены!")
+	}
+}
+
+func (b *Bot) handleSearch(ctx context.Context, e tg.Entities, msg *tg.Message) {
+	_, user, peer, err := getInfo(e, msg)
+	if err != nil {
+		b.logger.Println(err)
+	}
+
+	b.logger.Printf("📨 /search от %s %s (@%s, ID:%d)",
+		user.FirstName,
+		user.LastName,
+		user.Username,
+		user.ID)
+
+	txt := strings.TrimPrefix(msg.Message, "/search")
+	txt = strings.TrimSpace(txt)
+	sender := message.NewSender(b.client.API()).To(peer)
+	if txt == "" {
+		sender.Text(ctx, "Введите текст!")
+		return
+	}
+	books, err := b.bookService.SearchBooksWithTitleDesc(ctx, txt)
+	if err != nil {
+		b.logger.Println("Search Error:", err)
+		// ... сообщение об ошибке ...
+		return
+	}
+	if len(books) != 0 {
+
+		// Передаём готовые книги в функцию форматирования
+		err = b.ShowBooksMessage(ctx, sender, books)
+		if err != nil {
+			b.logger.Println(err)
+		}
+	} else {
+		sender.Text(ctx, "Книги не найдены!")
+	}
+}
+
+
+//-internal/bot/editMessage.go-
+// Этот файл предназначен для красивого офрмеления сообщений! (если это не простое короткое сообщение тогда оно формируется в данном файле!)
+package bot
+
+import (
+	"context"
+	"fmt"
+	"strings"
+	"time"
+
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
+
+	"github.com/gotd/td/telegram/message/markup"
+
+	"github.com/dustin/go-humanize"
+	"github.com/gotd/td/telegram"
+	"github.com/gotd/td/telegram/message"
+	"github.com/gotd/td/telegram/message/entity"
+	"github.com/gotd/td/telegram/message/styling"
+	"github.com/gotd/td/telegram/uploader"
+	"github.com/gotd/td/tg"
+)
+
+// buildBookPage собирает текст и кнопки для конкретной страницы
+func (b *Bot) buildBookPage(books []booktags.BookWithTags, page int) ([]styling.StyledTextOption, tg.ReplyMarkupClass) {
+	const booksPerPage = 3
+	totalBooks := len(books)
+
+	// 1. Считаем границы
+	totalPages := (totalBooks + booksPerPage - 1) / booksPerPage
+	if page < 0 {
+		page = 0
+	}
+	if page >= totalPages {
+		page = totalPages - 1
+	}
+
+	start := page * booksPerPage
+	end := start + booksPerPage
+	if end > totalBooks {
+		end = totalBooks
+	}
+
+	// 2. Строим текст (тут твой код оформления)
+	var text []styling.StyledTextOption
+	text = append(text, styling.Plain(fmt.Sprintf("📖 Книги (Стр. %d/%d)\n\n", page+1, totalPages)))
+
+	for i := start; i < end; i++ {
+		var authors string
+		if len(books[i].B.Authors) > 2 {
+			authors = books[i].B.Authors[0] + ", " + books[i].B.Authors[1] + " ..."
+		} else {
+			authors = strings.Join(books[i].B.Authors, ", ")
+		}
+
+		text = append(text,
+			styling.Bold("📚 Название: "),
+			styling.Plain(books[i].B.Title+"\n\n"),
+
+			styling.Bold("👨‍💼 Авторы: "),
+			styling.Plain(authors+"\n\n"),
+
+			styling.Bold("📝 Описание:\n"),
+			styling.Italic("    "+books[i].B.TextSnippet+"\n\n"),
+
+			styling.Custom(func(eb *entity.Builder) error {
+				eb.Format("🔗 Скачать:", entity.Bold())
+				return nil
+			}),
+			styling.Plain(fmt.Sprintf(" /download_%d\n", books[i].B.ID)),
+
+			styling.Custom(func(eb *entity.Builder) error {
+				eb.Format("🔎 Подробнее:", entity.Bold())
+				return nil
+			}),
+			styling.Plain(fmt.Sprintf(" /show_%d\n", books[i].B.ID)),
+
+			styling.Plain("\n"),
+			styling.Plain("━━━━━━━━━━"),
+			styling.Plain("\n\n"),
+		)
+	}
+
+	// 3. Строим кнопки. ВНИМАНИЕ: мы сразу пишем номер НУЖНОЙ страницы
+	var rows []tg.KeyboardButtonClass
+
+	// Если не первая страница -> кнопка "Назад" ведет на (page - 1)
+	if page > 0 {
+		rows = append(rows, markup.Callback("⬅️ Назад", []byte(fmt.Sprintf("page:%d", page-1))))
+	}
+
+	// Если не последняя страница -> кнопка "Вперед" ведет на (page + 1)
+	if page < totalPages-1 {
+		rows = append(rows, markup.Callback("Вперед ➡️", []byte(fmt.Sprintf("page:%d", page+1))))
+	}
+	if len(rows) == 0 {
+		return text, nil
+	}
+
+	return text, markup.InlineRow(rows...)
+}
+
+// БЫЛО: func ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, pool *pgxpool.Pool)
+// СТАЛО:
+func (b *Bot) ShowBooksMessage(ctx context.Context, msg *message.RequestBuilder, books []booktags.BookWithTags) error {
+	// Показываем самую первую страницу (0)
+	text, keyboard := b.buildBookPage(books, 0)
+
+	_, err := msg.Markup(keyboard).StyledText(ctx, text...)
+	return err
+}
+
+func calculatePageCount(totalBooks, booksPerPage int) int {
+	return (totalBooks + booksPerPage - 1) / booksPerPage
+}
+
+func formatAuthors(authors []string) string {
+	return strings.Join(authors, ", ")
+}
+
+func ShowBookWithIDMessage(ctx context.Context, client *telegram.Client, peer tg.InputPeerClass, book booktags.BookWithTags) error {
+	// 1. Инициализируем Uploader
+	uploader := uploader.NewUploader(client.API())
+	inpF, err := uploader.FromPath(ctx, book.B.Img)
+	if err != nil {
+		return fmt.Errorf("upload error: %w", err)
+	}
+
+	// 2. Подготовка переменных
+	randomID := time.Now().UnixNano()
+	media := &tg.InputMediaUploadedPhoto{File: inpF}
+	fileSize := humanize.Bytes(uint64(book.B.FileSize))
+	addedAt := book.B.AddedAt.Format("02.01.2006 15:04")
+
+	// Обрезаем описание заранее
+	desc := book.B.Description
+	// Преобразуем строку в срез рун (символов)
+	descRunes := []rune(desc)
+
+	// Проверяем длину именно в символах
+	if len(descRunes) > 600 {
+		// Безопасно обрезаем по символам и собираем обратно в строку
+		desc = string(descRunes[:597]) + "..."
+	}
+
+	// 3. ИСПОЛЬЗУЕМ entity.Builder ВМЕСТО styling
+	// Builder сам посчитает все смещения (offsets/lengths)
+	// ЯП
+	var langProg string
+	if book.T.ProgrammingLang[0] == "" {
+		langProg = "-"
+	} else {
+		langProg = book.T.ProgrammingLang[0]
+	}
+
+	// Язык книги
+	langMap := map[string]string{
+		"ru": "🇷🇺 Русский",
+		"en": "🇬🇧 Английский",
+		// добавь другие по необходимости
+	}
+
+	var b entity.Builder
+
+	b.Bold("📚 Название: ")
+	b.Plain(book.B.Title + "\n\n")
+
+	b.Bold("👨‍💼 Авторы: ")
+	b.Plain(formatAuthors(book.B.Authors) + "\n\n")
+
+	b.Bold("📝 Описание:\n")
+	b.Italic("    " + desc + "\n\n")
+
+	b.Bold("💾 Размер файла: ")
+	b.Plain(fileSize + "\n")
+
+	b.Bold("🗂 Тип файла: ")
+	b.Plain(book.B.FileType + "\n")
+
+	b.Bold("📅 Добавлено: ")
+	b.Plain(addedAt + "\n")
+
+	b.Bold("⬇️ Скачиваний: ")
+	b.Plain(fmt.Sprintf("%d\n", book.B.DownloadCount))
+
+	b.Bold("🌐 Язык: ")
+	b.Plain(langMap[book.T.Lang] + "\n")
+
+	b.Bold("💻 ЯП: ")
+	b.Plain(langProg + "\n")
+
+	b.Bold("🏷️ Категория: ")
+	b.Plain(book.T.OtherTag[0] + "\n")
+
+	// 4. Генерируем готовый текст и entities
+	captionText, entities := b.Complete()
+
+	keyboard := markup.InlineRow(markup.Callback("Скачать", []byte(fmt.Sprintf("download:%d", book.B.ID))))
+
+	// 5. Отправляем
+	_, err = client.API().MessagesSendMedia(ctx, &tg.MessagesSendMediaRequest{
+		Peer:        peer,
+		Message:     captionText,
+		RandomID:    randomID,
+		Media:       media,
+		Entities:    entities, // Теперь тип совпадает ([]tg.MessageEntityClass)
+		ReplyMarkup: keyboard,
+	})
+
+	return err
+}
+
+// SendHelpMessage отправляет красиво оформленное сообщение с помощью
+func (b *Bot) SendHelpMessage(ctx context.Context) []styling.StyledTextOption {
+	// Мы используем styling.Plain, styling.Bold, styling.Code и styling.Italic
+	// чтобы собрать сообщение как конструктор.
+	var text []styling.StyledTextOption
+	text = append(text,
+		// Заголовок
+		styling.Bold("🤖 Добро пожаловать! Вот что я умею:\n\n"),
+
+		// --- Основные команды ---
+		styling.Plain("🚀 "),
+		styling.Plain("/start"),
+		styling.Plain(" — Начать работу с ботом.\n\n"),
+
+		styling.Plain("📚 "),
+		styling.Plain("/show"),
+		styling.Plain(" — Показать список всех доступных книг.\n\n"),
+
+		// --- Работа с конкретной книгой ---
+		styling.Plain("🔍 "),
+		styling.Code("/show_num"),
+		styling.Plain(" — Показать подробную информацию о книге по её ID.\n"),
+		styling.Italic("Пример: /show_1\n\n"),
+
+		styling.Plain("⬇️ "),
+		styling.Code("/download_num"),
+		styling.Plain(" — Скачать файл книги по её ID.\n"),
+		styling.Italic("Пример: /download_2\n\n"),
+
+		// --- Добавление книг ---
+		styling.Bold("📥 Добавление книг:\n"),
+		styling.Plain("Просто отправь мне файл с командой в подписи:\n\n"),
+
+		styling.Plain("1️⃣ "),
+		styling.Code("/add"),
+		styling.Plain(" — Автоматическое добавление.\n"),
+		styling.Italic("(прикрепите файл книги к этому сообщению)\n\n"),
+
+		styling.Plain("2️⃣ "),
+		styling.Code("/add <Название>"),
+		styling.Plain(" — Добавление с указанием названия вручную.\n"),
+		styling.Italic("Используй, если автоматика ошиблась.\n"),
+		styling.Italic("(прикрепите файл книги к этому сообщению)"),
+	)
+	return text
+}
+
+
+//-internal/bot/buttonHandlers.go-
+package bot
+
+import (
+	"context"
+	"fmt"
+	"path/filepath"
+	"strconv"
+	"strings"
+
+	"HIGH_PR/gl"
+
+	"github.com/gotd/td/telegram/message"
+	"github.com/gotd/td/telegram/uploader"
+	"github.com/gotd/td/tg"
+)
+
+func (b *Bot) handleCallback(
+	ctx context.Context,
+	e tg.Entities,
+	update *tg.UpdateBotCallbackQuery,
+) error {
+	data := string(update.Data)
+	switch {
+	case strings.HasPrefix(data, "page:"):
+		pageStr := strings.TrimPrefix(data, "page:")
+		targetPage, _ := strconv.Atoi(pageStr)
+
+		// 1. Получаем книги
+		books, err := b.bookService.GetAllBooks(ctx)
+		if err != nil {
+			_ = b.answerCallback(ctx, update.QueryID, "Ошибка получения данных")
+			return err
+		}
+
+		// 2. Собираем текст и клаву
+		newText, newKeyboard := b.buildBookPage(books, targetPage)
+
+		// 3. Собираем InputPeer "вручную"
+		var inputPeer tg.InputPeerClass
+
+		switch p := update.Peer.(type) {
+		case *tg.PeerUser:
+			user, ok := e.Users[p.UserID]
+			if !ok {
+				return nil
+			}
+			inputPeer = &tg.InputPeerUser{
+				UserID:     user.ID,
+				AccessHash: user.AccessHash,
+			}
+		case *tg.PeerChat:
+			inputPeer = &tg.InputPeerChat{
+				ChatID: p.ChatID,
+			}
+		case *tg.PeerChannel:
+			ch, ok := e.Channels[p.ChannelID]
+			if !ok {
+				return nil
+			}
+			inputPeer = &tg.InputPeerChannel{
+				ChannelID:  ch.ID,
+				AccessHash: ch.AccessHash,
+			}
+		}
+
+		if inputPeer == nil {
+			return nil
+		}
+
+		// 4. РЕДАКТИРУЕМ сообщение
+		sender := message.NewSender(b.client.API())
+
+		_, err = sender.
+			To(inputPeer).              // -> *message.RequestBuilder (Builder)
+			Markup(newKeyboard).        // Markup есть ТОЛЬКО тут [web:1]
+			Edit(update.MsgID).         // -> *EditMessageBuilder
+			StyledText(ctx, newText...) // редактируем текст и сущности [web:1][web:21]
+
+		// 5. Убираем "часики"
+		_ = b.answerCallback(ctx, update.QueryID, "")
+
+		return err
+
+	case data == "FileLog":
+
+		sender := message.NewSender(b.client.API()).Peer(e, update)
+		if err := b.handleButtonAllLog(ctx, sender); err != nil {
+			return err
+		}
+	case data == "LastLog":
+
+		sender := message.NewSender(b.client.API()).Peer(e, update)
+		if err := b.handleLastLog(ctx, sender); err != nil {
+			return err
+		}
+
+	case strings.HasPrefix(data, "download:"):
+		sender := message.NewSender(b.client.API()).Peer(e, update)
+		bookid := strings.TrimPrefix(data, "download:")
+		id, _ := strconv.Atoi(bookid)
+		filePath, err := b.bookService.GetFileBookWithID(ctx, id)
+		if err != nil {
+			b.logger.Println("Ошибка получения файла:", err)
+			sender.Text(ctx, "Извините, файл не найден.")
+			return err
+		}
+
+		// 4. Загружаем файл в Telegram
+		// uploader.NewUploader разбивает файл на части и отправляет их
+		u := uploader.NewUploader(b.client.API())
+
+		b.logger.Println("Начинаю загрузку файла:", filePath)
+		inputFile, err := u.FromPath(ctx, filePath)
+		if err != nil {
+			b.logger.Println("Ошибка загрузки (upload):", err)
+			sender.Text(ctx, "Ошибка при загрузке файла.")
+			return err
+		}
+
+		// 5. Подготавливаем InputMediaUploadedDocument [web:7][web:10]
+		// Это ключевой момент: конвертируем загруженный файл в медиа-объект
+		// Обязательно нужно указать имя файла через Attributes, иначе он придет как "file" без расширения
+		fileName := filepath.Base(filePath)
+
+		media := &tg.InputMediaUploadedDocument{
+			File:     inputFile,
+			MimeType: "application/pdf", // Желательно определять реально (например, "application/pdf")
+			Attributes: []tg.DocumentAttributeClass{
+				&tg.DocumentAttributeFilename{FileName: fileName}, // Чтобы у файла было имя
+			},
+			ForceFile: true, // Форсируем отправку именно как файл (документ)
+		}
+
+		// 6. Отправляем через метод Media(), а не Document()
+		// Document() ждет tg.InputDocument (существующий файл), а мы шлем tg.InputMedia (новый контент)
+		if _, err := sender.Media(ctx, message.Media(media)); err != nil {
+			b.logger.Println("Ошибка отправки медиа:", err)
+			sender.Text(ctx, fmt.Sprintf("Не удалось отправить файл: %s", err))
+			return err
+		}
+		err = b.bookService.AddDownloadCountWithID(ctx, id)
+		if err != nil {
+			b.logger.Println("Ошибка прибавления кол-во скачиваний ERR= ", err)
+		}
+
+		b.logger.Println("Файл успешно отправлен!")
+
+	default:
+		b.logger.Printf("Неизвестная кнопка: %s", string(data))
+	}
+	return b.answerCallback(ctx, update.QueryID, "Кнопка обработана!")
+}
+
+func (b *Bot) answerCallback(ctx context.Context, queryID int64, text string) error {
+	_, err := b.client.API().MessagesSetBotCallbackAnswer(ctx, &tg.MessagesSetBotCallbackAnswerRequest{
+		QueryID:   queryID,
+		Message:   text,
+		Alert:     false,
+		CacheTime: 0,
+	})
+	return err
+}
+
+func (b *Bot) handleButtonAllLog(ctx context.Context, sender *message.RequestBuilder) error {
+	b.SendFile(ctx, gl.LogPath, sender)
+	return nil
+}
+
+func (b *Bot) handleLastLog(ctx context.Context, sender *message.RequestBuilder) error {
+	// Твоя логика для кнопки "yes"
+	b.SendLastLog(ctx, gl.LogPath, sender)
+	return nil
+}
+
+
+//-docker-compose.yml-
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devuser -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  bot:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # --- ИСПОЛЬЗУЕМ ИМЕНОВАННЫЕ ТОМА ---
+      # Docker сам создаст эти "виртуальные диски" и будет хранить их где-то у себя внутри.
+      # Данные не пропадут при рестарте контейнера.
+      - bot_books:/app/books
+      - bot_img:/app/img
+      - bot_logs:/app/log
+      - bot_config:/app/configs
+
+# --- ОБЯЗАТЕЛЬНО ОБЪЯВЛЯЕМ ИХ ВНИЗУ ---
+volumes:
+  pg_data:      # Твоя база
+  bot_books:    # Хранилище книг
+  bot_img:      # Хранилище картинок
+  bot_logs:     # Хранилище логов
+  bot_config:   # Хранение сессии тг
+
+
+//-cmd/bot/main.go-
+package main
+
+import (
+	"context"
+	"flag"
+	"fmt"
+	"os"
+	"os/signal"
+	"path/filepath"
+	"strconv"
+	"syscall"
+
+	"HIGH_PR/gl"
+	"HIGH_PR/internal/bot"
+	"HIGH_PR/internal/logger"
+	"HIGH_PR/internal/middleware"
+	"HIGH_PR/internal/repository/postgres"
+	booktags "HIGH_PR/internal/repository/postgres/bookTags"
+	"HIGH_PR/internal/services"
+
+	"github.com/gotd/td/session"
+	"github.com/gotd/td/telegram"
+	"github.com/gotd/td/tg"
+)
+
+func init() {
+	createFolders()
+	readEnv()
+}
+
+func createFolders() {
+	dirsToCreate := []string{
+		gl.DefaultSaveBook,
+		gl.DefaultSaveImage,
+	}
+
+	// Добавляем папку логов (если путь задан)
+	if gl.LogPath != "" {
+		// filepath.Dir корректно отрежет "app.log" и оставит "log"
+		// Не забудь import "path/filepath"
+		dirsToCreate = append(dirsToCreate, filepath.Dir(gl.LogPath))
+	}
+
+	// Добавляем папку сессии
+	if gl.SessionPath != "" {
+		dirsToCreate = append(dirsToCreate, filepath.Dir(gl.SessionPath))
+	}
+
+	for _, dir := range dirsToCreate {
+		// filepath.Clean убирает лишние слэши и точки
+		cleanDir := filepath.Clean(dir)
+
+		// Skip, если путь пустой или "." (текущая папка)
+		if cleanDir == "." || cleanDir == "" {
+			continue
+		}
+
+		// 0755 - стандартные права (rwxr-xr-x)
+		err := os.MkdirAll(cleanDir, 0o755)
+		if err != nil {
+			fmt.Printf("❌ Критическая ошибка: Не могу создать папку '%s': %v\n", cleanDir, err)
+			// Тут лучше упасть, так как без папок бот работать не сможет
+			os.Exit(1)
+		}
+		fmt.Printf("✅ Папка проверена/создана: %s\n", cleanDir)
+	}
+}
+
+func readEnv() {
+	// 1. Определяем флаг -dev
+	devMode := flag.Bool("dev", false, "Активировать режим разработки (лог в консоли)")
+	flag.Parse()
+
+	// 2. СРАЗУ настраиваем наш кастомный логгер
+	logger.SetupLogger(*devMode)
+
+	// 3. А ТЕПЕРЬ используем ТОЛЬКО его для всех сообщений
+	if *devMode {
+		logger.Logger.Println("Режим разработки активирован.")
+	} else {
+		// Это сообщение теперь пойдет в файл, как и ожидалось
+		logger.Logger.Println("Обычный режим работы.")
+	}
+}
+
+func main() {
+	logger.Logger.Println("🚦 Запуск")
+	defer logger.Close()
+	// 2. Создаём диспетчер ЗАРАНЕЕ
+	dispatcher := tg.NewUpdateDispatcher()
+	// ATTENTION
+	appID, _ := strconv.Atoi(gl.AppID)
+
+	// 3. Создаём клиент, передавая ему диспетчер через Options
+	client := telegram.NewClient(appID, gl.AppHash, telegram.Options{
+		UpdateHandler: dispatcher,
+		// ⭐ ДОБАВЛЯЕМ MIDDLEWARE ЗДЕСЬ
+		Middlewares: []telegram.Middleware{
+			middleware.LoggingMiddleware(logger.Logger),
+			// Здесь можно добавить больше middleware
+		},
+		SessionStorage: &session.FileStorage{
+			Path: gl.SessionPath,
+		},
+	})
+	pool, err := postgres.Setup(gl.PostgreURL)
+	if err != nil {
+		logger.Logger.Println("Ошибка подкл к DB: ", err)
+		os.Exit(5432)
+	}
+
+	bookRep := booktags.NewBookRepository(pool)
+	bookService := services.NewBookService(bookRep)
+
+	botApp := bot.New(client, logger.Logger, dispatcher, bookService)
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer cancel()
+
+	if err := botApp.Start(ctx); err != nil {
+		logger.Logger.Fatalf("Ошибка при запуске: %v", err)
+	}
+
+	logger.Logger.Println("Бот остановлен.")
+}
+
+
+//-go.mod-
+module HIGH_PR
+
+go 1.25.3
+
+require (
+	github.com/dustin/go-humanize v1.0.1
+	github.com/gotd/td v0.132.0
+	github.com/jackc/pgx/v5 v5.7.6
+)
+
+require (
+	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
+	github.com/coder/websocket v1.8.14 // indirect
+	github.com/dlclark/regexp2 v1.11.5 // indirect
+	github.com/fatih/color v1.18.0 // indirect
+	github.com/ghodss/yaml v1.0.0 // indirect
+	github.com/go-faster/errors v0.7.1 // indirect
+	github.com/go-faster/jx v1.1.0 // indirect
+	github.com/go-faster/xor v1.0.0 // indirect
+	github.com/go-faster/yaml v0.4.6 // indirect
+	github.com/google/uuid v1.6.0 // indirect
+	github.com/gotd/ige v0.2.2 // indirect
+	github.com/gotd/neo v0.1.5 // indirect
+	github.com/jackc/pgpassfile v1.0.0 // indirect
+	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
+	github.com/jackc/puddle/v2 v2.2.2 // indirect
+	github.com/klauspost/compress v1.18.0 // indirect
+	github.com/mattn/go-colorable v0.1.14 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/ogen-go/ogen v1.15.2 // indirect
+	github.com/segmentio/asm v1.2.0 // indirect
+	go.opentelemetry.io/otel v1.38.0 // indirect
+	go.opentelemetry.io/otel/metric v1.38.0 // indirect
+	go.opentelemetry.io/otel/trace v1.38.0 // indirect
+	go.uber.org/atomic v1.11.0 // indirect
+	go.uber.org/multierr v1.11.0 // indirect
+	go.uber.org/zap v1.27.0 // indirect
+	golang.org/x/crypto v0.43.0 // indirect
+	golang.org/x/exp v0.0.0-20230725093048-515e97ebf090 // indirect
+	golang.org/x/mod v0.29.0 // indirect
+	golang.org/x/net v0.46.0 // indirect
+	golang.org/x/sync v0.17.0 // indirect
+	golang.org/x/sys v0.37.0 // indirect
+	golang.org/x/text v0.30.0 // indirect
+	golang.org/x/tools v0.38.0 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
+	rsc.io/qr v0.2.0 // indirect
+)
+
+

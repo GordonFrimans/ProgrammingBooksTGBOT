@@ -110,6 +110,12 @@ func main() {
 	}
 
 	bookRep := booktags.NewBookRepository(pool)
+
+	ctx := context.Background()
+	if err := bookRep.InitSearchExtension(ctx); err != nil {
+		logger.Logger.Printf("Warning: pg_trgm extension init failed: %v", err)
+		// Не падай, если нет прав - можно продолжить без этого расширения
+	}
 	bookService := services.NewBookService(bookRep)
 
 	botApp := bot.New(client, logger.Logger, dispatcher, bookService)
